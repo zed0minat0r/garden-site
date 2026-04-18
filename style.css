@@ -91,7 +91,10 @@ address { font-style: normal; }
   z-index: 9999;
   background: var(--green-dark);
   color: #fff;
-  padding: 10px 20px;
+  padding: 12px 20px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   font-size: 14px;
   font-weight: 500;
@@ -1150,6 +1153,9 @@ address { font-style: normal; }
 .contact__detail a {
   color: var(--green);
   font-weight: 500;
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
 }
 .contact__detail a:hover { text-decoration: underline; }
 .contact__detail p { font-size: 15px; color: var(--text); }
@@ -1355,7 +1361,7 @@ address { font-style: normal; }
     height: 44px;
   }
   .legacy__owner-name { font-size: 13px; }
-  .legacy__owner-role { font-size: 11px; }
+  .legacy__owner-role { font-size: 12px; }
 }
 
 /* === LEGACY QUOTE ========================================= */
@@ -1994,9 +2000,10 @@ address { font-style: normal; }
   background: linear-gradient(to left, transparent, var(--stone));
 }
 
-/* === TESTIMONIAL CARD — replace plain white with warm tint = */
+/* === TESTIMONIAL CARD — darker card on earth-wash bg for visible separation */
 .testimonial-card {
-  background: var(--cream);
+  background: #f0ebe0;
+  border-color: #c8bfb0;
 }
 
 /* === LEGACY IMG HOVER PARALLAX (CSS) ====================== */
