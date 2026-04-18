@@ -59,7 +59,7 @@ document.addEventListener('keydown', e => {
 function initReveal() {
   if (prefersReducedMotion) return;
 
-  const revealEls = document.querySelectorAll('.reveal, .reveal-up, .reveal-group');
+  const revealEls = document.querySelectorAll('.reveal, .reveal-up, .reveal-group, .reveal-scale');
   const observer  = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
@@ -197,6 +197,24 @@ function addRevealClasses() {
   const trustBar = document.querySelector('.trust-bar__inner');
   if (trustBar && !trustBar.classList.contains('reveal-group')) {
     trustBar.classList.add('reveal-group');
+  }
+
+  // Seasonal grid — staggered
+  const seasonalGrid = document.querySelector('.seasonal__grid');
+  if (seasonalGrid && !seasonalGrid.classList.contains('reveal-group')) {
+    seasonalGrid.classList.add('reveal-group');
+  }
+
+  // Testimonials grid — staggered
+  const testGrid = document.querySelector('.testimonials__grid');
+  if (testGrid && !testGrid.classList.contains('reveal-group')) {
+    testGrid.classList.add('reveal-group');
+  }
+
+  // Legacy badge — scale entrance
+  const badge = document.querySelector('.legacy__badge');
+  if (badge && !badge.classList.contains('reveal-scale')) {
+    badge.classList.add('reveal-scale');
   }
 }
 

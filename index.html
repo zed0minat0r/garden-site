@@ -66,8 +66,8 @@
             <span class="hero__stat-label">Yrs landscaping</span>
           </div>
           <div class="hero__stat" role="listitem">
-            <span class="hero__stat-num">1-Year</span>
-            <span class="hero__stat-label">Plant warranty</span>
+            <span class="hero__stat-num">1</span>
+            <span class="hero__stat-label">Year Warranty</span>
           </div>
         </div>
         <div class="hero__reviews" aria-label="Google Reviews rating">
@@ -217,7 +217,11 @@
             <div class="service-card__body">
               <span class="service-card__tag">Events</span>
               <h3 class="service-card__title">Family-friendly fun<br />all year long</h3>
-              <p class="service-card__text">From spring plant sales to fall festivals, we bring the community together with events the whole family loves.</p>
+              <div class="service-card__event-callout">
+                <span class="service-card__event-label">Coming Up</span>
+                <span class="service-card__event-name">Mother&rsquo;s Day Plant Sale</span>
+                <span class="service-card__event-date">May 10&ndash;11</span>
+              </div>
               <a href="https://colonialgardenspa.com" class="btn btn--primary" target="_blank" rel="noopener noreferrer">See Upcoming Events</a>
             </div>
           </article>
@@ -252,7 +256,7 @@
       </div>
       <div class="legacy__body reveal">
         <p class="section-eyebrow">Our story</p>
-        <h2 class="section-title">A family garden,<br />a community home</h2>
+        <h2 class="section-title">A family garden,<br /><em>a community home</em></h2>
         <blockquote class="legacy__quote">
           <p>"We're not a big-box store and we never will be. Every plant we sell, we stand behind."</p>
           <cite>&mdash; Eric Schmidt, Owner</cite>
@@ -280,6 +284,49 @@
       </div>
     </section>
 
+    <!-- Seasonal Highlights -->
+    <section class="seasonal" aria-label="Seasonal highlights">
+      <div class="container">
+        <div class="seasonal__header reveal">
+          <p class="section-eyebrow">Right now in the greenhouse</p>
+          <h2 class="section-title">What&rsquo;s in season</h2>
+        </div>
+        <div class="seasonal__grid reveal-group">
+          <article class="seasonal-card seasonal-card--wide">
+            <div class="seasonal-card__img-wrap">
+              <img src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg" alt="Spring annuals and perennials" loading="lazy" />
+            </div>
+            <div class="seasonal-card__body">
+              <span class="seasonal-card__season">Spring 2026</span>
+              <h3 class="seasonal-card__title">Annuals &amp; Perennials</h3>
+              <p class="seasonal-card__text">Hundreds of varieties just arrived. Petunias, impatiens, coneflower, black-eyed Susan &mdash; all ready to go home with you.</p>
+              <a href="#garden-center" class="btn btn--primary">Shop the Greenhouse</a>
+            </div>
+          </article>
+          <article class="seasonal-card">
+            <div class="seasonal-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=85&auto=format" alt="Herb garden with fresh herbs" loading="lazy" />
+            </div>
+            <div class="seasonal-card__body">
+              <span class="seasonal-card__season">Now Available</span>
+              <h3 class="seasonal-card__title">Veggie &amp; Herb Starts</h3>
+              <p class="seasonal-card__text">Tomatoes, peppers, basil, thyme &mdash; get your kitchen garden growing now.</p>
+            </div>
+          </article>
+          <article class="seasonal-card">
+            <div class="seasonal-card__img-wrap">
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=85&auto=format" alt="Beautiful spring flowers" loading="lazy" />
+            </div>
+            <div class="seasonal-card__body">
+              <span class="seasonal-card__season">Mother&rsquo;s Day</span>
+              <h3 class="seasonal-card__title">Plant Sale May 10&ndash;11</h3>
+              <p class="seasonal-card__text">Special selections and gift-ready arrangements for Mom. Shop early for best picks.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA strip -->
     <section class="cta-strip" aria-label="Start a landscaping project">
       <div class="cta-strip__inner container reveal">
@@ -296,23 +343,32 @@
       <div class="testimonials__inner container">
         <div class="testimonials__header reveal">
           <p class="section-eyebrow">What neighbors say</p>
-          <h2 class="section-title">Phoenixville's<br />favorite garden spot</h2>
-        </div>
-        <div class="testimonials__grid reveal-group">
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__stars" aria-label="5 stars" aria-hidden="true">
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <h2 class="section-title">Phoenixville&rsquo;s<br />favorite garden spot</h2>
+          <div class="testimonials__rating-badge" aria-label="4.8 out of 5 stars, 340 Google reviews">
+            <div class="testimonials__rating-stars" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
             </div>
-            <p class="testimonial-card__text">"We've been coming here every spring for over 20 years. The staff knows their plants and the selection beats anything around. It feels like a real garden, not a warehouse."</p>
-            <footer class="testimonial-card__author">
-              <span class="testimonial-card__name">Lisa M.</span>
-              <span class="testimonial-card__tag">via Google Reviews</span>
-            </footer>
-          </blockquote>
+            <span class="testimonials__rating-num">4.8</span>
+            <span class="testimonials__rating-count">340 Google reviews</span>
+          </div>
+        </div>
+
+        <!-- Featured pullquote -->
+        <blockquote class="testimonial-featured reveal">
+          <span class="testimonial-featured__mark" aria-hidden="true">&ldquo;</span>
+          <p class="testimonial-featured__text">We&rsquo;ve been coming here every spring for over 20 years. The staff knows their plants and the selection beats anything around. It feels like a real garden, not a warehouse.</p>
+          <footer class="testimonial-featured__footer">
+            <span class="testimonial-featured__name">Lisa M.</span>
+            <span class="testimonial-featured__divider" aria-hidden="true">&mdash;</span>
+            <span class="testimonial-featured__source">Google Reviews</span>
+          </footer>
+        </blockquote>
+
+        <div class="testimonials__grid reveal-group">
           <blockquote class="testimonial-card">
             <div class="testimonial-card__stars" aria-label="5 stars" aria-hidden="true">
               <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -351,7 +407,11 @@
         <div class="contact__info reveal">
           <p class="section-eyebrow">Come see us</p>
           <h2 class="section-title">The gardens are<br />waiting for you</h2>
-          <p class="contact__welcome">Stop by any day of the week &mdash; no appointment needed. The staff is here to help you find exactly what your yard is asking for.</p>
+          <p class="contact__welcome">No appointment needed &mdash; just walk in. Our staff genuinely loves to talk plants, so come with questions.</p>
+          <div class="contact__open-badge">
+            <span class="contact__open-dot" aria-hidden="true"></span>
+            <span>Open today &mdash; Mon&ndash;Sat 8am&ndash;6pm, Sun 9am&ndash;5pm</span>
+          </div>
 
           <div class="contact__details">
             <div class="contact__detail">
