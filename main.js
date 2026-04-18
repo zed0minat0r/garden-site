@@ -88,9 +88,12 @@ function initServicesScroll() {
   const track   = document.getElementById('servicesTrack');
   const btnLeft = document.getElementById('servicesLeft');
   const btnRight= document.getElementById('servicesRight');
+  const dotsEl  = document.getElementById('servicesDots');
   if (!track || !btnLeft || !btnRight) return;
 
   const SCROLL_BY = 420;
+  const cards     = track.querySelectorAll('.service-card');
+  const dots      = dotsEl ? dotsEl.querySelectorAll('.services__dot') : [];
 
   btnLeft.addEventListener('click', () => {
     track.scrollBy({ left: -SCROLL_BY, behavior: 'smooth' });
@@ -123,6 +126,20 @@ function initServicesScroll() {
     track.scrollLeft = scrollLeft - walk;
   });
 
+  // Update dots based on active card in view
+  function updateDots() {
+    if (!dots.length || !cards.length) return;
+    const trackRect = track.getBoundingClientRect();
+    let activeIdx = 0;
+    let bestOverlap = -1;
+    cards.forEach((card, i) => {
+      const rect = card.getBoundingClientRect();
+      const overlap = Math.min(rect.right, trackRect.right) - Math.max(rect.left, trackRect.left);
+      if (overlap > bestOverlap) { bestOverlap = overlap; activeIdx = i; }
+    });
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === activeIdx));
+  }
+
   // Show/hide nav buttons based on scroll position
   function updateButtons() {
     btnLeft.style.opacity  = track.scrollLeft <= 0 ? '0.35' : '1';
@@ -130,6 +147,7 @@ function initServicesScroll() {
     const maxScroll        = track.scrollWidth - track.clientWidth;
     btnRight.style.opacity = track.scrollLeft >= maxScroll - 2 ? '0.35' : '1';
     btnRight.disabled      = track.scrollLeft >= maxScroll - 2;
+    updateDots();
   }
 
   track.addEventListener('scroll', updateButtons, { passive: true });
@@ -168,7 +186,7 @@ function addRevealClasses() {
   // Sections that slide up on scroll
   const toReveal = [
     '.contact__info',
-    '.contact__map',
+    '.contact__map-wrap',
   ];
   toReveal.forEach(sel => {
     const el = document.querySelector(sel);
