@@ -173,7 +173,7 @@ function initParallax() {
       const vh   = window.innerHeight;
       if (rect.bottom < 0 || rect.top > vh) { rafPending = false; return; }
       const pct  = ((rect.top / vh) - 0.5) * 0.3;
-      legacyImg.style.transform = `scale(1.06) translateY(${pct * 80}px)`;
+      legacyImg.style.transform = `scale(1.06) translateY(${pct * 40}px)`;
       rafPending = false;
     });
   }

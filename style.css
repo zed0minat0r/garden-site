@@ -413,6 +413,10 @@ address { font-style: normal; }
   justify-content: center;
 }
 
+/* Mobile-first CTA: only visible on small screens */
+.hero__actions-mobile-first { display: none; }
+.hero__actions-desktop-first { display: inline-flex; }
+
 /* Hero primary CTA glows warm */
 .hero__actions .btn--primary {
   background: var(--amber);
@@ -526,7 +530,7 @@ address { font-style: normal; }
 .ribbon {
   background: var(--green-dark);
   color: rgba(255,255,255,.75);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: .07em;
   overflow: hidden;
@@ -626,7 +630,7 @@ address { font-style: normal; }
 
 .services {
   padding: 108px 0 72px;
-  background: var(--cream);
+  background: var(--off-white);
 }
 
 .services__header {
@@ -650,8 +654,8 @@ address { font-style: normal; }
   right: 0;
   top: 0;
   bottom: 40px;
-  width: 80px;
-  background: linear-gradient(to left, var(--cream) 20%, transparent);
+  width: 120px;
+  background: linear-gradient(to left, var(--off-white) 35%, transparent);
   pointer-events: none;
   z-index: 2;
 }
@@ -1037,7 +1041,8 @@ address { font-style: normal; }
 /* === CONTACT ============================================= */
 .contact {
   padding: 108px 0;
-  background: var(--cream);
+  background: var(--earth-wash);
+  border-top: 1px solid var(--stone);
 }
 
 .contact__grid {
@@ -1133,6 +1138,146 @@ address { font-style: normal; }
   box-shadow: var(--glow-green);
   outline: none;
   transform: translateY(-1px);
+}
+
+/* === TESTIMONIALS ========================================= */
+.testimonials {
+  padding: 108px 0;
+  background: var(--off-white);
+  border-top: 1px solid var(--stone);
+  border-bottom: 1px solid var(--stone);
+}
+
+.testimonials__header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.testimonials__header .section-title {
+  margin-top: 10px;
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: #fff;
+  border: 1px solid var(--stone);
+  border-radius: var(--radius-xl);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .3s ease, transform .2s var(--ease-out);
+  position: relative;
+}
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  font-family: var(--font-serif);
+  font-size: 72px;
+  line-height: 1;
+  color: var(--green-pale);
+  pointer-events: none;
+}
+.testimonial-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.testimonial-card__stars {
+  display: flex;
+  gap: 3px;
+  color: #f59e0b;
+}
+
+.testimonial-card__text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  font-style: italic;
+  flex: 1;
+}
+
+.testimonial-card__author {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 16px;
+  border-top: 1px solid var(--stone);
+}
+
+.testimonial-card__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+.testimonial-card__tag {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: .04em;
+}
+
+@media (max-width: 900px) {
+  .testimonials__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .testimonials__grid .testimonial-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .testimonials {
+    padding: 80px 0;
+  }
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+  .testimonials__grid .testimonial-card:last-child {
+    grid-column: auto;
+  }
+}
+
+/* === LEGACY QUOTE ========================================= */
+.legacy__quote {
+  background: var(--green-wash);
+  border-left: 3px solid var(--green);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  max-width: 480px;
+}
+.legacy__quote p {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-style: italic;
+  color: var(--green-dark);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.legacy__quote cite {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--green);
+  letter-spacing: .04em;
+}
+
+/* === CONTACT WELCOME TEXT ================================= */
+.contact__welcome {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 400px;
 }
 
 /* === FOOTER ============================================== */
@@ -1248,10 +1393,10 @@ address { font-style: normal; }
     height: 420px;
   }
   .legacy__badge {
-    top: auto;
-    left: auto;
-    bottom: 24px;
+    top: 24px;
     right: 24px;
+    left: auto;
+    bottom: auto;
     transform: none;
     padding: 20px 24px;
   }
@@ -1323,6 +1468,7 @@ address { font-style: normal; }
   }
 
   .contact { padding: 80px 0; }
+  .contact__info { order: -1; }
   .contact__detail svg {
     width: 28px;
     height: 28px;
@@ -1331,6 +1477,9 @@ address { font-style: normal; }
 }
 
 @media (max-width: 480px) {
+  .hero__actions-mobile-first { display: inline-flex; }
+  .hero__actions-desktop-first { display: none; }
+
   .hero__actions { flex-direction: column; width: 100%; max-width: 320px; }
   .hero__actions .btn { width: 100%; }
   .hero__stats {
