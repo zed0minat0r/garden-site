@@ -1118,8 +1118,8 @@ address { font-style: normal; }
 
 .contact__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
   align-items: start;
 }
 
@@ -2039,6 +2039,205 @@ address { font-style: normal; }
   background: linear-gradient(to left, transparent, var(--stone));
 }
 
+/* === CONTACT FORM ========================================== */
+.contact__form-wrap {
+  padding: 36px 32px;
+  background: var(--cream);
+  border: 1px solid var(--stone);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+.contact__form-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green-dark);
+  margin-bottom: 6px;
+}
+.contact__form-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact__form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.contact__form-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.contact__form-input {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1.5px solid var(--stone);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: #fff;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  line-height: 1.4;
+  min-height: 48px;
+  width: 100%;
+}
+.contact__form-input:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(46,107,48,.12);
+}
+.contact__form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%235a5449' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+.contact__form-submit {
+  width: 100%;
+  margin-top: 4px;
+  background: var(--amber);
+  box-shadow: var(--glow-warm);
+}
+.contact__form-note {
+  font-size: 13px;
+  color: var(--green);
+  text-align: center;
+  min-height: 20px;
+  font-weight: 500;
+}
+
+/* === WHAT TO PLANT NOW ==================================== */
+.plant-now {
+  padding: 96px 0 80px;
+  background: var(--green-wash);
+  position: relative;
+}
+.plant-now::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--green-pale), var(--amber), var(--green-pale), transparent);
+  opacity: .7;
+}
+.plant-now__header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.plant-now__intro {
+  font-size: 17px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 16px auto 0;
+  line-height: 1.7;
+}
+.plant-now__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 52px;
+}
+.plant-now__card {
+  background: #fff;
+  border: 1px solid var(--stone);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform .25s var(--ease-spring);
+}
+.plant-now__card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+.plant-now__card-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--green-wash);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--green-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  flex-shrink: 0;
+}
+.plant-now__card-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--green-dark);
+  line-height: 1.3;
+}
+.plant-now__card-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  flex: 1;
+}
+.plant-now__card-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: var(--green-wash);
+  border: 1px solid var(--green-pale);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  align-self: flex-start;
+}
+.plant-now__cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.plant-now__cta-text {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+  .plant-now__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+@media (max-width: 600px) {
+  .plant-now__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .plant-now { padding: 72px 0 60px; }
+  .contact__form-wrap {
+    padding: 28px 20px;
+  }
+}
+
 /* === TESTIMONIAL CARD — warm card with clear separation from earth-wash bg */
 .testimonial-card {
   background: #ece5d5;
@@ -2098,10 +2297,6 @@ address { font-style: normal; }
   .legacy__badge-num { font-size: 42px; }
   .legacy__body {
     padding: 52px 32px;
-  }
-  .contact__grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
   }
   .contact__map {
     height: 340px;

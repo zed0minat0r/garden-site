@@ -50,7 +50,7 @@
       <div class="hero__content">
         <p class="hero__eyebrow">Phoenixville, PA &nbsp;&bull;&nbsp; Est. 1967</p>
         <h1 class="hero__headline">Where Gardens<br /><em>Come to Life</em></h1>
-        <p class="hero__sub">58 years of plants, passion, and community &mdash; family-owned and locally rooted in Phoenixville.</p>
+        <p class="hero__sub">58 years rooted in Phoenixville &mdash; from backyard tomatoes to full landscape installs.</p>
         <div class="hero__actions">
           <a href="#contact" class="btn btn--primary btn--lg hero__actions-mobile-first">Hours &amp; Directions</a>
           <a href="#garden-center" class="btn btn--primary btn--lg hero__actions-desktop-first">Shop the Greenhouse</a>
@@ -336,6 +336,55 @@
       </div>
     </section>
 
+    <!-- What to Plant Now -->
+    <section class="plant-now" aria-label="What to plant this season in Phoenixville PA">
+      <div class="container">
+        <div class="plant-now__header reveal">
+          <p class="section-eyebrow">April in Phoenixville</p>
+          <h2 class="section-title">What to plant <em>right now</em></h2>
+          <p class="plant-now__intro">The last frost date for our zone has passed. Here is what our growers are putting in the ground this week.</p>
+        </div>
+        <div class="plant-now__grid reveal-group">
+          <div class="plant-now__card">
+            <div class="plant-now__card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 22V12M12 12C12 7 7 4 2 5c0 5 3 9 10 7M12 12C12 7 17 4 22 5c0 5-3 9-10 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="plant-now__card-title">Tomatoes &amp; Peppers</h3>
+            <p class="plant-now__card-text">Starts are in. Plant after the last frost (mid-April). Give them full sun and compost-rich soil. Pick up transplants now while selection is best.</p>
+            <span class="plant-now__card-tag">Veggie Garden</span>
+          </div>
+          <div class="plant-now__card">
+            <div class="plant-now__card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2a9 9 0 019 9c0 4.97-9 13-9 13S3 15.97 3 11a9 9 0 019-9z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3 class="plant-now__card-title">Petunias &amp; Impatiens</h3>
+            <p class="plant-now__card-text">Spring annuals are at peak selection. Fill window boxes, containers, and beds now. Impatiens love shade; petunias take full sun all summer long.</p>
+            <span class="plant-now__card-tag">Annuals</span>
+          </div>
+          <div class="plant-now__card">
+            <div class="plant-now__card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 3h14M5 3v18M19 3v18M5 21h14M9 7h6M9 11h6M9 15h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="plant-now__card-title">Basil &amp; Herbs</h3>
+            <p class="plant-now__card-text">Fresh herb starts are ready. Basil, thyme, rosemary, and oregano. Plant in containers near the kitchen or in a raised bed with good drainage.</p>
+            <span class="plant-now__card-tag">Herbs</span>
+          </div>
+          <div class="plant-now__card">
+            <div class="plant-now__card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H9a4 4 0 00-4 4v2M12 3a4 4 0 014 4c0 2.5-2 5-4 7-2-2-4-4.5-4-7a4 4 0 014-4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="plant-now__card-title">Shade Trees &amp; Ornamentals</h3>
+            <p class="plant-now__card-text">Spring is the best planting window for trees. Roots establish before summer heat. Our nursery is stocked with maples, dogwoods, and flowering shrubs.</p>
+            <span class="plant-now__card-tag">Trees &amp; Shrubs</span>
+          </div>
+        </div>
+        <div class="plant-now__cta reveal">
+          <p class="plant-now__cta-text">Not sure what works in your yard? Stop in &mdash; our staff answers plant questions all day, every day.</p>
+          <a href="#contact" class="btn btn--primary">Plan Your Visit</a>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA strip -->
     <section class="cta-strip" aria-label="Start a landscaping project">
       <div class="cta-strip__inner container reveal">
@@ -455,6 +504,34 @@
           </div>
         </div>
 
+        <div class="contact__form-wrap reveal">
+          <h3 class="contact__form-title">Request a free consultation</h3>
+          <p class="contact__form-sub">Leave your info and we will reach out to schedule.</p>
+          <form class="contact__form" id="consultForm" novalidate>
+            <div class="contact__form-row">
+              <label for="cf-name" class="contact__form-label">Your name</label>
+              <input type="text" id="cf-name" name="name" class="contact__form-input" placeholder="Jane Smith" autocomplete="name" required />
+            </div>
+            <div class="contact__form-row">
+              <label for="cf-phone" class="contact__form-label">Phone or email</label>
+              <input type="text" id="cf-phone" name="contact" class="contact__form-input" placeholder="610-555-0100 or jane@email.com" autocomplete="tel" required />
+            </div>
+            <div class="contact__form-row">
+              <label for="cf-interest" class="contact__form-label">What are you interested in?</label>
+              <select id="cf-interest" name="interest" class="contact__form-input contact__form-select">
+                <option value="">Pick one</option>
+                <option value="landscaping">Landscaping design &amp; install</option>
+                <option value="planting">Spring planting help</option>
+                <option value="trees">Trees &amp; shrubs</option>
+                <option value="florist">Flowers &amp; arrangements</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn--primary contact__form-submit">Send Request</button>
+            <p class="contact__form-note" id="cfNote" aria-live="polite"></p>
+          </form>
+        </div>
+
         <div class="contact__map-wrap reveal">
           <div class="contact__map">
             <iframe
@@ -469,7 +546,7 @@
               aria-label="Google Maps showing Colonial Gardens at 745 Schuylkill Road Phoenixville PA">
             </iframe>
           </div>
-          <a href="https://maps.google.com/?q=745+Schuylkill+Road+Phoenixville+PA" class="btn btn--directions" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Colonial Gardens in Google Maps">
+          <a href="https://www.google.com/maps/place/Colonial+Gardens/@40.1257,-75.5388,17z/data=!3m1!4b1!4m6!3m5!1s0x89c6a3a5e23d2b7f:0x4b2c1f8e9a0d3c5e!8m2!3d40.1257!4d-75.5388!16s%2Fg%2F1tcwnsgq" class="btn btn--directions" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Colonial Gardens in Google Maps">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
             Get Directions
           </a>

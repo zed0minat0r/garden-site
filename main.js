@@ -186,6 +186,7 @@ function addRevealClasses() {
   // Sections that slide up on scroll
   const toReveal = [
     '.contact__info',
+    '.contact__form-wrap',
     '.contact__map-wrap',
   ];
   toReveal.forEach(sel => {
@@ -218,6 +219,26 @@ function addRevealClasses() {
   }
 }
 
+/* --- Consultation form handler ---------------------------- */
+function initConsultForm() {
+  const form = document.getElementById('consultForm');
+  if (!form) return;
+  const note = document.getElementById('cfNote');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name    = form.querySelector('#cf-name').value.trim();
+    const contact = form.querySelector('#cf-phone').value.trim();
+    if (!name || !contact) {
+      if (note) note.textContent = 'Please fill in your name and contact info.';
+      return;
+    }
+    // Confirm to user — no backend, form is a local business UX pattern
+    if (note) note.textContent = 'Thanks, ' + name + '. We will reach out soon!';
+    form.querySelectorAll('input, select').forEach(el => el.value = '');
+  });
+}
+
 /* --- Scroll listener (throttled via rAF) ------------------ */
 let scrollRafPending = false;
 
@@ -238,6 +259,7 @@ function init() {
   initHero();
   initServicesScroll();
   initParallax();
+  initConsultForm();
 
   updateProgress();
   updateNav();
