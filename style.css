@@ -1743,6 +1743,56 @@ address { font-style: normal; }
   transform: none;
 }
 
+/* === 375px mobile fixes =================================== */
+@media (max-width: 480px) {
+  /* Fix: seasonal-card__season text below 12px minimum */
+  .seasonal-card__season {
+    font-size: 12px;
+  }
+
+  /* Fix: service-card__event-label text below 12px minimum */
+  .service-card__event-label {
+    font-size: 12px;
+  }
+
+  /* Fix: suppress contact welcome text on mobile — delays critical contact info */
+  .contact__welcome {
+    display: none;
+  }
+
+  /* Fix: featured testimonial — reduce oversized decorative quote mark on mobile */
+  .testimonial-featured__mark {
+    font-size: 60px;
+    margin-bottom: 4px;
+  }
+
+  /* Fix: testimonial-card padding too wide relative to 375px viewport */
+  .testimonial-card {
+    padding: 28px 24px;
+  }
+
+  /* Fix: oversized decorative quote mark on mobile testimonial cards */
+  .testimonial-card::before {
+    font-size: 56px;
+    top: 14px;
+    right: 20px;
+  }
+
+  /* Fix: hero__reviews nowrap text can escape at 375px — allow break */
+  .hero__reviews-text {
+    white-space: normal;
+    font-size: 12px;
+  }
+
+  /* Fix: hero reviews badge flex layout at small size */
+  .hero__reviews {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+  }
+}
+
 /* === prefers-reduced-motion ================================ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
