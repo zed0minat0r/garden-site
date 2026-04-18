@@ -2,97 +2,102 @@
 **Date:** 2026-04-09
 **Auditor:** Nigel (posh British auditor)
 **Viewport tested:** 375px mobile, homeowner perspective
-**Version:** v2
+**Version:** v3
+**Previous score:** 6.8
 
 ---
 
-## Overall Score: 6.8 / 10
+## Overall Score: 7.2 / 10
 
-A genuinely solid v2 build. The bones are excellent — real business data, appropriate typography choices, coherent colour palette, proper accessibility scaffolding. But several friction points hold it back from being the kind of site where a homeowner immediately thinks "yes, this is where I want to go."
+Delta: +0.4 from v2. The five big items from the last audit have been addressed competently. Social proof is now present. The carousel has working dots, arrows, and a swipe hint. The Get Directions button is in place. The contact section already had the correct HTML order (info before map). The trust bar is clean and non-repetitive. These are genuine improvements and the score reflects them honestly.
+
+What stops this from reaching 7.5+: the testimonial names are generic to the point of feeling fabricated (Lisa M., Tom R., Sarah K. — three of the most common Anglo names in sequence), there is no face anywhere on the page for a 58-year-old family business, the events card still has no specific upcoming event, and the "1-Year" stat in the hero stats row is still awkward typographically. One new issue: the contact section's welcome copy ("Stop by any day of the week") now sits below a large section title, creating a long throat-clear before the actual information a user came for.
 
 ---
 
 ## Section Scores
 
-### 1. Design Quality — 7.2 / 10
+### 1. Design Quality — 7.4 / 10
 
-The Playfair Display + DM Sans pairing is a smart choice for a garden centre — editorial without being precious. The green/earth/amber token system is internally consistent and genuinely appropriate to the brand. The hero headline ("Where Gardens Come to Life") with italic green em is the strongest single design moment in the build.
+The Playfair + DM Sans pairing remains strong. The token system is consistent throughout. The hero reviews badge is well-executed — pill shape, frosted glass, amber stars, 4.8 strong — and its placement after the CTA actions is the right hierarchy decision. The owner quote (green-wash blockquote with left border) is a tasteful addition to the about section. The alternating backgrounds (off-white, earth-wash, green-dark, off-white, earth-wash) create a proper rhythm without visual fatigue.
 
-Deductions: The amber glow on buttons (`--glow-warm`) is tasteful but the same button style (amber, pill-shaped, glow) is used in three distinct contexts — hero, service cards, and CTA strip — which dilutes its impact. The trust bar repeats exactly the same stat ("58 Years") that already appears in the hero stats row four lines above it. A real homeowner notices this and it reads as padding rather than reassurance.
+Deductions: The amber warm-glow on the primary CTA button in the hero is used again verbatim on the service card buttons and the CTA strip button. Three amber glows across the page diminishes the impact of each. The testimonial section is the weakest-designed section — it reads as a plain white-card grid with no personality, whereas everything else has botanical warmth. The opening quote mark decorating each testimonial card is a common pattern; it does not elevate the cards.
 
-### 2. Mobile UX at 375px — 6.4 / 10
+### 2. Mobile UX at 375px — 7.0 / 10
 
-**What works:** The full-screen nav overlay is clean and large targets (22px links, 44px min-height) are correct. The hamburger toggle shows/hides properly. Buttons go full-width on 480px and under. The service card flex value of `88vw` gives good peek-through for scrollability discovery.
+The hero CTA swap is correctly implemented: on 480px and under, the mobile-first "Hours & Directions" button appears and the "Shop the Greenhouse" button hides. This is the single best improvement from v2 and it is done correctly — the `display: none` / `display: inline-flex` swap via media query is clean.
 
-**Problems:**
-- The hero CTA buttons stack full-width at 480px but the primary CTA ("Shop the Greenhouse") has no phone-level urgency. The secondary CTA is a phone number, which is the right instinct, but at 375px a homeowner who found this on Google wants to know hours and directions *first*, not a call. The hierarchy is inverted for mobile intent.
-- The services horizontal scroll track has no scroll indicator — no dots, no "swipe" hint text, nothing. The nav arrow buttons below the track are centred and subtle; most users will not find them before abandoning.
-- The trust bar at 375px goes to `flex: 1 1 100px` which means four items in two rows. The word "Widest" as a `.trust-item__num` is inelegant and reads like a placeholder. It is the weakest of the four items.
-- The ribbon marquee is 12px, which at 375px on a real screen is borderline too small to read comfortably. The content is genuinely useful (hours, warranty) but the font size undermines it.
-- The contact section at the bottom has the map before the hours and phone number in the visual hierarchy on mobile. On a phone, the user wants hours/phone first, then the map — the stacking order should invert.
+The swipe hint displays on mobile (768px breakpoint, `display: block`). Dot indicators work via JavaScript and update on scroll. Arrow buttons show/hide opacity correctly. This is all correct.
 
-### 3. Visual Polish — 7.0 / 10
+Remaining issues:
+- The hero stats row at 375px shows three stats with `font-size: 26px`. The "1-Year" stat label still occupies two lines and creates visual imbalance versus the "58" and "40+" which are pure numerals. It reads like an odd one out. Either use "1 Year" with a unit label below or present it as the number "1" with label "Year Warranty".
+- The trust bar at 375px with `flex: 1 1 100px` and four items means they stack two-by-two. This is fine. "Open / 7 days a week" and "Local / Phoenixville, PA" are the two weakest items — both say things already visible elsewhere (hours in the ribbon, location in the eyebrow). A homeowner scanning the trust bar sees no new information in those two slots.
+- The testimonials section stacks to a single column at 600px, which is correct. But at 375px the testimonial cards have 32px padding all around and the opening quote mark glyph (72px, top-right, `green-pale`) is massive relative to the card width — it competes with the review text.
+- The contact welcome text sits between the section title and the contact details. On mobile this creates three separate text blocks before the user reaches the actual hours — title, welcome copy, then hours. The welcome paragraph adds warmth on desktop but on mobile it delays the information people came for. Consider moving it after the contact details, or removing it on small screens.
 
-The ken-burns hero entrance (scale 1.08 to 1.0 over 10s) is a good restrained choice. The parallax on the legacy image is correctly implemented with RAF throttling and reduced-motion respect. The scroll progress bar is tasteful at 3px.
+### 3. Visual Polish — 7.2 / 10
 
-The "Est. 1967" badge overlaid on the legacy image is the second best design moment in the build — but at 375px it shifts to `bottom: 24px; right: 24px` which means it now competes visually with the body text that follows immediately below it, especially when the legacy section stacks vertically. Consider making the badge smaller or repositioning to top-right on mobile.
+The hero parallax has been reduced to `pct * 40px` of travel — this is now settled and correct. The services gradient fade is now `width: 120px` which is much more legible as a "swipe right" cue than the previous 80px. The "Est. 1967" badge moves correctly to top-right on mobile via `top: 24px; right: 24px; transform: none`. These are all improvements.
 
-The vignette radial gradient on the hero overlay is a legitimate depth technique and is not overdone.
+The scroll-down arrow animation (`float` — 8px translateY over 2.5s) is restrained and functional.
 
-The service card hover state (lift + scale + image zoom) is polished but irrelevant on touch devices, which is fine — just noting it adds no mobile value.
+The testimonial card hover state (lift + shadow) is appropriate. The large quote mark glyph at `green-pale` on white cards is the one decorative element that does not quite earn its place — it is generic and conspicuous at 72px.
 
-### 4. Scroll Interactions — 6.8 / 10
+No new visual clutter introduced. Score holds steady on polish with a small improvement for the parallax fix.
 
-The reveal-on-scroll system is correctly built: IntersectionObserver with unobserve-after-trigger, reduced-motion guard, 0.1 threshold, -50px rootMargin to ensure elements are meaningfully visible before triggering. This is competent work.
+### 4. Scroll Interactions — 7.0 / 10
 
-The stagger delays (0/90/180/270ms) on `.reveal-group` items are appropriate and not overcooked.
+IntersectionObserver reveal system is correctly built: unobserves after trigger, respects reduced-motion, proper threshold and rootMargin. The stagger delays at 0/90/180/270ms are well-judged — noticeable but not theatrical.
 
-Where this falls short: the services horizontal scroll section has no snap-point scroll indicator. Users on touch have no affordance that there are more cards. The fade gradient on the right edge (`width: 80px`) is too soft to function as a clear "swipe right" signal — it barely registers against the cream background.
+The services carousel drag-to-scroll mouse implementation is there. The dot update logic (overlap-based active detection) is sensible. The button opacity feedback (0.35 when at limits) is good UX.
 
-The parallax on the legacy image uses `pct * 80px` of travel, which is aggressive — at moderate scroll speeds the image appears to shift unnaturally. Reducing to `pct * 40px` would feel more settled.
+One remaining concern: the scroll reveal for `.contact__info` and `.contact__map-wrap` is added programmatically via `addRevealClasses()` in JS. This means users with JS disabled see these sections invisible. It is a minor issue but worth noting.
 
-### 5. Content Presentation — 6.6 / 10
+### 5. Content Presentation — 7.0 / 10
 
-**Strengths:** Owner name (Eric Schmidt), real address (745 Schuylkill Road), real phone number (610-948-9755), real hours. This is exactly what a local business site needs and it is all present.
+Genuine improvements: testimonials now present (Lisa M., Tom R., Sarah K.). Eric Schmidt owner quote added. Contact section has welcome copy. Mobile hero CTA now routes to the right intent. Florist and events card text correctly sets the expectation ("Visit our full site to order" / "Visit our full site to see events") rather than implying inline completion.
 
-**Problems:**
-- "The widest selection in the area" appears both as a trust-bar item and as the Garden Center service card h3. Same phrase, twice, within two scrolls of each other. Pick one.
-- "1yr" as a stat in the hero is typographically awkward. "1-Year" or "1 Year" would read cleaner.
-- The florist and events cards both link to `colonialgardenspa.com` — this is presumably intentional as a workaround, but a homeowner clicking "Order Flowers Online" and landing on a different-looking WordPress site will feel the jarring disconnect. Consider setting the expectation: "Visit our full site to order" rather than implying the landing will complete the transaction inline.
-- No customer reviews, testimonials, or Google rating visible anywhere. A 58-year-old local business almost certainly has strong reviews. This is the single largest trust signal missing from the page.
-- No seasonal or upcoming event content. The ribbon says "Spring is here — Shop annuals & perennials" but there is no event in the events card, no specific promotion. A homeowner in Phoenixville in April wants to know what is happening *this weekend*.
+Remaining issues:
+- The three reviewer names — Lisa M., Tom R., Sarah K. — are so on-the-nose Anglo-generic that a real homeowner may feel they are manufactured, even if they were transcribed accurately from Google. Adding one more detail per review (e.g. "Phoenixville, PA" or a specific plant mentioned) would add credibility.
+- The events card still contains no specific upcoming event. "From spring plant sales to fall festivals" is placeholder-level copy that a homeowner cannot act on. A single line — "Mother's Day Weekend Plant Sale — May 10 & 11" — would make the card useful.
+- "1-Year" as a hero stat number continues to look typographically odd alongside "58" and "40+". It is the only alphanumeric mixed stat in the row.
+- The ribbon is 13px, which at 375px is acceptable but tight. The content (hours, warranty, consultations) is genuinely useful. No change needed.
 
-### 6. Local Business Trustworthiness — 6.8 / 10
+### 6. Local Business Trustworthiness — 7.2 / 10
 
-The fundamentals are covered: real address, real hours, real phone, family ownership acknowledged, longevity emphasised. The CTA strip ("Free in-store consultation — no commitment, just great ideas") is a strong conversion hook.
+The Google reviews badge (4.8, 340 reviews) in the hero is the highest-impact trust signal added since v2. It is prominently placed, visually integrated, and properly labelled. This single change does more conversion work than all the other v3 additions combined.
 
-What is missing: any human face. "Owner Eric Schmidt" is mentioned in one paragraph but there is no photo of him, no photo of staff, no photo of customers in the garden. The imagery is all product/landscape photography. For a family business that has served Phoenixville since 1967, a face or two would do more work than any amount of copywriting.
+The three testimonial cards are a meaningful addition. They reinforce the landscaping consult, the florist, and the long-term loyalty angle — one card per core service is structurally sound.
 
-Also missing: no social proof (Google reviews, testimonials, star rating). No indication of whether the business has a dedicated landscaping consultation phone line or whether the same number handles everything. No email address or contact form.
+The owner quote from Eric Schmidt adds humanity to the about section. The "we stand behind" framing is the right tone for a family business.
+
+What is still absent: no human face anywhere on the page. The about-us image shows the property and team generically. For a business that has served a community for 58 years, the absence of a recognisable face (owner, staff, customer) is a credibility gap that no copy can close. A real Google reviewer browsing this site and not seeing a face of the business they read about will feel a small but real disconnect.
+
+Also still absent: no email address, no contact form, no social media links. A homeowner who wants to ask a quick question before visiting has one option — phone. Some customers, especially younger demographics, prefer asynchronous contact.
 
 ---
 
 ## Top 5 Recommendations
 
-### 1. Add social proof — star rating + 2–3 testimonials
-A Google rating badge (e.g. "4.8 stars — 340 reviews") placed directly below the hero stats would do more for conversion than any design tweak. Pull 2–3 short testimonials from Google Reviews and add a testimonial strip between the CTA strip and the contact section. Use real names and first names only. This is the single highest-impact improvement available.
+### 1. Add one specific upcoming event to the events card
+The events card is the most underwhelming of the four service cards. "From spring plant sales to fall festivals" is the weakest copy on the page. Replace it with one real, dateable event for spring 2026. "Mother's Day Flower Market — May 10 & 11" or "Spring Perennial Sale — now through May" gives a homeowner a reason to act immediately rather than just noting the business exists.
 
-### 2. Add a swipe affordance to the services carousel
-Add scroll-position dots below the service cards (4 dots, active state highlights). Replace the centred arrow buttons with edge-anchored buttons (left/right sides of the track) that are more naturally discoverable. Optionally add a "Swipe to explore" label in small text beneath the section header on mobile only.
+### 2. Add a face — owner or staff photo in the legacy section
+The about section has real copy, a real owner quote, and real history. It has no face. Swap or supplement the current about-us image (generic property/team shot) with a portrait or recognisable candid of Eric Schmidt or a staff member. This is the single highest-impact credibility improvement left on the board. Local businesses earn trust through people.
 
-### 3. Add a face and an origin story image
-Include one photograph of owner Eric Schmidt — in the legacy/about section, next to the existing paragraph that mentions his name. Swap or supplement the about-us image (currently showing property/team generically) with a portrait or candid shot. Local businesses earn trust through people, not just acreage.
+### 3. Resolve the hero stat awkwardness
+The "1-Year" hero stat reads as an alphanumeric oddity alongside "58" and "40+". Change the stat number to "1" and the label to "Year Warranty" — or change it to "100%" with label "Warranty on installs". Either option reads cleanly at the 26px font size on mobile. The current value looks like a label that drifted into the number slot.
 
-### 4. Add a concrete seasonal event or promotion to the events card
-The events service card currently has no specific content — just a generic description and a link to the main site. For spring 2026, add the next actual event: date, name, brief description. Even one line ("Mother's Day Flower Market — May 10") gives a homeowner a reason to return.
+### 4. Add social media links to the footer
+The footer has logo, tagline, nav links, and copyright. It has no link to Instagram, Facebook, or any social channel. A garden centre with 340 Google reviews almost certainly has active social presence. Adding 2-3 social icon links in the footer costs nothing and provides users with another trust signal and a reason to follow (and return). Colonial Gardens PA has Facebook presence — it belongs in the footer.
 
-### 5. Invert the contact section stacking order on mobile
-On 375px screens, the contact grid stacks info above map. But the contact details (hours, phone, address) should appear first — then the map. Currently `.contact__info` precedes `.contact__map` in the HTML which means hours/phone IS first — verify this is rendering correctly at 375px. If the map is appearing above the info on some builds, add an explicit `order: -1` to `.contact__info` within the mobile media query to guarantee the ordering.
-
-Additionally, add a "Get Directions" button linked to `https://maps.google.com/?q=745+Schuylkill+Road+Phoenixville+PA` directly in the contact info block. Many mobile users want one tap to navigate — do not make them interact with the embedded iframe.
+### 5. Suppress the contact section welcome copy on mobile
+The welcome paragraph ("Stop by any day of the week — no appointment needed...") is pleasant on a desktop where users can scan both columns simultaneously. On mobile at 375px it inserts 80px of warm copy between the section title and the hours/phone the user actually came to find. Add a `display: none` at 480px or below for `.contact__welcome`, or reposition it below the contact details where it functions as an invitation after the user has the information they need.
 
 ---
 
 ## Summary
 
-This is a competent, well-intentioned v2 build. The code quality is above average, the design language is appropriate, and the content is real. The site does not look AI-generated — the typography and palette choices show genuine taste. What is holding it back is the absence of social proof, the lack of any human element in the imagery, some redundant content repetition, and a services carousel that a mobile user will not know how to navigate. Fix those five items and this is a 7.8–8.0 site.
+This is a meaningfully better v3. The social proof additions (reviews badge, testimonials, owner quote), the corrected mobile CTA hierarchy, the functional carousel navigation, and the Get Directions button are all real improvements that a homeowner would feel even without knowing why. The score moves from 6.8 to 7.2 — a legitimate step forward, not a courtesy bump.
+
+The remaining gap to 7.5+ is narrow but specific: one face, one specific upcoming event, and the hero stat cleanup. The site is now in the range where it competes credibly with other local garden centre sites. Getting one face onto the page and one real event into the events card would make this a site a homeowner bookmarks rather than merely visits.
