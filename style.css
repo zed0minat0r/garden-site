@@ -1357,7 +1357,30 @@ address { font-style: normal; }
   letter-spacing: .03em;
 }
 
+.legacy__owner-monogram {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--green-dark);
+  border: 2px solid rgba(184,230,186,.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #b8e6ba;
+  letter-spacing: .04em;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
 @media (max-width: 480px) {
+  .legacy__owner-monogram {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
   .legacy__owner-card {
     bottom: 16px;
     left: 16px;
@@ -1655,9 +1678,9 @@ address { font-style: normal; }
 }
 
 .seasonal-card__season {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: .14em;
+  letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--amber);
   background: rgba(212,147,63,.1);
@@ -1842,9 +1865,9 @@ address { font-style: normal; }
 }
 
 .service-card__event-label {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: .14em;
+  letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--amber);
 }
@@ -2152,8 +2175,9 @@ address { font-style: normal; }
   .hero__actions-mobile-first { display: inline-flex; }
   .hero__actions-desktop-first { display: none; }
 
-  .hero__actions { flex-direction: column; width: 100%; max-width: 320px; }
+  .hero__actions { flex-direction: column; width: 100%; max-width: 320px; align-items: center; }
   .hero__actions .btn { width: 100%; }
+  .hero__actions .btn--ghost { width: auto; padding-left: 28px; padding-right: 28px; }
   .hero__stats {
     gap: 0;
     width: 100%;
