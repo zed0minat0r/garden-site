@@ -59,7 +59,7 @@ document.addEventListener('keydown', e => {
 function initReveal() {
   if (prefersReducedMotion) return;
 
-  const revealEls = document.querySelectorAll('.reveal, .reveal-group');
+  const revealEls = document.querySelectorAll('.reveal, .reveal-up, .reveal-group');
   const observer  = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
@@ -69,7 +69,7 @@ function initReveal() {
         }
       });
     },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
   );
 
   revealEls.forEach(el => observer.observe(el));
@@ -80,17 +80,17 @@ function initHero() {
   if (prefersReducedMotion) return;
   const hero = document.querySelector('.hero');
   if (!hero) return;
-  setTimeout(() => hero.classList.add('is-visible'), 100);
+  setTimeout(() => hero.classList.add('is-visible'), 80);
 }
 
 /* --- Services horizontal scroll (drag + buttons) ---------- */
 function initServicesScroll() {
-  const track       = document.getElementById('servicesTrack');
-  const btnLeft     = document.getElementById('servicesLeft');
-  const btnRight    = document.getElementById('servicesRight');
+  const track   = document.getElementById('servicesTrack');
+  const btnLeft = document.getElementById('servicesLeft');
+  const btnRight= document.getElementById('servicesRight');
   if (!track || !btnLeft || !btnRight) return;
 
-  const SCROLL_BY = 464; // card width + gap
+  const SCROLL_BY = 420;
 
   btnLeft.addEventListener('click', () => {
     track.scrollBy({ left: -SCROLL_BY, behavior: 'smooth' });
@@ -149,10 +149,12 @@ function initParallax() {
     if (rafPending) return;
     rafPending = true;
     requestAnimationFrame(() => {
-      const rect  = legacyImg.closest('.legacy__img-wrap').getBoundingClientRect();
-      const vh    = window.innerHeight;
+      const wrap = legacyImg.closest('.legacy__img-wrap');
+      if (!wrap) { rafPending = false; return; }
+      const rect = wrap.getBoundingClientRect();
+      const vh   = window.innerHeight;
       if (rect.bottom < 0 || rect.top > vh) { rafPending = false; return; }
-      const pct   = ((rect.top / vh) - 0.5) * 0.35; // subtle
+      const pct  = ((rect.top / vh) - 0.5) * 0.3;
       legacyImg.style.transform = `scale(1.06) translateY(${pct * 80}px)`;
       rafPending = false;
     });
@@ -163,10 +165,8 @@ function initParallax() {
 
 /* --- Add reveal classes to elements ----------------------- */
 function addRevealClasses() {
+  // Sections that slide up on scroll
   const toReveal = [
-    '.services__header',
-    '.legacy__body',
-    '.cta-strip__inner',
     '.contact__info',
     '.contact__map',
   ];
@@ -175,8 +175,11 @@ function addRevealClasses() {
     if (el) el.classList.add('reveal');
   });
 
-  const legacyPillars = document.querySelector('.legacy__pillars');
-  if (legacyPillars) legacyPillars.classList.add('reveal-group');
+  // Trust bar items already staggered in HTML
+  const trustBar = document.querySelector('.trust-bar__inner');
+  if (trustBar && !trustBar.classList.contains('reveal-group')) {
+    trustBar.classList.add('reveal-group');
+  }
 }
 
 /* --- Scroll listener (throttled via rAF) ------------------ */
