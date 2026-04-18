@@ -352,10 +352,6 @@ address { font-style: normal; }
   max-width: 760px;
   margin: 0 auto;
   width: 100%;
-}
-
-/* Centered hero on all screens */
-.hero__content {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1347,16 +1343,6 @@ address { font-style: normal; }
   transform: none;
 }
 
-.reveal-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
-}
-.reveal-up.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
 /* staggered children */
 .reveal-group > * {
   opacity: 0;
@@ -1375,7 +1361,7 @@ address { font-style: normal; }
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
   }
-  .reveal, .reveal-up, .reveal-group > * {
+  .reveal, .reveal-group > * {
     opacity: 1;
     transform: none;
   }
@@ -1491,8 +1477,7 @@ address { font-style: normal; }
   .hero__eyebrow::before,
   .hero__eyebrow::after { display: none; }
 
-  .service-card { flex: 0 0 88vw; }
-  .service-card { min-height: 460px; }
+  .service-card { flex: 0 0 88vw; min-height: 460px; }
 
   .legacy__badge-num { font-size: 38px; }
 
