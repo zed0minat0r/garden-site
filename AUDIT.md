@@ -2,122 +2,126 @@
 **Date:** 2026-04-09
 **Auditor:** Nigel (posh British auditor)
 **Viewport tested:** 375px mobile, homeowner perspective
-**Version:** v4
-**Previous score:** 7.2 (v3)
+**Version:** v5
+**Previous score:** 7.5 (v4)
 
 ---
 
-## Overall Score: 7.5 / 10
+## Overall Score: 7.8 / 10
 
-Delta: +0.3 from v3. This is a legitimate step forward. The Eric Schmidt portrait card lands well as a face of the business — it directly addresses my most emphatic recommendation from v3. The social links in the footer are present and correctly linked to real accounts. The Mother's Day event callout in the service card is specific and dateable. The Seasonal Highlights section adds genuine retail urgency. The featured pull-quote testimonial in its dark green block is the most confidently designed new element — it breaks the grid and commands attention the way a marquee testimonial deserves.
+Delta: +0.3 from v4. This is a meaningful, earned increment — not a rounding error. Every single recommendation from v4 has been actioned. The four-simultaneous-CTA-pulse problem is gone: `cta-breathe-warm` now fires only on the hero button, where it belongs. The footer shimmer has been replaced with a static warm botanical gradient, removing the SaaS loading-bar tone mismatch. The stock portrait card is gone — replaced by a text-only owner identity chip, which is categorically more trustworthy than a wrong face. The Mother's Day seasonal card duplicate has been replaced with Trees & Shrubs, which is genuinely more useful content. Jennifer R. replaces the duplicated Lisa M. attribution. All three seasonal cards now have shop CTAs.
 
-What stops this from reaching 7.8: the Eric Schmidt portrait is an Unsplash placeholder of a random man in a nursery — not Eric Schmidt. A homeowner from Phoenixville who has met him will feel a quiet, inexplicable wrongness. The testimonial names remain Lisa M., Tom R., Sarah K. — unchanged since v3. Four pulsing amber/green CTA animations run simultaneously at page load, and whilst individually defensible, collectively they create a page that feels like it is waving at you from every direction. The Seasonal Highlights section duplicates content already on the services card and the Mother's Day card event callout — the third reference to Mother's Day on a single scroll feels like padding.
+What stops this from reaching 8.0: there is no longer a hero-level trust problem or a pulse-clutter problem, but three gaps remain. First, the testimonial names Tom R., Sarah K., Jennifer R. are still generic initial-surname combinations with no context — real Google reviews almost always include a neighbourhood, a specific purchase, or a recognisable detail. Second, the `legacy__owner-card` text-only chip (Eric Schmidt, Owner & Head Grower) now sits over a photo without a face, which is better than a wrong face but still a gap — a real homeowner reading "Eric Schmidt" with no visible person feels the absence. Third, the mobile hero at 375px shows two primary CTA buttons stacked (Hours & Directions, then Call 610-948-9755 as ghost) but the amber hero button has no visible affordance difference from the all-green service card buttons on scroll — the amber is the right call but the ghost button below it in the hero stack is rendered at full width on mobile, making the call action visually equal weight to the direction action, which is the wrong hierarchy for a user already decided to visit.
 
 ---
 
 ## Section Scores
 
-### 1. Design Quality — 7.6 / 10
+### 1. Design Quality — 7.8 / 10
 
-The token system is consistent and coherent. The full-bleed services cards at 580px with the dark gradient-over-image treatment remain the visual high point of the page. The alternating background palette (off-white, earth-wash, cream, green-dark, earth-wash) creates a proper editorial rhythm.
+The token system is consistent and coherent. The palette, type scale, and shadow system remain best-in-class for a local garden centre in the Philadelphia suburbs.
 
 New additions assessed:
 
-The featured pull-quote (dark green block, 120px decorative mark, Playfair italic at up to 28px) is correctly executed. It uses the same dark green as the CTA strip, which creates a pleasing structural echo. The amber radial glow behind it is restrained at 14% opacity — acceptable.
+The footer top bar is now a static `linear-gradient(90deg, var(--earth-mid), var(--amber), var(--green), var(--amber), var(--earth-mid))` at 6px height, 75% opacity. This is the correct treatment — it reads as a botanical brand mark rather than a loading animation. The warm amber-to-green sweep is distinctly botanical and the weight is proportionate. This was the right call.
 
-The Eric Schmidt portrait card (bottom-left of the about image, frosted dark green pill, circular portrait, name/role) is structurally sound. The component is well-built and the concept is right. The problem is the image: `photo-1560806887-1e4cd0b6cbd6` from Unsplash resolves to a generic middle-aged man in a greenhouse, cropped at chin level due to `object-position: center top`. It does not look like a named individual — it looks like a stock photo in a named slot. This creates a trust deficit precisely where you most need trust.
+The CTA pulse reduction is the most structurally significant change. With only the hero button pulsing, the animation now functions as designed — an attention anchor at the top of the page. Scrolling past the hero, the remaining CTAs (service card buttons, CTA strip, seasonal card buttons) are static. The page now breathes correctly on scroll rather than waving.
 
-The 1967 watermark behind the about copy is correctly subtle at 5% opacity. It does not read as clutter; it reads as texture.
+The text-only owner card (`legacy__owner-card` with only `legacy__owner-info` — name and role, no image) is a step forward. The component CSS still defines `.legacy__owner-img` (for future use), but the HTML correctly omits the `<img>` element. The dark glass card with "Eric Schmidt / Owner & Head Grower" in green-pale text reads cleanly against the about image. On desktop it sits at the bottom-left of the image half, correctly positioned as a caption. On mobile at 375px it becomes a bottom overlay at 16px inset, 13px name, 12px role — the role is now at the accessibility minimum but technically compliant.
 
-The footer shimmer gradient bar: a 4px bar animating at 6s is visible and not offensive. However the `footer-shimmer` keyframe shifts `background-position` from 0% to 200% — this means the gradient has no fixed anchor, creating a sliding motion that has no botanical analogue and looks more like a tech product loading state than a garden centre. It is a minor stylistic misfit.
+The owner card without a face, however, has a subtle authority problem: the card reads as a label rather than a person. It would benefit from the real owner's initials rendered as a monogram circle (dark green background, 42px, green-pale text) — zero stock-photo risk, adds personality, avoids the blank-person problem.
 
-Deduction for the four simultaneous CTA pulse animations (hero button, two service card buttons, CTA strip button — all running `cta-breathe-warm` or `cta-breathe` at 3.5s infinite). The combined effect on a slow scroll from top to bottom is: every green or amber button on screen is gently throbbing. That is not emphasis — it is background noise.
+The seasonal section is improved. Three cards with CTAs, distinct images (Colonial Gardens CDN, Unsplash herb, Unsplash trees), varied seasonal labels (Spring 2026, Now Available, Spring Planting). The Trees & Shrubs replacement is more useful than the Mother's Day duplicate — it spreads the seasonal signal rather than concentrating it.
 
-### 2. Mobile UX at 375px — 7.3 / 10
+One new design note: the `testimonials__grid` uses `grid-template-columns: repeat(2, 1fr)` with only two testimonial cards (Tom R. and Sarah K.) — this is visually correct as a two-column pair. However the featured pull-quote above (Jennifer R.) is now uniquely attributed with a full name visible in `.testimonial-featured__name`. None of the three reviewer names appear twice on the page. This was the correct fix.
 
-Improvements from v3 that are confirmed implemented:
+### 2. Mobile UX at 375px — 7.5 / 10
 
-The contact welcome paragraph is suppressed at 480px via `display: none` — correctly done. Users now land directly on the section title, the open badge, and the hours. This was the single most impactful mobile UX fix recommended in v3 and it is implemented correctly.
+Genuine progress from v4. The pulse-clutter issue is gone. The static CTAs on service cards and the CTA strip now feel appropriate at mobile scale — they do not distract.
 
-Hero stat "1" / "Year Warranty" — the stat number is now `1` with label "Year Warranty" as recommended. At 26px Playfair serif, "1" sits cleanly alongside "58" and "40+". The label wraps to two lines at 375px (12px, letter-spaced) but this is acceptable because the typographic weight is now in the number, not the label.
+The hero at 375px with `flex-direction: column; max-width: 320px` on `.hero__actions` creates a vertical stack: amber button (Hours & Directions, full width) then ghost button (Call 610-948-9755, full width). The amber button is correctly prioritised for the mobile-first user who wants to visit. However the ghost button — reversed out of the hero image, white border on dark green overlay — at full width at 320px renders at nearly the same visual mass as the amber CTA. The distinction is colour (amber vs transparent), not size or weight. A visitor on mobile who wants to call will find it, but the visual hierarchy does not guide them toward calling as a secondary action — it presents it as an equal alternative to visiting. The ghost button should be `width: auto` on mobile, centred, not full-bleed, to preserve the primary/secondary visual relationship.
 
-Remaining issues at 375px:
+The contact section suppression of `.contact__welcome` at 480px is confirmed and correct. The open badge and hours are immediately visible below the section title on mobile.
 
-The Seasonal Highlights section at 375px stacks to a single column. The wide card (Mother's Day context card plus the "Shop the Greenhouse" CTA) becomes the full width. The image height collapses to auto from the 280px set for desktop — resulting in a very short image strip above the body text. At 375px the image is approximately 200px tall, which is acceptable but tight for the wide card treatment.
+The trust bar at 375px with `flex: 1 1 100px` creates a 2x2 grid wrapping (four items at 100px+ each, two per row at 375px viewport minus padding). This is acceptable and the icon glow on hover works correctly.
 
-The testimonial-featured block at 375px: padding is 36px/28px (from the 768px breakpoint), with the decorative mark reduced to 60px at 480px. This is correct. However the pull-quote text at `clamp(20px, 2.8vw, 28px)` renders at 20px on mobile inside a dark block with 28px side padding. The text sits very close to the edge. At 375px minus 28px padding each side, the text column is 319px — workable but tight for a 20px serif italic. No overflow observed but the breathing room is minimal.
+One new observation: the seasonal section at 375px with `grid-template-columns: 1fr` stacks three cards vertically. The wide card loses its `span 2` treatment on mobile, which is correct behaviour. The three cards at single column are approximately 295px wide each. The `seasonal-card__img-wrap` on the narrow cards is 160px tall, which is sufficient. The wide card drops to standard height at mobile — no overflow issues.
 
-Four simultaneous animation threads on mobile: the `cta-breathe-warm` and `cta-breathe` keyframes are GPU composited but still represent four continuous animation loops that run from page load. On a mid-range Android this is measurable battery drain and can cause jank on lower-powered devices. The service card buttons animate even when the card is not visible in the viewport — there is no pause-when-offscreen logic.
+The `legacy__owner-card` at 480px breakpoint: bottom 16px, left 16px, padding 10px/14px. Name at 13px, role at 12px. The role is borderline but technically compliant. Without a portrait image, the card is narrower (no 54px circular avatar) — the text alone sits well. However on mobile at 375px the card could overlap with the `legacy__badge` if the about image is short. The badge repositions to top-right at 1000px, so on mobile these two elements occupy opposite corners of the image — no collision.
 
-The `legacy__owner-card` on mobile (below 480px) drops to 44px avatar, 13px name, 11px role. The role text at 11px is below the 12px accessibility minimum for readable body copy. This should be 12px.
+### 3. Visual Polish — 7.9 / 10
 
-### 3. Visual Polish — 7.4 / 10
+The combination of the static footer gradient bar (replacing shimmer), the restricted hero pulse, and the darkened testimonial cards (`#ece5d5` / `#b8aa96` border) produces a page that feels more composed and confident than v4.
 
-The service card green glow on hover (`box-shadow: var(--shadow-xl), 0 0 0 1.5px rgba(46,107,48,.5)`) is elegant — it uses the shadow-xl for depth and a thin green ring for botanical identity. The simultaneous `transform: translateY(-10px) scale(1.015)` is bold but the spring easing keeps it from feeling cartoonish.
+The testimonial card background `#ece5d5` against the `earth-wash` (`#fdf7ef`) section background: the contrast is now stronger than the previous cream-on-earth-wash problem noted in v4. `#ece5d5` is a distinctly warmer, darker tone than `#fdf7ef` — the cards read clearly as cards. The inset white top shadow (`0 1px 0 rgba(255,255,255,.55) inset`) adds a subtle paper lift. This is the correct treatment.
 
-The event callout on the Events card (amber tinted, backdrop-blurred, "Coming Up" / "Mother's Day Plant Sale" / "May 10-11") is the single most actionable new piece of content on the page. It is well-styled: the amber border at 40% opacity reads cleanly against the dark overlay.
+The trust bar icon glow on hover (`box-shadow: 0 0 0 4px rgba(46,107,48,.08)` on `.trust-item__icon`) is correctly restrained. The icon container lifts to `rgba(46,107,48,.12)` fill on hover. The combined effect is a gentle pulse of botanical green — appropriate for a garden centre without being gratuitous.
 
-The `legacy__img-wrap:hover .legacy__img` CSS parallax (scale 1.04 over 1.2s ease-out) is a pleasant hover bonus on desktop. Non-intrusive.
+The service card CTA buttons are now static warm amber with `box-shadow: var(--glow-warm)` at rest. The glow at rest is: `0 0 0 1px rgba(212,147,63,.2), 0 0 32px rgba(212,147,63,.45), 0 0 64px rgba(212,147,63,.18)`. At rest this is visible — particularly the 64px spread at `.45` opacity on the outermost layer. On a card with a dark overlay this resolves into a warm halo around the button. This is deliberate and botanical. It reads correctly in context.
 
-The footer shimmer animation as noted above is a tone mismatch. The movement pattern belongs to a SaaS dashboard, not a 58-year-old garden centre with earth-tone typography.
+One new observation: the `services::after` pseudo-element renders a 4px gradient line at the bottom of the services section — `transparent, var(--green-pale), var(--amber), var(--green-pale), transparent`. This is positioned `bottom: 0` on a `position: relative` parent. It is visually subtle at `.6` opacity and serves as a gentle separator before the legacy section. However the `services__scroll-wrap::after` gradient fade (right edge, for the horizontal scroll hint) is `z-index: 2` and the services pseudo-element is implicitly `z-index: auto`. On some combinations, the services track card text could appear above the section gradient. In testing this is unlikely to cause problems because the gradient line is only 4px tall and sits below the scroll track content area.
 
-Testimonial cards now have `background: var(--cream)` instead of plain white, on an `earth-wash` section background. The contrast between cream cards and earth-wash background is `#faf8f3` on `#fdf7ef` — effectively invisible. These two background values are less than 3 lightness points apart. The card boundary is maintained only by the `1px solid var(--stone)` border, which is correct but weak. The warm-card intent is there; the execution does not achieve visual separation.
+### 4. Scroll Interactions — 7.6 / 10
 
-### 4. Scroll Interactions — 7.2 / 10
+The reduced-motion block correctly suppresses all five named animations: `btn--primary`, `service-card .btn--primary`, `cta-strip .btn--primary`, `hero__actions .btn--primary`, and `hero__scroll`. With the consolidation of the pulse to hero-only, the reduced-motion suppression is now cleaner — there is only one meaningful animation being suppressed rather than four.
 
-The `addRevealClasses()` function correctly applies `reveal` to `.contact__info` and `.contact__map-wrap` at runtime. The `reveal-scale` applied to `.legacy__badge` produces a scale-from-0.92 entrance — this is tasteful and proportionate.
+The `initParallax` function scoping is unchanged and correct. The `requestAnimationFrame` guard on `.legacy__img` parallax prevents unnecessary GPU work when the section is off-screen.
 
-The stagger delays in `reveal-group.is-visible` (0/100/200/300/400/500ms) are down from the 0/90/180/270ms in v3. The slight increase to 100ms steps is fine.
+The reveal system has no regressions. The `addRevealClasses()` guard logic for `.seasonal__grid` and `.testimonials__grid` is unchanged and correct. The progressive-enhancement gap noted in v4 (elements invisible if JS fails) remains, but this is a known acceptable trade-off at this stage of build.
 
-One new observation: the Seasonal Highlights grid is added to `reveal-group` by `addRevealClasses()` in JS. However the `.seasonal__grid` already has the class in the HTML via the `reveal-group` class directly — there is no duplicate because `addRevealClasses()` checks `!classList.contains('reveal-group')` before adding. This is correctly guarded. However the `.testimonials__grid` check in the same function applies `reveal-group` at runtime to a grid that already stagger-reveals correctly. If JS fails to execute (e.g., network error before `main.js` loads), these grid elements remain invisible. This is a minor progressive-enhancement gap.
+The hero ken-burns (`transform: scale(1.08)` to `scale(1)` over 10s ease-out, triggered on `.is-visible` class via `setTimeout 80ms`) is unchanged. It remains tasteful.
 
-The `initParallax` function is scoped correctly: it short-circuits if `rect.bottom < 0` or `rect.top > vh`, meaning it only runs the `requestAnimationFrame` when the about section is in view. This is the correct approach.
+The `hero__scroll` float animation (`translateX(-50%) translateY(0)` to `translateY(8px)` over 2.5s ease-in-out infinite) is now the only hero-area animation that runs after the ken-burns completes. At rest, the hero has: one amber pulse (3.5s), one float indicator (2.5s). Both are GPU composited. Two concurrent animations on hero is acceptable; the rhythm of 3.5s vs 2.5s means they rarely peak simultaneously.
 
-The marquee ribbon has no `prefers-reduced-motion` pause on the CSS animation itself — the global `animation-duration: .001ms !important` in the reduced-motion block handles this globally, but the ribbon animation is controlled by `animation: marquee 32s linear infinite`. The reduced-motion override fires via the global cascade. Correct.
+### 5. Content Presentation — 7.6 / 10
 
-### 5. Content Presentation — 7.3 / 10
+The seasonal section is now genuinely informative and non-repetitive. Three distinct card subjects: Annuals & Perennials (Spring 2026), Veggie & Herb Starts (Now Available), Trees & Shrubs (Spring Planting). The event callout on the Events service card (Mother's Day Plant Sale, May 10-11) is the sole Mother's Day reference on the page. This is the correct resolution to the v4 duplication problem.
 
-Mother's Day Plant Sale, May 10-11 now appears three times: once in the events service card callout, once as a seasonal card ("Plant Sale May 10-11"), and once in the ribbon ("Spring is here — Shop annuals & perennials" — technically separate). Two direct references to the same event in two adjacent sections (Seasonal Highlights follows immediately after the Services carousel) creates the impression of padding rather than reinforcement.
+The Jennifer R. pull-quote is cleanly attributed and does not repeat in the two testimonial cards below. The three testimonial names (Jennifer R., Tom R., Sarah K.) are all distinct and appear once each. The duplication problem from v4 is resolved.
 
-The featured pull-quote uses Lisa M. as the speaker — the same name as the first testimonial card below it. Seeing "Lisa M." twice on the same screen (featured block above, card below) looks like the copy was self-sourced. If the featured quote is pulled from the same set as the three cards, the names should not repeat.
+However the testimonial copy remains generic. Tom R.'s review covers landscaping (consult, install, warranty). Sarah K.'s covers the florist (same-day arrangements). Jennifer R.'s covers the general garden centre experience (20 years, selection, real garden feel). This is actually a well-distributed spread across three service categories — better than it first appears. The weakness is the attributions: first initial + generic surname + "via Google Reviews" tells the reader nothing that personalises the review to Phoenixville. A Collegeville neighbour or "longtime Phoenixville customer" attribution would strengthen local credibility.
 
-The Seasonal Highlights "Veggie & Herb Starts" card has no CTA and no link. The "Spring Annuals & Perennials" wide card has a CTA to "#garden-center". The "Mother's Day Plant Sale" card has no CTA. Two of three seasonal cards are dead ends. The wide card correctly links out; the supporting cards should do the same or explicitly set the expectation that they are informational.
+The ribbon copy "1-year warranty on all landscape installs" is correct and unambiguous — the v4 ambiguity about retail plant purchases is resolved.
 
-The ribbon copy "1-year plant warranty on installs" — this is accurate for landscaping installs but could be misread as a warranty on retail plant purchases. Worth tightening to "1-year warranty on all landscape installs".
+The hero subtitle "58 years of plants, passion, and community" reads as slight generic local-business language. The phrase "plants, passion, and community" is the type of copy that appears on a thousand local business websites. A more specific claim — "58 years growing Phoenixville's most stubborn soils" or "58 seasons of annuals, installs, and answering plant questions" — would land as distinctly Colonial Gardens. This is a content refinement, not a design problem.
 
-### 6. Local Business Trustworthiness — 7.4 / 10
+### 6. Local Business Trustworthiness — 7.8 / 10
 
-The Eric Schmidt portrait card is the most meaningful new trust signal — conceptually. A face, a name, a role. This is exactly what the about section needed. The execution problem is that the Unsplash image (`photo-1560806887-1e4cd0b6cbd6`) is clearly stock: the man is cropped at chin level, well-dressed in a way that reads as catalogue rather than nursery owner, and the context (greenhouse bench, blurred background) is generic. A real homeowner who has shopped at Colonial Gardens will notice immediately that this is not Eric Schmidt. This is worse than no portrait — it introduces a specific false claim.
+The removal of the stock portrait is the single most important trust improvement in v5. The text-only owner chip ("Eric Schmidt / Owner & Head Grower") is unambiguously honest. A Phoenixville homeowner who knows Eric Schmidt will see his name and recognise the credibility claim without cognitive dissonance. A homeowner who does not know him will accept the attribution without suspicion. This is strictly better than a wrong face.
 
-The social links — Facebook and Instagram — are correctly linked to real Colonial Gardens accounts. This is a meaningful trust addition. A homeowner can verify the business is active before visiting.
+The email address addition (`info@colonialgardenspa.com`) fills the asynchronous contact gap noted in v4. A homeowner who wants to enquire about landscaping pricing without committing to a call now has a path. The email icon and label row follows the same visual treatment as phone and address — consistent and correctly structured.
 
-The Google reviews badge appears twice: once in the hero (frosted pill, amber stars, "4.8 — 340 Google reviews") and once in the testimonials header (pill badge, numeric 4.8, "340 Google reviews"). The repetition is not harmful but the testimonials badge is redundant given the placement is just below the hero.
+Social links (Facebook: ColonialGardensPA, Instagram: colonialgardens_pa) remain correctly linked to real accounts.
 
-No email address, no contact form. This remains an open gap. For a homeowner who wants to enquire about landscaping pricing before committing to a call, there is no asynchronous path. Adding a simple mailto link alongside the phone number in the contact section would cost one line of HTML.
+The Google reviews badge appears twice (hero pill, testimonials header pill). The repetition is not harmful — the hero badge is seen immediately on load; the testimonials badge is seen after the featured quote and before the card reviews, at which point the numeric anchoring of "4.8 — 340 reviews" re-establishes credibility in context.
+
+One remaining gap: there is no Google Maps link from the contact section that resolves to the actual Colonial Gardens listing. The iframe embeds coordinates but the `maps.google.com/?q=745+Schuylkill+Road+Phoenixville+PA` Get Directions link resolves to a text search, not the business listing. A user who clicks through to verify the business on Google will land on a search page rather than the Colonial Gardens Google Business Profile. This is a minor but real trust gap.
 
 ---
 
 ## Top 5 Recommendations
 
-### 1. Replace the Unsplash portrait with a real photo or remove the named card
-The Eric Schmidt portrait card is the most damaging element currently on the page. Using a stock photo in a named slot is a direct credibility problem — particularly for a local business whose customers may know the owner personally. Either: (a) replace with a real photo of Eric Schmidt, or (b) remove the portrait card and keep the blockquote attribution text only. Option (b) is safer than a wrong face.
+### 1. Add a monogram or initial circle to the owner card
+The text-only owner card is trustworthy but anonymous. A simple dark green circle containing "ES" in green-pale serif at 42px diameter (CSS-only, no image) would give the card a face-shaped anchor without using any photo. The monogram approach is used by professional services firms precisely because it is personal without being fraudulent. One `<span class="legacy__owner-monogram">ES</span>` with 6 lines of CSS.
 
-### 2. Remove one of the two Mother's Day references
-Mother's Day appears in the Events card callout AND the Seasonal Highlights third card. Both sections are on the same scroll. Pick one location and remove the other. The event callout on the service card is the higher-impact placement — it is in context (the Events service category) and has a specific date. The seasonal card is redundant and can be replaced with a more varied seasonal item (e.g. "Trees & Shrubs — Spring planting season").
+### 2. Change the hero ghost CTA from full-width to auto-width on mobile
+At 375px, the hero actions stack vertically with `width: 100%` applied to both buttons via `.hero__actions .btn { width: 100% }` at the 480px breakpoint. This makes the ghost "Call 610-948-9755" button the same visual weight as the amber primary CTA. Override to `width: auto` for `.btn--ghost` within `.hero__actions` at 480px. The call button should be centred and compact, visually subordinate to the amber visit CTA.
 
-### 3. Change the featured pull-quote speaker name
-Lisa M. appears as the featured pull-quote speaker and also as the first testimonial card. On a single screen view this creates the impression that one customer's review is being recycled twice. Give the featured quote a different attribution — "— A longtime Phoenixville customer" is vaguer but at least avoids the duplication problem.
+### 3. Add a Phoenixville neighbourhood or context detail to at least one testimonial
+"Tom R. — via Google Reviews" is accurate but generic. "Tom R., Collegeville" or "Tom R. — Spring 2025 landscape install" gives the review a specific, verifiable character. This does not require fabricating content — it requires adding context that real reviews include but which was stripped during copy extraction. One additional detail per review would substantially increase the trustworthiness of the section.
 
-### 4. Reduce active CTA animation count from four to one
-At page load and on a full scroll, four buttons simultaneously pulse: the hero primary CTA, the Florist service card CTA, the Events service card CTA, and the CTA strip call button. The `cta-breathe-warm` animation running on all of them simultaneously removes the emphasis benefit of animation entirely. Restrict the pulse to one: the hero CTA. Remove `animation: cta-breathe-warm 3.5s ease-in-out infinite` from `.service-card .btn--primary` and `.cta-strip .btn--primary`. Keep the hover glows — those are correct. Kill the idle pulse on secondary contexts.
+### 4. Link the Get Directions button to the Google Business Profile listing, not a text search
+Replace `https://maps.google.com/?q=745+Schuylkill+Road+Phoenixville+PA` with the direct Google Business Profile URL (`https://goo.gl/maps/[actual_place_id]` or the full place URL from the Google Business listing). The current URL resolves to a search result. A user who clicks "Get Directions" and lands on a search page rather than a verified business listing will question whether the business is verified on Google.
 
-### 5. Add a CTA or link to the two non-linking seasonal cards
-The "Veggie & Herb Starts" and "Plant Sale May 10-11" seasonal cards are visual dead ends. The wide card correctly links to #garden-center. Add `href="#garden-center"` to the veggie card and `href="#events"` to the Mother's Day card. These are internal anchor links — zero engineering cost, and they give a user something to do other than read and scroll past.
+### 5. Sharpen the hero subtitle from generic to specific
+"58 years of plants, passion, and community" is a conventional local business tagline. It could describe a hardware store, a pet groomer, or a garden centre. One revision candidate: "58 years rooted in Phoenixville — from backyard tomatoes to full landscape installs." This variant names the town, names two specific service types, and is the kind of specificity that distinguishes a real business page from a template.
 
 ---
 
 ## Summary
 
-v4 is the strongest version of this site. The face-of-business portrait card (concept correct, image wrong), the social links, the specific event date, and the seasonal section all represent meaningful progress from v3. The score moves from 7.2 to 7.5.
+v5 delivers on every v4 recommendation without exception. The stock portrait problem is resolved. The pulse clutter is resolved. The Mother's Day duplication is resolved. The testimonial name duplication is resolved. The seasonal cards all have CTAs. Email is in the contact section. The footer shimmer is gone.
 
-The gap to 7.8+ is narrow and clearly defined: fix the stock portrait problem, deduplicate the Mother's Day references, and stop four buttons pulsing simultaneously. Those three changes alone would push this into genuine "choose over competitors" territory for a local garden centre in the Philadelphia suburbs. The bones are excellent. The remaining issues are content and restraint problems, not design problems.
+The page is now genuinely competitive for a garden centre in the Philadelphia suburbs. At 7.8 it sits above "better than most" and within range of "choose over competitors" — which I would characterise as the point where a homeowner browsing three local garden centre websites selects this one to visit first.
+
+The gap to 8.0+ is a content and identity problem, not a design problem. The bones are excellent. The remaining work is: give the owner card a face (monogram), fix the hero mobile ghost button weight, add one piece of local specificity to the testimonials, and fix the Google Maps link. None of these is a large build. Collectively they close the last gap between a well-built local business site and one that actively converts browsers into visitors.
