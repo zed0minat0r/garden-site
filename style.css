@@ -2193,7 +2193,7 @@ address { font-style: normal; }
 }
 .plant-now__card-tag {
   display: inline-block;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -2359,6 +2359,7 @@ address { font-style: normal; }
 
   .contact { padding: 80px 0; }
   .contact__info { order: -1; }
+  .contact__form-wrap { order: -1; }
   .contact__detail svg {
     width: 28px;
     height: 28px;

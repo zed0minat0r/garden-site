@@ -226,16 +226,14 @@ function initConsultForm() {
   const note = document.getElementById('cfNote');
 
   form.addEventListener('submit', e => {
-    e.preventDefault();
     const name    = form.querySelector('#cf-name').value.trim();
     const contact = form.querySelector('#cf-phone').value.trim();
     if (!name || !contact) {
+      e.preventDefault();
       if (note) note.textContent = 'Please fill in your name and contact info.';
       return;
     }
-    // Confirm to user — no backend, form is a local business UX pattern
-    if (note) note.textContent = 'Thanks, ' + name + '. We will reach out soon!';
-    form.querySelectorAll('input, select').forEach(el => el.value = '');
+    // Allow native form POST to Formspree
   });
 }
 
