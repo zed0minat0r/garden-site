@@ -187,7 +187,6 @@ address { font-style: normal; }
   background: var(--green);
   color: #fff;
   box-shadow: 0 2px 8px rgba(46,107,48,.3);
-  animation: cta-breathe 3.5s ease-in-out infinite;
 }
 .btn--primary:hover,
 .btn--primary:focus-visible {
@@ -195,7 +194,6 @@ address { font-style: normal; }
   box-shadow: var(--glow-green);
   outline: none;
   transform: translateY(-1px);
-  animation: none;
 }
 
 .btn--ghost {
@@ -607,11 +605,18 @@ address { font-style: normal; }
   text-align: center;
   gap: 8px;
   flex: 1 1 140px;
+  padding: 16px 12px;
+  border-radius: var(--radius-md);
+  transition: background .25s ease, transform .25s var(--ease-out);
+}
+.trust-item:hover {
+  background: rgba(46,107,48,.06);
+  transform: translateY(-2px);
 }
 
 .trust-item__icon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: var(--green-wash);
   border: 1.5px solid var(--green-pale);
@@ -620,6 +625,12 @@ address { font-style: normal; }
   justify-content: center;
   color: var(--green);
   flex-shrink: 0;
+  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.trust-item:hover .trust-item__icon {
+  background: rgba(46,107,48,.12);
+  border-color: var(--green-light);
+  box-shadow: 0 0 0 4px rgba(46,107,48,.08);
 }
 
 .trust-item__num {
@@ -822,12 +833,10 @@ address { font-style: normal; }
   font-size: 13px;
   padding: 12px 22px;
   min-height: 44px;
-  animation: cta-breathe-warm 3.5s ease-in-out infinite;
 }
 .service-card .btn--primary:hover {
   background: #b87c32;
   box-shadow: 0 0 40px rgba(212,147,63,.6);
-  animation: none;
 }
 
 .services__nav {
@@ -1082,13 +1091,11 @@ address { font-style: normal; }
   flex-shrink: 0;
   box-shadow: var(--glow-warm);
   letter-spacing: .03em;
-  animation: cta-breathe-warm 3.5s ease-in-out infinite;
 }
 .cta-strip .btn--primary:hover {
   background: #b87c32;
   box-shadow: 0 0 0 1px rgba(212,147,63,.3), 0 0 48px rgba(212,147,63,.65), 0 0 96px rgba(212,147,63,.2);
   transform: translateY(-2px);
-  animation: none;
 }
 
 /* === CONTACT ============================================= */
@@ -1473,14 +1480,15 @@ address { font-style: normal; }
 .site-footer::before {
   content: '';
   display: block;
-  height: 4px;
-  background: linear-gradient(90deg, var(--green-mid), var(--amber), var(--green-light), var(--green-mid));
-  background-size: 200% 100%;
-  animation: footer-shimmer 6s linear infinite;
-}
-@keyframes footer-shimmer {
-  0% { background-position: 0% 0; }
-  100% { background-position: 200% 0; }
+  height: 6px;
+  background: linear-gradient(90deg,
+    var(--earth-mid) 0%,
+    var(--amber) 25%,
+    var(--green) 50%,
+    var(--amber) 75%,
+    var(--earth-mid) 100%
+  );
+  opacity: .75;
 }
 
 /* === FOOTER ============================================== */
@@ -1680,6 +1688,14 @@ address { font-style: normal; }
 .seasonal-card .btn--primary {
   margin-top: auto;
   width: fit-content;
+  font-size: 13px;
+  padding: 10px 18px;
+  min-height: 40px;
+}
+.seasonal-card--wide .btn--primary {
+  font-size: 14px;
+  padding: 13px 24px;
+  min-height: 44px;
 }
 
 @media (max-width: 900px) {
@@ -2000,10 +2016,16 @@ address { font-style: normal; }
   background: linear-gradient(to left, transparent, var(--stone));
 }
 
-/* === TESTIMONIAL CARD — darker card on earth-wash bg for visible separation */
+/* === TESTIMONIAL CARD — warm card with clear separation from earth-wash bg */
 .testimonial-card {
-  background: #f0ebe0;
-  border-color: #c8bfb0;
+  background: #ece5d5;
+  border-color: #b8aa96;
+  box-shadow: 0 2px 12px rgba(59,42,26,.08), 0 1px 0 rgba(255,255,255,.55) inset;
+}
+.testimonial-card:hover {
+  background: #e8dece;
+  box-shadow: 0 8px 32px rgba(59,42,26,.14), 0 1px 0 rgba(255,255,255,.55) inset;
+  border-color: var(--green-pale);
 }
 
 /* === LEGACY IMG HOVER PARALLAX (CSS) ====================== */
