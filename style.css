@@ -1204,7 +1204,7 @@ address { font-style: normal; }
 /* === TESTIMONIALS ========================================= */
 .testimonials {
   padding: 108px 0;
-  background: var(--cream);
+  background: var(--earth-wash);
   border-top: 1px solid var(--stone);
   border-bottom: 1px solid var(--stone);
 }
@@ -1296,6 +1296,68 @@ address { font-style: normal; }
   }
 }
 
+/* === OWNER PORTRAIT CARD ================================== */
+.legacy__owner-card {
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(21,43,22,.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius-xl);
+  padding: 12px 18px 12px 12px;
+  box-shadow: var(--shadow-lg);
+}
+
+.legacy__owner-img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 2px solid rgba(184,230,186,.45);
+  flex-shrink: 0;
+}
+
+.legacy__owner-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.legacy__owner-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: .02em;
+  line-height: 1.2;
+}
+
+.legacy__owner-role {
+  font-size: 12px;
+  color: #b8e6ba;
+  font-weight: 400;
+  letter-spacing: .03em;
+}
+
+@media (max-width: 480px) {
+  .legacy__owner-card {
+    bottom: 16px;
+    left: 16px;
+    padding: 10px 14px 10px 10px;
+  }
+  .legacy__owner-img {
+    width: 44px;
+    height: 44px;
+  }
+  .legacy__owner-name { font-size: 13px; }
+  .legacy__owner-role { font-size: 11px; }
+}
+
 /* === LEGACY QUOTE ========================================= */
 .legacy__quote {
   background: var(--green-dark);
@@ -1344,6 +1406,75 @@ address { font-style: normal; }
   line-height: 1.7;
   margin-bottom: 36px;
   max-width: 400px;
+}
+
+/* === SECTION DIVIDERS — organic leaf wave ================= */
+.section-wave {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-bottom: -2px;
+}
+.section-wave svg {
+  display: block;
+  width: 100%;
+}
+
+/* Bottom accent line on services to ease transition into legacy */
+.services::after {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--green-pale), var(--amber), var(--green-pale), transparent);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .6;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Section separator marks */
+.section-sep {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  height: 0;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+/* Testimonial section — warmer botanical feel; border handled above */
+.testimonials {
+  border-top: none;
+}
+
+/* Seasonal section — stronger top border as separator */
+.seasonal {
+  border-top: 3px solid var(--green-pale);
+}
+
+/* Footer top bar — gradient accent line */
+.site-footer {
+  position: relative;
+}
+.site-footer::before {
+  content: '';
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green-mid), var(--amber), var(--green-light), var(--green-mid));
+  background-size: 200% 100%;
+  animation: footer-shimmer 6s linear infinite;
+}
+@keyframes footer-shimmer {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
 }
 
 /* === FOOTER ============================================== */
@@ -1401,6 +1532,32 @@ address { font-style: normal; }
 }
 .site-footer__copy a { color: rgba(255,255,255,.5); }
 .site-footer__copy a:hover { color: #fff; }
+
+/* === FOOTER SOCIAL LINKS ================================= */
+.site-footer__social {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.site-footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.55);
+  transition: background var(--transition), color var(--transition), border-color var(--transition), transform .15s var(--ease-spring);
+}
+
+.site-footer__social-link:hover {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  border-color: rgba(255,255,255,.45);
+  transform: translateY(-2px);
+}
 
 /* === SEASONAL HIGHLIGHTS ================================== */
 .seasonal {
@@ -1791,6 +1948,63 @@ address { font-style: normal; }
     gap: 6px;
     text-align: center;
   }
+}
+
+/* === SCROLL DEPTH CARD TILT (CSS-only hover) ============== */
+.seasonal-card {
+  transform-style: preserve-3d;
+  perspective: 600px;
+}
+
+/* Trust bar items — add hover lift */
+.trust-item {
+  padding: 20px 16px;
+  border-radius: var(--radius-lg);
+  transition: background var(--transition), box-shadow var(--transition), transform .25s var(--ease-spring);
+}
+.trust-item:hover {
+  background: var(--green-wash);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-3px);
+}
+
+/* === BOTANICAL SECTION BREAK ============================== */
+.botanical-break {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 0;
+  line-height: 1;
+  color: var(--green-pale);
+  user-select: none;
+  pointer-events: none;
+  overflow: hidden;
+  height: 1px;
+  position: relative;
+}
+.botanical-break::before,
+.botanical-break::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--stone));
+}
+.botanical-break::after {
+  background: linear-gradient(to left, transparent, var(--stone));
+}
+
+/* === TESTIMONIAL CARD — replace plain white with warm tint = */
+.testimonial-card {
+  background: var(--cream);
+}
+
+/* === LEGACY IMG HOVER PARALLAX (CSS) ====================== */
+.legacy__img-wrap:hover .legacy__img {
+  transform: scale(1.04);
+}
+.legacy__img {
+  transition: transform 1.2s var(--ease-out);
 }
 
 /* === prefers-reduced-motion ================================ */
