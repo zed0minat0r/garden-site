@@ -2,114 +2,91 @@
 **Date:** 2026-04-09
 **Auditor:** Nigel (posh British auditor)
 **Viewport tested:** 375px mobile, homeowner perspective
-**Version:** v6
-**Previous score:** 7.8 (v5)
+**Version:** v7
+**Previous score:** 8.1 (v6)
 
 ---
 
-## Overall Score: 8.1 / 10
+## Overall Score: 8.3 / 10
 
-Delta: +0.3 from v5. This is the first audit where I would say a Phoenixville homeowner browsing three local garden centre websites would choose this one to visit first. The score crosses the 8.0 threshold on the strength of four specific v6 improvements that addressed the most concrete gaps from v5: the hero subtitle is now specific ("58 years rooted in Phoenixville — from backyard tomatoes to full landscape installs"), the ES monogram is implemented and correct, the ghost hero button is correctly auto-width on mobile at 480px, and the two testimonial cards now carry localised, contextualised attributions (Tom R., Collegeville, Spring 2025 install; Sarah K., Spring City, via Google Reviews).
+Delta: +0.2 from v6. The five recommendations from v6 have been executed with meaningful accuracy and one — the Formspree integration — resolves what I called "a conversion failure" in the previous audit. The form now actually submits. That is not a cosmetic change; that is the difference between a page that generates leads and one that does not. The plant-now content has been diversified correctly: Dahlias and Summer Bulbs replaced the tomato overlap, Native Pollinators replaced the basil/herbs duplication. The tag font is confirmed at 12px. The textarea for notes has been added. The contact section on mobile now correctly sequences form first via `order: -2`.
 
-What stops this from reaching 8.5: the page has accumulated enough sections that the section count is now its primary UX liability. A visitor on mobile at 375px encounters nine distinct sections before the footer — hero, ribbon, trust bar, services, legacy, seasonal, plant-now, CTA strip, testimonials, contact. The plant-now section, while substantively correct and locally relevant, is structurally redundant with the seasonal section. A user who has read "Veggie and Herb Starts" in the seasonal cards does not gain meaningfully new information from "Basil and Herbs" in the plant-now cards sixty seconds later. The two sections solve similar jobs (seasonal purchase urgency) with slightly different frames (what's in stock vs what to plant). Merging or replacing one with the other would shorten the page without losing signal. The second gap: the contact section three-column grid collapses to single-column on mobile, which is correct, but the form appears below the map on small screens due to DOM order, meaning a user who wants to submit a consultation request must scroll past the info column, past the form, past the map, and then find the submit button — the form is the action but it is not sequenced as the action on mobile. The third gap: the `plant-now__card-tag` text is 11px at all breakpoints including mobile. Eleven pixels is below the 12px minimum. This is not a crisis but it is a legibility failure I cannot ignore.
+What prevents 8.5: three things. First, the plant-now card icons remain semantically imprecise. The Dahlias card uses a flower-head-with-root icon that is acceptable but generic. The Native Pollinators card uses a branching-leaf icon that is reasonable. The Shade Trees card now uses a recognisable branching-tree icon. Improvement is visible but the Petunias/Impatiens card still uses a location-pin icon, which communicates geography, not flowering annuals. A petunia silhouette, a five-petal flower, or even a sun/bloom icon would be more immediately legible. Second, the `contact__form-wrap` has `order: -2` at 768px, which places it before the info column — correct — but `contact__info` has `order: -1`, meaning the sequence on mobile is: form, info, map. This is logically the right priority sequence, but the map column has no explicit `order` value. With CSS grid, unspecified `order` defaults to 0, meaning: form (-2), info (-1), map (0). The sequence is form, info, map. That is the correct visual order. This is correctly implemented. Third, the page's section depth on mobile has not changed: still ten distinct visual blocks from hero to footer. At 375px this requires approximately 5–6 full-screen scrolls before reaching the contact section. The "Hours and Directions" hero CTA resolves this for CTA-clickers, but a slow scroller encounters no natural pause or compression point between the seasonal section and the contact section. A single compression of the plant-now and seasonal sections would serve this better than any further addition.
+
+The Formspree endpoint `https://formspree.io/f/xkgjrkge` is live in the form action. The JS submit handler now permits native POST when name and contact are filled, which is the correct implementation — it validates locally then releases to Formspree. This is precisely what I recommended in v6. The textarea for notes is present with a sensible placeholder and `rows="3"`. These are material improvements.
 
 ---
 
 ## Section Scores
 
-### 1. Design Quality — 8.1 / 10
+### 1. Design Quality — 8.2 / 10
 
-The token system continues to function at best-in-class level for this category and market. No regressions. Three upgrades assessed.
+No regressions. The plant-now card content is now correctly non-overlapping with the seasonal section: Dahlias and Summer Bulbs, Petunias and Impatiens, Native Pollinators, and Shade Trees are four distinct horticultural categories that do not repeat the seasonal section's Annuals/Veggies/Trees framing. The editorial redundancy that scored this section down in v6 has been resolved.
 
-The ES monogram (`legacy__owner-monogram`) is correctly implemented. Dark green background (`var(--green-dark)`), 42px circle, 2px `rgba(184,230,186,.45)` border, 15px Playfair Display 700, `#b8e6ba` text. It sits inside the owner card alongside the name and role. At desktop scale the monogram gives the glass card a face-shaped anchor — the card reads as a named person rather than an anonymous label. The 480px breakpoint correctly scales the monogram to 36px. This was the single highest-priority v5 recommendation and it has been implemented exactly as specified.
+The plant-now card icons have improved directionally. The Dahlias card now uses what reads as a stylised flower/tuber SVG (circle with radiating petal points and a root line). The Native Pollinators card uses a branching-herb icon with a downward stem, which is plausible. The Shade Trees card has a recognisable branching-tree silhouette. The Petunias card retains the location-pin icon from v6 — this is the remaining icon mismatch. A location pin does not communicate petunias or flowering annuals in any established visual vocabulary. It reads as "find us" or "place marker."
 
-The hero subtitle change is correct: "58 years rooted in Phoenixville — from backyard tomatoes to full landscape installs" is the variant I recommended. It names the town, names two service types, and reads like a real business rather than a template. This is the kind of copy distinction that registers subconsciously on a homeowner who has read three websites in an afternoon.
+The testimonial cards, hero, legacy section, and service cards are unchanged and continue to perform at the same level.
 
-The ghost button at 480px is now `width: auto` via `.hero__actions .btn--ghost { width: auto; padding-left: 28px; padding-right: 28px; }`. This is the correct implementation. At 375px the hero stack reads: amber primary (full width), ghost call button (auto-width, centred, compact). The primary/secondary visual hierarchy is now correctly expressed in size and weight, not just colour.
+### 2. Mobile UX at 375px — 8.1 / 10
 
-The testimonial card attributions are localised: Tom R. now carries "Collegeville" and "Spring 2025 install" context. Sarah K. carries "Spring City". Jennifer R. (featured) carries "Phoenixville". Three names, three towns, zero duplication. This is a meaningful trust upgrade.
+The form ordering fix is correctly implemented. At 768px, `.contact__form-wrap` has `order: -2` and `.contact__info` has `order: -1`. On a 375px screen the contact section now renders: consultation form first, then the info column (address/hours/phone/email), then the map. The business's primary conversion goal — consultation request — is now the first thing a mobile user encounters in the contact section. This is the correct implementation of my v6 recommendation.
 
-The plant-now section introduces four white cards on a green-wash (`var(--green-wash)`) background with `var(--shadow-sm)` and `var(--stone)` border. The visual language is clean and consistent with the existing token system. The `plant-now__card-icon` uses the same 52px square icon treatment as the trust-bar icons with matching `var(--green-wash)` fill and `var(--green-pale)` border. The 4-column grid at desktop collapses correctly to 2-column at 1000px and 1-column at 600px. Design is consistent. No regressions.
+The textarea in the consultation form renders correctly at mobile. At 375px within a 600px-breakpoint padding context, the `rows="3"` textarea gives approximately 80px of input height, which is sufficient for a brief project description. The optional label tag `(optional)` is correctly marked with the `.contact__form-optional` class. The field is genuinely optional — it is not `required` — so the label matches the UX behaviour.
 
-One new observation on section redundancy: the seasonal section and plant-now section are adjacent (seasonal at line 295, plant-now at line 340). A user scrolling through sees "Veggie and Herb Starts" in a seasonal card, then "Basil and Herbs" in a plant-now card, then "Tomatoes and Peppers" in a second plant-now card. The information overlap is partial but the purchase-urgency message is repeated twice in adjacent sections. This is a content architecture problem, not a design execution problem, but it weakens the page's editorial confidence.
+The plant-now tag font-size is confirmed at `font-size: 12px` in the CSS at line 2209. The 11px gap flagged in v6 is resolved.
 
-### 2. Mobile UX at 375px — 8.0 / 10
-
-The hero ghost button fix is the headline improvement. At 375px the hero actions stack is now: amber full-width (Hours and Directions) then ghost auto-width (Call 610-948-9755, centred, not full-bleed). The visual hierarchy is correct for the first time. A visitor who has already decided to call rather than navigate can immediately identify the call button as the subordinate action and will not have to parse two equally-weighted buttons.
-
-The plant-now grid at 600px collapses to single column via `grid-template-columns: 1fr` at 600px and `gap: 16px` (reduced from 24px). At 375px this gives four stacked cards at approximately 327px width (375px - 48px container padding). The `plant-now__card` at 28px/24px padding renders the title, text, and tag correctly. However the `plant-now__card-tag` font-size is 11px at all viewport widths, including 375px. The tag reads "Veggie Garden", "Annuals", "Herbs", "Trees and Shrubs". At 11px on a mobile screen this is technically non-compliant with 12px body copy minimums. It is not visually broken but it is a legibility failure.
-
-The contact section at 375px stacks to single column via `grid-template-columns: 1fr` at 1000px. The DOM order is: info column, form column, map column. On mobile this renders as: info (name, address, phone, email, hours), then form (request consultation), then map (iframe, directions button). The form is the action the business most wants — a consultation request — but it is presented as a middle element between two passive information panels. A user on mobile who wants to submit a request must scroll past the info panel to reach it. The form should ideally be first in mobile DOM order, or the contact info should be reordered in CSS using `order` at the mobile breakpoint so that the form appears above the map.
-
-The nine-section scroll depth on mobile at 375px. From hero to footer the user scrolls through: hero (full viewport), ribbon, trust bar, services (horizontal), legacy/about, seasonal, plant-now, CTA strip, testimonials, contact. This is a long page for a local business site that has one conversion goal (visit or call). A user who decides to visit after reading the hero must scroll past eight more sections to find the contact address and hours. The contact section is anchor-linked from the hero CTA ("Hours and Directions") which resolves this problem on CTA click — but a user who ignores the CTA and scrolls manually hits a long journey.
+The page scroll depth issue is unchanged. Ten visible sections, approximately 5.5 full-viewport-heights of content on mobile before the footer. The hero CTA anchor-link resolves this for motivated users. It remains an observation, not a deduction, given the hero CTA correctly links to `#contact`.
 
 ### 3. Visual Polish — 8.2 / 10
 
-No regressions from v5. The plant-now section adds a visually cohesive fourth content section to the page without breaking the established token grammar. The green-wash background (`#ebf5eb`) correctly distinguishes the section from the adjacent seasonal (cream background) and CTA strip (green-dark).
+No regressions. The plant-now section card icons have improved sufficiently that they no longer constitute a legibility failure, though the petunias icon is still the weakest element on the page. Everything else holds at v6 standard.
 
-The `plant-now::before` gradient accent line (4px, green-pale to amber to green-pale) matches the top-of-section treatment on the contact section. Visual consistency is maintained.
-
-The `plant-now__card-icon` SVG paths for the four cards: leaf/growth (tomatoes), location pin (petunias), window/building (basil — this icon is semantically mismatched to herbs; a window icon for "basil and herbs" is confusing), person/landscape (shade trees — also mismatched to trees). The first two icons are recognisable. The third is a building/window/door SVG that does not communicate herbs. The fourth is a person-silhouette SVG that does not communicate trees. Icon-to-content semantic alignment matters at this scale because the icon is the first visual signal the user reads before the title text. A herb icon (sprig, leaf, stem) and a tree icon (branching trunk) would be more accurate.
-
-The testimonial card background (`#ece5d5`) against `earth-wash` section background (`#fdf7ef`) continues to work correctly. No change here.
-
-The legacy section with the new monogram: the glass card at desktop now reads — 42px green circle with "ES" in serif, then "Eric Schmidt" in 14px/600 white, then "Owner and Head Grower" in 12px `#b8e6ba`. The hierarchy is correct and the card now has appropriate visual weight as an identity element rather than a text label.
+The notes textarea in the consultation form sits cleanly within the form layout. The label includes the `(optional)` qualifier styled in a separate `.contact__form-optional` class — I cannot see that class defined in the CSS I reviewed, which may mean it inherits body styling or is unstyled. If it renders the same weight and colour as the label, it is invisible as a qualifier. A lighter weight or muted colour would visually distinguish it from required field labels. This is a minor detail but a real one.
 
 ### 4. Scroll Interactions — 7.8 / 10
 
-No changes to the scroll/animation system in v6. All v5 assessments hold. The hero pulse (single amber button, 3.5s), the float indicator (2.5s), the ken-burns (10s one-shot), the parallax on legacy image, and the reveal system all continue to function correctly.
+No changes to the scroll/animation system. All v6 assessments hold. The Formspree form now submits natively (non-JS POST), so the JS submit handler does not interfere with the animation loop. The handler validates then releases — clean implementation.
 
-The plant-now section elements carry `reveal` and `reveal-group` classes via `addRevealClasses()` in main.js — I do not see the plant-now section added to `addRevealClasses()` explicitly. Looking at the HTML: `.plant-now__header` has `class="plant-now__header reveal"` and `.plant-now__grid` has `class="plant-now__grid reveal-group"` and `.plant-now__cta` has `class="plant-now__cta reveal"` — these are correctly set in HTML markup directly, not requiring JS assignment. The reveals will fire correctly on intersection.
+One new technical observation: the `initConsultForm` function listens for `submit` and conditionally calls `e.preventDefault()` if fields are empty, or allows native POST to Formspree if fields are filled. After the form submits successfully to Formspree, the user will see Formspree's default "Thank you" page unless the form has a `_next` hidden input pointing to a custom success URL. Without a `_next` field, the user leaves the site entirely after submitting. For a local garden centre this is a minor friction — the user submitted their interest, they can close the tab — but a custom `_next` redirecting back to the site with a success query parameter would be a cleaner experience.
 
-One observation: with nine sections and the plant-now grid adding four reveal-group children, the total number of intersection-observed elements on the page is now approximately 28 (counting reveal, reveal-group, reveal-scale targets). This is within normal bounds for IntersectionObserver and will not degrade performance.
+### 5. Content Presentation — 8.2 / 10
 
-The consultation form submit handler in `initConsultForm` fires a success message to `cfNote` but does not validate the interest field (select). If a user submits with name and contact but no interest selected, the form clears and the success message fires. This is not a critical failure — the interest field is optional in the UX, which is a reasonable design choice for a local business — but it means the "Pick one" placeholder text misleadingly suggests required input when it is not enforced.
+The plant-now content diversification is the material change here and it is correctly executed. "Dahlias and Summer Bulbs" with tuber-planting copy, "Petunias and Impatiens" with shade/sun differentiation, "Native Pollinators" with specific species (black-eyed Susans, coneflowers, bee balm), and "Shade Trees and Ornamentals" with spring-establishment rationale. These are four non-redundant, seasonally accurate, locally credible recommendations. The intro copy "The last frost date for our zone has passed. Here is what our growers are putting in the ground this week" remains excellent.
 
-### 5. Content Presentation — 8.0 / 10
+The optional notes textarea ("Describe your yard, project goals, or questions for our team") is an accurate prompt for landscaping consultation context. A homeowner who wants to describe that they have a north-facing slope or a deer problem can now do so before the first call. This is a real UX improvement for the highest-value conversion on the page.
 
-This is the first version where every content section justifies its presence. The hero headline and subtitle are sharp and specific. The trust bar is factual. The services section covers the four actual service lines. The legacy section has the owner's name, a real quote, and a specific founding year. The seasonal section has three non-redundant in-season items. The plant-now section provides actionable April-specific guidance. The CTA strip drives calls. Testimonials are localised. Contact has full details including email.
+The seasonal section content (Annuals and Perennials, Veggie and Herb Starts, Trees and Shrubs) and the plant-now section content (Dahlias, Petunias, Native Pollinators, Shade Trees) now address different aspects of the same April gardening context without repeating each other. The editorial redundancy is resolved.
 
-The plant-now section content quality is good: "The last frost date for our zone has passed" is the kind of specific local knowledge that a real homeowner values and a template site would not include. "Here is what our growers are putting in the ground this week" is an active, credible voice. Each card text is concise and actionable. This is well-written content.
+### 6. Local Business Trustworthiness — 8.3 / 10
 
-The section redundancy problem: the veggie and herb content appears in both seasonal (Veggie and Herb Starts card, "Tomatoes, peppers, basil, thyme") and plant-now (Tomatoes and Peppers card, Basil and Herbs card). A reader encounters substantially overlapping content in two adjacent sections. Neither section is wrong — both are true and useful — but the editorial redundancy reduces the authority of both. A business with 58 years of expertise should be able to fill four plant-now slots with items that do not repeat seasonal-section content. Two alternatives: replace the tomato/basil plant-now cards with something not in seasonal (dahlias for summer colour, container strawberries, native pollinator perennials) or merge the two sections into one richer section.
+The Formspree integration is the single largest trust improvement across the entire audit history. A consultation form that actually captures enquiries and delivers them to the business owner is a functional trust signal — not a visual one, but the one that matters most for conversion. The form now has a real endpoint. When a homeowner submits a request and receives a follow-up call, that is the moment Colonial Gardens' website does its actual job. That loop is now closed.
 
-The form on the contact section does not have a textarea for additional notes or questions. A homeowner who wants to describe their garden problem before booking a consultation has no text field. The interest dropdown helps but is coarse. A single optional textarea ("Anything else you want us to know?") would improve form quality for landscaping consultation requests specifically, where project complexity varies enormously.
+No regressions on the testimonials, monogram, hero subtitle, local attributions, or social links. All v6 trust elements hold.
 
-### 6. Local Business Trustworthiness — 8.2 / 10
-
-Three localised testimonials with distinct town attributions. ES monogram on the owner card. Specific hero subtitle. Email address present. Social links correct. Google reviews badge with numeric count in two locations. Ribbon with hours and seasonal message.
-
-The Get Directions link now uses a full Google Maps place URL with what appears to be a real place identifier: `https://www.google.com/maps/place/Colonial+Gardens/@40.1257,-75.5388,17z/data=!3m1!4b1!4m6!3m5!1s0x89c6a3a5e23d2b7f:0x4b2c1f8e9a0d3c5e!8m2!3d40.1257!4d-75.5388!16s%2Fg%2F1tcwnsgq`. This is a material improvement over the text-search URL in v5 and resolves that trust gap.
-
-The Google Maps iframe embed URL contains `0x89c6a5e5aa8f1b5b%3A0x123456789abcdef` as the place ID — this is a placeholder/fabricated identifier, not the real Colonial Gardens business ID. The iframe will render the coordinate location correctly (40.1257, -75.5388 which matches 745 Schuylkill Rd Phoenixville PA) but if a user clicks within the embedded iframe to open Google Maps, the place context will be broken. The Get Directions anchor (which is the primary action) uses the correct place URL and is the user's likely click target, so this is a secondary issue — but it remains an inconsistency. The iframe embed URL should use the same real place ID as the directions anchor.
-
-The consultation form has no backend. On submit it clears and shows a thank-you message but no enquiry is captured. A local business owner who receives a consultation request form submission expects to receive it. Without a backend (Formspree, Netlify Forms, or mailto: fallback), the form is decorative. This is a known open item but it is now a trust liability: a homeowner who submits a request and never hears back will not return.
+The `_next` redirect gap noted above means submitted users land on Formspree's generic page rather than a Colonial Gardens confirmation. This is a credibility gap worth closing — a homeowner who submits a request and lands on a third-party page may wonder if the submission went to the right place.
 
 ---
 
-## Top 5 Recommendations
+## Top 4 Recommendations
 
-### 1. Fix plant-now card icons for semantic accuracy
-The "Basil and Herbs" card uses a window/building SVG (`M5 3h14M5 3v18M19 3v18M5 21h14M9 7h6M9 11h6M9 15h6`) — this is a grid or table icon, not a herb. The "Shade Trees and Ornamentals" card uses a person silhouette icon. Neither communicates the content subject. Replace with a leaf/herb sprig for the herbs card and a branching-tree path for the trees card. This is a single HTML edit per card.
+### 1. Fix the Petunias card icon
+The Petunias and Impatiens plant-now card retains a location-pin SVG icon. Replace with a five-petal flower or sun-bloom icon. The other three card icons now communicate their content subject correctly — the pin is the remaining mismatch. One HTML edit.
 
-### 2. Wire the consultation form to a real backend
-Formspree (free tier) requires one HTML attribute change: `action="https://formspree.io/f/[form-id]"` and `method="POST"` on the form element, plus removing `novalidate` and the JS submit handler. Netlify Forms requires one attribute (`netlify` on the form). Either resolves the silent-drop problem. A form that tells users "we'll be in touch" but captures nothing is a conversion failure.
+### 2. Add a Formspree `_next` redirect hidden input
+Add `<input type="hidden" name="_next" value="https://zed0minat0r.github.io/garden-site/?submitted=1" />` inside the form. This returns the user to the Colonial Gardens page after submission rather than landing on Formspree's generic thank-you page. One HTML line. Pair with a CSS rule that shows a `.contact__success` banner when `?submitted=1` is in the URL query string, or simply rely on the existing `cfNote` display logic triggered by URL param detection in JS.
 
-### 3. Reorder contact columns on mobile so the form appears first
-The DOM order (info, form, map) is logical at desktop but suboptimal at mobile. Add `order: -1` to `.contact__form-wrap` at the 1000px breakpoint so the form is the first element a mobile user sees when they navigate to the contact section. The hours and address are already visible in the ribbon and trust bar — they do not need to precede the form on every device.
+### 3. Style the `(optional)` form label qualifier distinctly
+The `.contact__form-optional` class appears in the HTML but I could not find it defined in `style.css`. Add `.contact__form-optional { color: var(--text-muted); font-weight: 400; font-size: 13px; }` so it visually distinguishes from the required field label weight. This prevents the textarea appearing equally required to the two mandatory fields.
 
-### 4. Fix plant-now card tag font-size to 12px minimum
-The `.plant-now__card-tag` is 11px across all breakpoints. Add `font-size: 12px` to the `@media (max-width: 600px)` block or change the base value. This is a one-line CSS fix.
-
-### 5. Resolve the seasonal/plant-now content overlap
-The current page has "Veggie and Herb Starts" in the seasonal section and "Tomatoes and Peppers" plus "Basil and Herbs" in the plant-now section — substantively the same category addressed twice in adjacent sections. Replace two of the four plant-now cards with non-overlapping subjects: dahlias or summer bulbs (bulb planting window is now), and a native pollinator perennial (black-eyed Susan, coneflower) as a distinct recommendation that does not repeat the seasonal card copy. This increases the page's informational breadth without adding length.
+### 4. Compress or integrate the ribbon into the hero
+The scrolling ribbon sits between the hero and the trust bar and communicates: seasonal message, hours, free consults, and warranty. Three of these four items also appear in the trust bar below it. The ribbon adds animation weight and repeats content that the trust bar and hero already carry. Either remove the ribbon and absorb its hours message into the hero eyebrow (already shows "Phoenixville, PA — Est. 1967"), or replace the ribbon with a static contextual bar showing today's open status and hours only. This would reduce animation load and eliminate redundancy between the ribbon and the trust bar.
 
 ---
 
 ## Summary
 
-v6 earns 8.1 by executing every v5 recommendation correctly. The monogram works. The hero subtitle is specific and real. The ghost button hierarchy is fixed on mobile. The testimonials are localised. The Get Directions link resolves to a place URL rather than a text search. These are not cosmetic adjustments — they are structural trust signals that a real homeowner registers when choosing between three local garden centre websites.
+v7 earns 8.3. The five v6 recommendations were executed cleanly and the Formspree integration closes the most consequential functional gap in the site's history. A homeowner who submits a consultation request now generates a real lead. The plant-now content is editorially distinct from the seasonal section. The form is first on mobile. The textarea exists. The tag font is compliant.
 
-The page now has strong bones, correct hierarchy, and genuine local credibility. The remaining gap is editorial and functional: content redundancy between the seasonal and plant-now sections, a form with no backend, icon-to-content semantic mismatches, and a 11px legibility failure on card tags. None of these requires a design rethink. The design is finished. The remaining work is content editing, one CSS fix, and one form integration.
+What remains is smaller: one icon mismatch on the petunias card, one missing Formspree redirect, one unstyled CSS class, and one structural observation about the ribbon's redundancy. None of these is a design rethink. The design is strong. The remaining items are polish and functional completeness.
 
-At 8.1, this page would convert a homeowner who is already looking for a garden centre in the Philadelphia suburbs. The question for 8.5 is whether it would create interest in someone who was not already looking — and that requires the content and form gaps to close.
+At 8.3, this site would win a homeowner browsing three local garden centre sites. The question for 8.5 remains whether it would win a homeowner who was not already looking — and that requires either a reduction in page depth or an addition of content that creates desire rather than only confirming suitability.
