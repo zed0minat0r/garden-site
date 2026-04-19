@@ -2104,6 +2104,19 @@ address { font-style: normal; }
   background-position: right 14px center;
   padding-right: 40px;
 }
+.contact__form-textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.55;
+}
+.contact__form-optional {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: .75;
+}
 .contact__form-submit {
   width: 100%;
   margin-top: 4px;
@@ -2358,8 +2371,8 @@ address { font-style: normal; }
   }
 
   .contact { padding: 80px 0; }
+  .contact__form-wrap { order: -2; }
   .contact__info { order: -1; }
-  .contact__form-wrap { order: -1; }
   .contact__detail svg {
     width: 28px;
     height: 28px;
