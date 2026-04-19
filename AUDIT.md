@@ -1,94 +1,90 @@
-# Colonial Gardens — Nigel Audit v10
-**Score: 8.6 / 10**
-**Previous score: 8.5 (v9)**
+# Colonial Gardens — Nigel Audit v11
+**Score: 8.7 / 10**
+**Previous score: 8.6 (v10)**
 **Delta: +0.1**
 
 ---
 
 ## Overall Assessment
 
-Ten cycles in. The v10 "surgical polish pass" addressed all three v9 priorities: the duplicate annuals image is gone (seasonal wide card now shows a dahlia from Unsplash, distinct from the service card), the testimonials CTA is present and styled with the warm glow animation, and the open-bar has been reworked at 480px breakpoint to suppress the season text, suppress the divider, and enforce `flex-wrap: nowrap`. The contact mobile order now correctly places address/hours before the form. The testimonial hex colours have been promoted to design tokens. Form phone field autocomplete has been changed from "tel" to "off". These are all genuine fixes.
+Eleven cycles in. The v11 pass addressed all three v10 priorities plus two bonus fixes. The hero subheadline is now warm and grounded ("Trusted by Phoenixville since 1967 — because good plants and good advice never go out of style"). The testimonials CTA lead-in text is now specific ("Join 340 neighbors who trust Colonial Gardens"). The hero stats trio is now coherent — all three figures are business-level credentials. The form submit button reads "Request a Consultation" rather than the impersonal "Send Request." The open-bar at 375px now shows only "Open now" or "Closed now" via JS, eliminating the ellipsis truncation issue.
 
-The delta is +0.1. It is honest. The site is better. No single improvement was transformative enough to warrant more. The remaining friction points are real and a motivated real visitor would notice at least two of them.
+These are genuine, visible improvements. A first-time visitor notices the hero copy. A visitor reaching the testimonials section notices the more specific CTA. The stat changes are front-and-centre. The delta is +0.1 and it is earned. However, the site has now addressed all low-hanging fruit from the first ten cycles. The remaining gaps require structural decisions rather than copy tweaks or CSS patches — which raises the difficulty of the next increment.
 
 ---
 
 ## Section-by-Section Breakdown
 
-### 1. Design Quality and Visual Polish — 8.6
-The palette, grain texture, and overlay system remain the site's strongest visual signals. The amber warm glow on primary CTAs is a distinctive and effective brand touch — consistent across hero, CTA strip, service cards, and now the testimonials CTA. The greenhouse bridge and leaf SVG are a considered design decision that has survived 10 cycles for good reason.
+### 1. Design Quality and Visual Polish — 8.7
+The palette, grain texture, botanical token system, and overlay hierarchy remain strong. No regression. The amber glow on CTAs, the green-to-amber progress bar, and the legacy badge glass-morphism are all consistent and well-executed.
 
-One desktop concern that was flagged in v9 and remains: the contact section uses a 3-column grid at desktop widths with info / form / map side by side. The map column sits at 340px height, and the form card (with 4 fields, a textarea, and a submit button) runs taller. At wide viewports the three columns don't align to a common bottom — the map and info column terminate well before the form finishes. This is not catastrophic, but it is visually ragged and a first-time visitor notices it before the map has even loaded. This is priority-level work.
+One desktop observation that persists: the contact section 3-column grid at wide viewports. The map column now uses `flex: 1` and `height: 100%` inside the map-wrap, which should resolve the uneven-bottom issue flagged in v10. However the 1000px responsive rule drops the contact to a single column and forces the map to `height: 340px`. Between 1000px and 1200px (laptop viewports), the three-column layout has been abandoned in favour of a single column — meaning the desktop alignment fix only benefits users at very wide viewports. Laptop users (the majority of desktop traffic) will see a single stacked column, which is fine functionally but not what was envisioned.
 
-### 2. Mobile UX at 375px — 8.4
-The three mobile fixes from v9 are confirmed in the code. The open-bar at 480px now applies `flex-wrap: nowrap`, hides `.open-bar__season` and `.open-bar__divider`, sets `flex-shrink: 0` on the call link, and applies `text-overflow: ellipsis` and `min-width: 0` on the text span. The bar will stay single-line.
+### 2. Mobile UX at 375px — 8.5
+The open-bar at 375px is now correct: JS sets the text to "Open now" or "Closed now" only when `innerWidth <= 480`, avoiding the ellipsis truncation. The season text and divider are hidden via CSS. The call link is `flex-shrink: 0` and `white-space: nowrap`. This works.
 
-However: the ellipsis on `.open-bar__text` is a blunt instrument. At exactly 375px the visible hours text ("Open now — Mon–Sat 8am–6pm • Sun 9am–5pm") is 43 characters. Depending on the device's font rendering, the text may clip mid-phrase to something like "Open now — Mon–Sat 8am..." — which removes the Sunday hours and leaves an incomplete thought. A better fix would be to show only "Open now" or "Closed now" on the narrowest breakpoint and put the full hours in the contact section exclusively, since they are already there in full.
+Hero CTAs stack correctly with `flex-direction: column`. Font size minimums are met throughout. Tap targets are 44px minimum. The hero stats at 375px use `font-size: 26px` which is readable but slightly cramped at 3 stats across 375px — not a minimum violation, just visually tight.
 
-Hero CTAs stack correctly at 480px with the mobile-first "Hours & Directions" swap in place. Font size minimums are met. Tap targets are 44px minimum throughout.
+One persistent mobile UX gap: the legacy/about section at 375px shows the property photo at `height: 420px` with the Est. 1967 badge repositioned to top-right. The badge works. The owner card ("ES / Eric Schmidt / Owner & Head Grower") at bottom-left also works. However the badge and card compete for the photo on a narrow screen — the "1967" badge sits top-right and the owner card sits bottom-left, which is a considered layout choice, but at 375px the photo itself is cropped to a landscape strip and neither overlay element is particularly impactful. This is a low-priority note, not a blocking issue.
 
 ### 3. Scroll Interactions and Animations — 8.7
-No regression. All prior animation work holds: reveal, reveal-group, reveal-scale, greenhouse bridge leaf draw-in, parallax on legacy image, card tilt on plant-now at 8 degrees, scroll progress bar with rAF throttling. `prefers-reduced-motion` is fully respected.
+No regression. All animations continue to function: Ken-Burns hero, reveal/reveal-group/reveal-scale on scroll, greenhouse bridge leaf draw-in, parallax on legacy image, card tilt on plant-now cards, scroll progress bar. `prefers-reduced-motion` is fully respected. The warm glow breathing animation on the testimonials CTA, hero CTA, and CTA strip CTA remains consistent across all three touchpoints.
 
-The testimonials CTA button has the warm glow breathing animation applied — matching the hero and CTA strip. Consistent and correct.
+### 4. Content Quality and Relevance — 8.9
+Hero subheadline fix is the standout improvement this cycle. "Trusted by Phoenixville since 1967 — because good plants and good advice never go out of style" is warm, specific, and confident without being defensive. It replaces the mildly antagonistic "since before you were born" and reads substantially better.
 
-The hero Ken-Burns effect at 10 seconds remains well-calibrated. The floating scroll indicator animation (float keyframe, 2.5s) is appropriate.
+All business data remains accurate: 745 Schuylkill Rd, Phoenixville PA; 610-948-9755; Eric Schmidt owner; 1967 founding; Mon–Sat 8am–6pm, Sun 9am–5pm. The "What to Plant Now" section is seasonally appropriate for April in Zone 6b. The upcoming event callout (Mother's Day Plant Sale, May 10–11) is timely and specific.
 
-### 4. Content Quality and Relevance — 8.8
-All business information is accurate and verified: 745 Schuylkill Rd, Phoenixville PA; 610-948-9755; Eric Schmidt owner and head grower; 1967 founding; Mon–Sat 8am–6pm, Sun 9am–5pm. No fabricated content. "What to Plant Now" section is seasonally accurate for April in Phoenixville Zone 6b.
+The scout report notes additional business details (greenhouse dimensions, weddings/events, full-service florist with delivery radius) that are not yet surfaced on the page. These represent future content opportunities, not present deficiencies.
 
-One persistent copywriting issue: the hero subheadline reads "Real expertise, real plants — and we've been at it since before you were born." The second clause ("since before you were born") is mildly antagonistic in tone. It aims for wit and lands slightly off. A family-owned garden center that has been open 58 years does not need to wink at the customer to establish credibility. The copy before it ("Real expertise, real plants") is strong — the "before you were born" addendum undercuts it.
+### 5. Form Functionality — 8.7
+Formspree integration is correct. The submit button now reads "Request a Consultation" — markedly warmer and more specific than the previous "Send Request." Success banner, form hiding on redirect, JS validation for name and contact — all working. `autocomplete="off"` on the phone/contact field continues to prevent the iOS keyboard issue.
 
-Additionally, the testimonials CTA text is "Ready to start your garden project?" — generic. The site elsewhere has stronger copy ("Walk the greenhouse", "The gardens are waiting for you"). This CTA undersells the moment.
+### 6. Center Alignment Consistency on Mobile — 8.3
+Hero: centred correctly. Trust bar: flex-wraps cleanly. Greenhouse bridge: text centred. Seasonal cards: 1fr column at 375px with amber pills left-aligned, which is correct. Contact: single column with info before form before map, as intended.
 
-### 5. Form Functionality — 8.6
-Formspree integration is correct. Native POST with `_next` redirect to `?submitted=1`, JS reads the parameter on load, shows success banner, hides form. Success banner text ("Eric and the team will be in touch") is personal. `autocomplete="off"` on the phone/email field avoids the iOS phone keyboard issue that was present in v9.
-
-One minor UX gap: the submit button reads "Send Request" — this is adequate but impersonal. Something like "Request Your Consultation" or simply "Get in Touch" is warmer and more specific. Not a bug, not a priority, but worth a future pass.
-
-### 6. Center Alignment Consistency on Mobile — 8.2
-Hero centres correctly. Trust bar flex-wraps cleanly. Greenhouse bridge text centred. At 375px the seasonal card grid goes to 1fr (single column) with the season pill at `width: fit-content`. This was flagged in v9 as a minor misalignment and remains. The amber pill sits left-aligned within the card, but because the pill is smaller than the card width, it reads as left-aligned within a left-aligned layout — which is actually correct. This is no longer a genuine complaint.
-
-The contact section mobile order is confirmed correct: `.contact__info { order: -1 }`, `.contact__map-wrap { order: 0 (default) }`, `.contact__form-wrap { order: 1 }`. Address and hours appear first on mobile. This was a v9 priority and is now resolved.
+One subtle issue at 375px: the `contact__welcome` text is hidden via `display: none` at 480px. This means the "No appointment needed — just walk in" message disappears on mobile. The copy was reassuring and the trade-off (freeing vertical space for critical contact details) is defensible, but a visitor who reads the contact section on mobile is deprived of the warm framing text. Consider replacing with a shorter version (one sentence) rather than hiding entirely.
 
 ### 7. Image Quality — 8.6
-Duplicate annuals image is resolved. The seasonal wide card now shows photo-1444021465936-c6ca81d39b84 (dahlia bloom) from Unsplash, distinct from the Garden Center service card's colonialgardenspa.com upload. Hero image correctly uses `fetchpriority="high"` and a 2400px source. All other images use `loading="lazy"`.
-
-No remaining duplicate image issues detected on visual audit of the code.
+No duplicate images detected. Seasonal wide card (dahlia, Unsplash photo-1444021465936-c6ca81d39b84) remains distinct from the garden center service card. Hero image uses `fetchpriority="high"` and 2400px source. All other images are `loading="lazy"`. No broken images identified from the code.
 
 ### 8. Typography Hierarchy — 9.0
-Unchanged and strong. Playfair Display / DM Sans pairing. Section eyebrows at 12px / 500 / 0.14em tracking. Section titles with `clamp()`. Italic em treatment on section titles. Line heights appropriate. This remains the craft high point of the site.
+Unchanged and remains the craft high point. Playfair Display / DM Sans pairing. Section eyebrows at 12px/500/0.14em. Section titles with `clamp()`. Italic em on section titles. Line heights appropriate throughout. All minimum font sizes (12px) are met.
 
 ### 9. Color Palette Consistency — 9.0
-Improved from v9. The testimonial card colours (`--review-bg: #ece5d5` and `--review-border: #b8aa96`) are now properly declared as tokens in `:root`. Full token system is used throughout. No rogue hex values detected. The semantic use of amber for CTAs and amber-adjacent seasonal elements, greens for primary/trust, and earth tones for warm backgrounds is coherent and consistent.
+Token system is complete and internally consistent. `--review-bg` and `--review-border` are declared as tokens. No rogue hex values detected outside the token system. The amber/green/earth-tone semantic structure is coherent across all sections.
 
-### 10. CTA Effectiveness — 8.6
-The testimonials CTA (v9 priority 3) is now in place with the warm glow animation. The button is "Plan Your Visit" linking to `#contact`. The setup text "Ready to start your garden project?" is weak — it lacks the warmth and specificity of the surrounding content. The CTA exists, which is correct; the copy is the remaining weakness.
+### 10. CTA Effectiveness — 8.8
+The testimonials CTA lead-in text ("Join 340 neighbors who trust Colonial Gardens") is now specific and leverages social proof effectively. This is the correct way to frame a CTA following two detailed positive reviews. The button "Plan Your Visit" with amber glow matches the other primary CTAs in the site.
 
-CTA coverage is now good: hero (amber, breathing glow), services cards (amber per card), CTA strip (dark green section, amber button, phone number), testimonials (warm glow button), contact form (amber submit). Five touchpoints is appropriate for a single-page site of this depth.
+Five CTA touchpoints remain: hero (amber, breathing glow), services cards (amber per card), CTA strip (dark green section, amber button), testimonials (warm glow button), contact form (amber submit). Coverage is appropriate.
+
+The CTA strip headline "Ready to transform your outdoor space?" is functional but generic. At some point this would benefit from the same sharpening applied to the testimonials CTA — something more specific to what Colonial Gardens actually does ("Ready to landscape your yard with a team that's done it for 40 years?"). Not a priority for this cycle.
 
 ### 11. Greenhouse Bridge Element — 8.5
-No change. Confirmed working at both desktop (leaf SVG draw-in animation) and mobile (leaf hidden, amber accent bar, italic text centred). The translateY(16px) reveal override correctly gives a lighter entrance than the standard 30px reveal. Held position from v9.
+No regression. Desktop: leaf SVG draws in on scroll, veins fade in after 0.9s. Mobile: leaf hidden, amber accent bar and italic text centred. Both working as designed.
 
-### 12. Dynamic Open/Closed Badge — 8.6
-No regression. America/New_York timezone handling is correct. Badge reflects correct hours for Mon–Sat and Sunday separately. Both the open-bar (header) and contact__open-badge (contact section) are initialised from the same `getEtOpenState()` helper, ensuring consistency.
+### 12. Dynamic Open/Closed Badge — 8.7
+The open-bar JS now correctly sets narrow-screen text: `window.innerWidth <= 480` check produces "Open now" or "Closed now" only, with no hours text appended. The contact section badge continues to use `getEtOpenState()` consistently. Timezone handling (America/New_York) remains correct.
 
-### 13. Hero Stats Coherence — 7.8
-This was not previously flagged and is worth noting now. The three hero stats are "58 Years in PA", "40+ Yrs landscaping", and "1 Year Warranty". These three are not parallel data points — the first two are historical facts about the business, the third is a service guarantee about a specific offering. A visitor scanning these three figures gets a slightly confused signal. "40+ years landscaping" and "1-year warranty" refer to different things entirely. Replace the "1 Year Warranty" stat with something more business-level: "4.8 Stars" (the review score), or "4 Services" (garden center, landscaping, florist, events), or simply the number of google reviews ("340+ Reviews"). Any of these would read as a coherent trio.
+One edge case: the `initOpenBar()` function runs once on page load. If a user leaves the tab open across the open/close boundary (e.g., has the site open at 5:55pm and is still browsing at 6:05pm), the badge will display stale state. This is a very minor edge case that requires a polling approach or `setInterval` to fix — not a priority.
+
+### 13. Hero Stats Coherence — 8.7
+Fixed. The three stats are now "58 Years in PA" / "40+ Yrs landscaping" / "340+ Google reviews." All three are business-level credentials that read as a coherent statement of authority. The previous "1 Year Warranty" was a misfit at that scale — this is substantially better.
 
 ---
 
 ## Top 3 Priorities for Improvement
 
-### Priority 1: Fix the desktop contact section column alignment
-At desktop widths, the 3-column contact grid (info / form / map) produces an uneven bottom edge because the form is taller than the map. The map at 340px fixed height terminates before the form finishes rendering. Options: increase the map height to match the form dynamically (`height: 100%` inside a `position: relative` parent, or set a minimum that matches the form at typical viewport widths), or restructure the desktop layout to a 2-column arrangement (info+form left, map right, full height). The current imbalance is visually apparent and undermines an otherwise well-composed section.
+### Priority 1: Contact section alignment at laptop widths (1000–1200px)
+The desktop contact grid fix in v11 benefits very wide viewports. At the most common laptop widths (1000–1200px), the responsive CSS has already collapsed the grid to a single column (the `@media (max-width: 1000px)` rule). This means the 3-column layout that was architecturally corrected in v11 is only visible above 1000px. Consider raising the breakpoint at which the single-column kicks in (e.g. to 768px), so that the 3-column layout is visible at 1024px and 1280px. This would require restructuring the map to sit below the info/form pair at mobile rather than as a third column at tablet — but the result would give the majority of desktop users the full layout, not just 4K monitors.
 
-### Priority 2: Replace the hero subheadline
-"Real expertise, real plants — and we've been at it since before you were born." The second clause damages the warmth the site otherwise projects. Replace with something grounded and specific: "Real expertise, real plants — and a full acre of growing houses to prove it." or "Trusted by Phoenixville since 1967 — because good plants and good advice never go out of style." The fix is two sentences of copy. The impact on first impression is disproportionate because this text appears directly under the largest headline on the site.
+### Priority 2: Restore a trimmed version of the contact welcome text on mobile
+The `contact__welcome` paragraph ("No appointment needed — just walk in. Our staff genuinely loves to talk plants, so come with questions.") is hidden entirely at 480px. The copy is warm and builds confidence at the moment a visitor is deciding whether to call or visit. Consider replacing the `display: none` with a max-height truncation showing a single sentence: "No appointment needed — just walk in." The hours and address are still the priority, but the friendly framing sets the right tone for the section.
 
-### Priority 3: Sharpen the testimonials CTA copy
-"Ready to start your garden project?" is a generic marketing placeholder. The testimonials section has already done the heavy lifting — two strong reviews with specific details. The CTA copy should capitalise on that momentum. Try: "Join 340 neighbours who trust Colonial Gardens" as the line, keeping "Plan Your Visit" as the button. Or link the button directly to the phone number for mobile users ("Call 610-948-9755" on mobile, "Plan Your Visit" on desktop). The infrastructure is correct; the copy is the gap.
+### Priority 3: Replace the CTA strip headline with something specific to Colonial Gardens
+"Ready to transform your outdoor space?" appears on thousands of landscaping websites. At this stage of the site's refinement, the copy quality gap between the CTA strip headline and the rest of the site is noticeable. A replacement that uses the actual Colonial Gardens voice — "Forty years of landscaping in Phoenixville. Ready to start yours?" or "From free consult to full install — we do it all and back it with a one-year guarantee." — would make the section feel as considered as the testimonials, legacy, and hero now do.
 
 ---
 
-*Audit conducted by Nigel — v10 — 2026-04-18*
+*Audit conducted by Nigel — v11 — 2026-04-18*
