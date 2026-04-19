@@ -347,6 +347,14 @@ function onScroll() {
   });
 }
 
+/* --- Refresh open/closed state every 60s (handles stale tabs) */
+function startOpenStateRefresh() {
+  setInterval(() => {
+    initOpenBar();
+    initContactBadge();
+  }, 60000);
+}
+
 /* --- Init ------------------------------------------------- */
 function init() {
   addRevealClasses();
@@ -358,6 +366,7 @@ function init() {
   initOpenBar();
   initContactBadge();
   initCardTilt();
+  startOpenStateRefresh();
 
   updateProgress();
   updateNav();
