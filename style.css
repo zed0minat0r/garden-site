@@ -19,6 +19,7 @@
   --earth-wash:   #fdf7ef;
 
   --amber:        #d4933f;
+  --amber-light:  #e8a84a;
   --amber-glow:   rgba(212,147,63,.45);
 
   --cream:        #faf8f3;
@@ -178,6 +179,19 @@ address { font-style: normal; }
 @keyframes cta-breathe-warm {
   0%, 100% { box-shadow: var(--glow-warm); }
   50% { box-shadow: 0 0 0 1px rgba(212,147,63,.25), 0 0 44px rgba(212,147,63,.55), 0 0 80px rgba(212,147,63,.2); }
+}
+
+@keyframes dot-pulse-green {
+  0%, 100% {
+    box-shadow: 0 0 6px rgba(111,207,114,.7);
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(111,207,114,.95), 0 0 20px rgba(111,207,114,.4);
+    transform: scale(1.25);
+    opacity: .85;
+  }
 }
 
 .btn--primary {
@@ -567,11 +581,17 @@ address { font-style: normal; }
   background: #6fcf72;
   box-shadow: 0 0 6px rgba(111,207,114,.7);
   flex-shrink: 0;
+  animation: dot-pulse-green 2.8s ease-in-out infinite;
 }
 
 .open-bar__dot.is-closed {
   background: #e07070;
   box-shadow: 0 0 6px rgba(224,112,112,.6);
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .open-bar__dot { animation: none; }
 }
 
 .open-bar__divider { opacity: .45; }
@@ -1634,7 +1654,7 @@ address { font-style: normal; }
 }
 
 .site-footer__info-label {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--amber-light);
@@ -1833,7 +1853,7 @@ address { font-style: normal; }
   width: fit-content;
   font-size: 13px;
   padding: 10px 18px;
-  min-height: 40px;
+  min-height: 44px;
 }
 .seasonal-card--wide .btn--primary {
   font-size: 14px;
