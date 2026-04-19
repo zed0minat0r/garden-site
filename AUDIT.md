@@ -1,91 +1,102 @@
-# Colonial Gardens — Nigel Audit
-**Date:** 2026-04-18
-**Auditor:** Nigel (posh British auditor)
-**Viewport tested:** 375px mobile, homeowner perspective
-**Version:** v8
-**Previous score:** 8.3 (v7)
+# Colonial Gardens — Nigel Audit v9
+**Score: 8.5 / 10**
+**Previous score: 8.4 (v8)**
+**Delta: +0.1**
 
 ---
 
-## Overall Score: 8.4 / 10
+## Overall Assessment
 
-Delta: +0.1 from v7. A modest but earned improvement. The four recommendations from v7 have been addressed: the `.contact__form-optional` class is now properly defined in CSS (font-weight 400, font-size 13px, color var(--text-muted), opacity .75 — clean), the Formspree `_next` hidden input is present in the form pointing to the correct success URL, the petunias icon has been replaced with a five-petal radial ellipse SVG that legibly communicates flowering annuals, and the scrolling ribbon that was identified as redundant has been removed entirely. The open-status bar (dark green bar below hero) now consolidates what the ribbon was doing — hours and open/closed status — without the animation overhead.
-
-The net result is a page that has shed its principal redundancy and resolved its four identified deficiencies. That earns the +0.1. What prevents 8.5: two things remain. First, the page still has a structural issue at the upper-mid section: the open-status bar, the trust bar, and then immediately the services section are three consecutive horizontal banding elements before the user reaches any engaging visual content. On mobile at 375px this reads as: hero, dark green strip, off-white strip, services cards. The transition rhythm is compressed. A modest gap or visual breathing room between the trust bar and services — perhaps a single contextual sentence about the greenhouse — would ease the compression. Second, the contact section on mobile still renders a static "Open today" badge in the contact__info column with a permanently-green dot, regardless of actual open/closed state. The open-bar above uses JS to set the correct state; the contact__open-dot in the contact section has no corresponding logic and always shows green. A homeowner arriving on a Sunday evening sees "Open today" with a green dot, but the garden center closed at 5pm. This is a factual credibility issue, not a cosmetic one.
+Nine build cycles in and this site is genuinely good. It reads like a real business, not a template. The palette is warm and consistent, the typography pairing (Playfair Display + DM Sans) carries editorial weight, and the scroll interactions are purposeful rather than decorative for decoration's sake. The jump from v8 to v9 is small but defensible — the greenhouse bridge element is a proper design decision, not a filler addition, and the mobile scroll rhythm work shows care. That said, the site has not crossed the threshold that would earn a higher score, and I will explain precisely why.
 
 ---
 
-## Section Scores
+## Section-by-Section Breakdown
 
-### 1. Design Quality — 8.3 / 10
+### 1. Design Quality and Visual Polish — 8.6
+The warm botanical palette (deep greens, amber glow, cream) is applied with discipline. Token usage is thorough and consistent; no rogue colour values. The grain texture applied as an SVG background on section backgrounds is a sophisticated touch that prevents the flat, sanitised look common to AI-generated pages. The hero overlay vignette and gradient layering create genuine depth. The Ken-Burns scale animation on the hero image is well-calibrated at 10 seconds — not frantic, not imperceptible.
 
-The petunias card icon is now a five-petal ellipse SVG — five rotated ellipses around a centre circle, with a muted fill on the centre. This is the correct vocabulary for a flowering annual. The icon now correctly communicates its content. All four plant-now card icons are now semantically appropriate. The Dahlias card uses a tuber-with-petals icon. Native Pollinators uses a three-leaf branching form. Shade Trees uses a branching canopy. Petunias uses the new petal form. This completes the icon audit that has run through three versions.
+The amber breathing glow animation on hero CTAs is effective but on the edge: against the already-busy hero background, the pulsing glow can feel anxious rather than inviting. It works, but barely.
 
-The removal of the scrolling ribbon is a net visual improvement. The page transition from hero to open-status bar to trust bar is now cleaner — three clear bands instead of four, with the ribbon's animation overhead eliminated. The trust bar now anchors the first post-hero section more decisively.
+One genuine weakness: the contact section uses a 3-column grid with info / form / map side by side at desktop widths. The map column is 440px tall beside a form that is considerably shorter. The visual imbalance is notable — a first-time visitor sees a map that towers over the form content to its left.
 
-No regressions on service cards, legacy section, testimonials, or footer. All hold at v7 standard.
+### 2. Mobile UX at 375px — 8.2
+The mobile work done in v8 and v9 is visible. The hero CTA correctly swaps to "Hours & Directions" on mobile. Hero actions stack to a column with full-width buttons at 480px. Font sizes: the 12px minimums are met throughout; the seasonal-card__season and service-card__event-label fixes at max-width 480px are in place.
 
-### 2. Mobile UX at 375px — 8.2 / 10
+Two mobile concerns:
 
-The contact form ordering remains correctly implemented: form first (order: -2), info column second (order: -1), map third (implicit order: 0). This has not regressed.
+**First**: The contact section on mobile reorders with form appearing before the address/hours (order: -2 and -1). This is counter to mobile intent — most mobile visitors want to know if the place is open and how to get there before filling a form. The address/hours should visually precede the form at mobile widths.
 
-The contact section's `.contact__open-badge` contains a static green dot and hardcoded "Open today" text. This does not connect to the same ET timezone logic used in `initOpenBar()`. At 375px, a mobile user scrolling to the contact section after hours will see the green "Open" badge while the top-of-page dark bar correctly shows "Closed." The inconsistency is small in pixel terms but significant in trust terms. A homeowner who reads "Open today" while it is 7pm Sunday will call, get no answer, and feel misled. One function call to conditionally style the contact badge would close this gap.
+**Second**: The open-bar wraps at 375px. The "Spring is here" season text and the call link can push to a second or third line, creating a messy multi-line status bar below the hero. The open bar is the first element a visitor reads after the hero — it must stay on one line.
 
-Font sizes are compliant. All tap targets are at or above 44px. The form fields are 48px minimum height. The submit button is full-width and above 48px. No overflow issues detected in the CSS at 375px.
+### 3. Scroll Interactions and Animations — 8.7
+The reveal system is well-implemented: staggered group reveals, scale entrances for the legacy badge, and the distinct greenhouse-bridge custom reveal (translateY 16px override) all layer properly. The scroll progress bar is subtle and functional. rAF throttling on parallax and scroll listeners is correct engineering.
 
-The open-bar on mobile correctly suppresses the season line and the divider at 480px, leaving only: green/red dot, open/closed text, and the call link. This is the correct priority reduction.
+The initParallax on the legacy image adds genuine depth. The card tilt (3D mousemove on plant-now cards at MAX_TILT 8 degrees) is tasteful — not overdone.
 
-### 3. Visual Polish — 8.3 / 10
+The greenhouse bridge leaf draw-in animation (stroke-dashoffset from 120 to 0 over 1.1s) is a considered micro-interaction. Correct timing relative to the IntersectionObserver threshold.
 
-The `.contact__form-optional` CSS class is now defined and styled: `font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 13px; color: var(--text-muted); opacity: .75`. This correctly distinguishes the optional textarea label from the required field labels. The previous audit noted this as a gap; it is closed.
+### 4. Content Quality and Relevance — 8.8
+This is the site's strongest dimension. Real business information throughout: 745 Schuylkill Rd, 610-948-9755, Eric Schmidt named as owner, accurate hours, accurate 1967 founding date. The "What to Plant Now" section is genuinely useful and seasonally appropriate for April in Phoenixville — dahlias, native pollinators, spring annuals. No fabricated data.
 
-The `_next` redirect is in place (`https://zed0minat0r.github.io/garden-site/?submitted=1`). The JS `initConsultForm` function detects `?submitted=1` in the URL and shows the `.contact__success` banner while hiding the form. This is the correct implementation pattern. The success banner copy ("Eric and the team will be in touch soon") is suitably personal for a family-owned business.
+The owner card (ES monogram, Eric Schmidt name and role) is a strong trust signal. The Eric Schmidt quote ("We're not a big-box store and we never will be") is authentic-feeling and on-brand.
 
-One new observation: the hero primary CTA uses `animation: cta-breathe-warm 3.5s ease-in-out infinite`. This is a pulsing amber glow animation. On desktop this reads as a deliberate, warm pulse — it earns its presence. On mobile at 375px within a 320px-wide constrained button stack, the animation is subtler but still functional. The amber on green-dark background is high contrast. No accessibility regression.
+Minor: The hero sub-copy reads "58 years rooted in Phoenixville" and then the hero stat shows "58 Years in PA" — redundant within three lines. The sub-copy should offer more warmth or specificity to avoid the repetition.
 
-### 4. Scroll Interactions — 7.9 / 10
+### 5. Form Functionality — 8.5
+Formspree integration via native POST with _next redirect to ?submitted=1 is clean. JS checks the parameter on load and shows the success banner while hiding the form. The success banner ("Eric and the team will be in touch") is personal and pleasant.
 
-The ribbon removal has reduced total animation load. The remaining animations are: hero ken-burns (10s ease-out), hero scroll arrow floating loop (2.5s), CTA button breathe-warm loop (3.5s), reveal on scroll (intersection observer, single-fire), card hover parallax (JS rAF), service card drag scroll, and card 3D tilt (JS mousemove). This is a well-composed set — nothing repeats unnecessarily, and the looping animations (arrow, button glow) serve clear purposes.
+One concern: the phone/email field uses type="text" with autocomplete="tel". If the field accepts either phone or email, the autocomplete hint should not be "tel" — this triggers a phone keyboard on iOS even when a user intends to type an email address.
 
-The IntersectionObserver threshold is 0.1 with rootMargin 0px 0px -50px 0px. This fires reveals at 10% of element in view, offset by 50px from the bottom of the viewport. On mobile where elements occupy more of the viewport height, this threshold fires earlier and more aggressively than on desktop. The net effect is that sections on mobile tend to reveal slightly before the user has scrolled to them naturally. This is a pleasant experience rather than a jarring one — the content appears ready. Not a deficiency.
+### 6. Center Alignment Consistency on Mobile — 8.0
+Hero content centers correctly at all breakpoints. Trust bar items center in flex-wrap. Greenhouse bridge text is centered with appropriate max-width on mobile. The legacy section appropriately left-aligns body copy on mobile.
 
-The services horizontal scroll still has drag-to-scroll on desktop and the snap behaviour works. On mobile the snap-to-card is correct via `scroll-snap-type: x mandatory` and `scroll-snap-align: start`.
+Minor: at 375px the seasonal card grid goes to 1fr but the seasonal-card__season pill sits at width: fit-content, which can read as misaligned against the left-aligned title below it. Small but visible.
 
-### 5. Content Presentation — 8.3 / 10
+### 7. Image Quality — 8.3
+Hero image served at 2400px with q=90 and fetchpriority="high" — correct LCP treatment. Service card images are genuine Colonial Gardens business photography, which is excellent for authenticity.
 
-No changes to content from v7. The plant-now section continues to deliver four distinct, non-redundant, seasonally appropriate recommendations. The intro copy ("The last frost date for our zone has passed") is the strongest single line of content on the page — specific, practical, local. The testimonials are unchanged and continue to perform at v7 level.
+One clear problem: the annuals/perennials photo appears on both the Garden Center service card and the wide seasonal card simultaneously. A visitor scrolling the page sees the identical photograph twice in close proximity. Replace the seasonal wide card image with a different photo.
 
-One content observation that was not flagged in v7: the Events service card shows "Mother's Day Plant Sale — May 10–11." This event is hardcoded. As of the audit date (April 18, 2026), May 10–11 is three weeks away. The event is timely and accurate. However, after May 11 passes, this card will show a past event with no mechanism to update it. For a static site without a CMS, this is a structural limitation, not a code deficiency. Worth noting for future iterations.
+### 8. Typography Hierarchy — 9.0
+This is the site's strongest craft element. Playfair Display / DM Sans pairing is well-chosen and consistently applied. Section eyebrows at 12px / 500 weight / 0.14em tracking are appropriately restrained. Section titles use clamp() scaling throughout. The italic em treatment on section titles is elegant and not overused. Line heights are appropriate throughout.
 
-The featured testimonial ("We've been coming here every spring for over 20 years") remains excellent — it communicates loyalty, longevity, and expertise without being promotional.
+### 9. Color Palette Consistency — 8.8
+The token system is strong and genuinely used. Green family, earth family, amber, and cream are all in play with clear semantic purpose. Amber is reserved for CTAs and seasonal tags; greens anchor trust and primary actions; earth tones handle warm background sections. Coherent.
 
-### 6. Local Business Trustworthiness — 8.4 / 10
+One flag: testimonial card background #ece5d5 and border #b8aa96 are hardcoded hex values not defined as design tokens. They sit within the earth palette range but are not exposed as variables. Minor inconsistency worth tidying.
 
-The Formspree integration with the `_next` redirect is the correct end-to-end lead flow. Form submits, user returns to site, success banner appears, form hides. No third-party page abandonment. This is the correct implementation.
+### 10. CTA Effectiveness — 8.4
+Hero has two primary CTAs with correct mobile/desktop swap. The amber glow on primary CTAs is distinctive and warm. The CTA strip mid-page (dark green, amber button, phone number) is well-composed.
 
-The contact section static open badge inconsistency (flagged above) is the primary trust issue in this version. A homeowner who encounters contradictory open/closed signals between the top bar and the contact section will notice, even if subconsciously. The top bar and the contact badge should agree on state.
+One gap: there is no CTA in the testimonials section. After reading positive reviews, a visitor has no immediate invitation to act. A small action after the testimonials grid would capture conversion intent at the point of maximum social proof.
 
-Business details remain accurate throughout: 745 Schuylkill Rd, Phoenixville PA, 610-948-9755, Mon-Sat 8am-6pm, Sun 9am-5pm, Eric Schmidt owner, Est. 1967, 58 years. The footer copyright reads 2026. All details consistent.
+### 11. Greenhouse Bridge Element — 8.5
+A considered design decision. The gradient from green-wash to off-white matches the trust bar above and services below. The leaf SVG draw-in animation is a quality interaction. The italic serif copy ("Walk the greenhouse — acres of covered growing houses stocked fresh every week") is evocative and relevant.
+
+Leaf correctly hidden on mobile, showing only text. The lighter reveal entrance (translateY 16px vs 30px default) is the right call — this element should feel light, not dramatic.
+
+### 12. Dynamic Open/Closed Badge (Contact Section) — 8.6
+initContactBadge correctly uses America/New_York timezone via toLocaleTimeString. Badge updates text and dot colour dynamically; the container gets an is-closed class that changes background and border colour — a complete state change. Correct and well-executed.
+
+The open hours logic (hour >= 8 && hour < 18 for Mon-Sat) correctly shows closed at exactly 6:00pm ET, matching the stated closing time.
+
+### 13. Trust Bar Visual Separation from Services on Mobile — 7.8
+The greenhouse bridge element creates a visual pause between trust bar and services. On desktop, it works well. On mobile (below 768px) the leaf is hidden and only the centred italic text sentence remains — the visual separation is text only, no structural differentiation in background or border. At 375px this reads as a brief italic line in a slightly different background. A visitor glancing quickly may not register it as a distinct section break. The issue is improved from v8 but not fully resolved at mobile widths.
 
 ---
 
 ## Top 3 Priorities for Improvement
 
-### 1. Fix the contact section open/closed badge to use real-time ET logic
-The `.contact__open-badge` element contains a static green dot and hardcoded "Open today" text. This never changes regardless of time or day. The `initOpenBar()` function in main.js already contains the correct ET timezone logic for determining open/closed state. Extend this function (or create a companion `initContactBadge()`) to also update the `.contact__open-dot` class (add `is-closed` to make it red) and the text within the badge to reflect actual open/closed state. This is a one-function addition and closes the only active credibility issue on the page.
+### Priority 1: Resolve the duplicate annuals image
+The annuals/perennials photo from the Colonial Gardens uploads appears on both the Garden Center service card and the "Spring 2026 / Annuals & Perennials" seasonal wide card. These sections are on the same page in close proximity. Replace the seasonal wide card image with a different photo — a herb garden, a potting bench, or a different spring flowers shot. Quick fix, visible impact.
 
-### 2. Add a visual breathing point between the trust bar and services section
-On mobile, the sequence hero > open-status bar > trust bar > services is four consecutive horizontal bands with no breathing room. The trust bar and services section both have `background: var(--off-white)` which causes them to visually merge into a single long off-white zone on mobile. Either add a subtle section divider (a 2-3 line contextual hook like "Walk the greenhouse" with a link) between trust bar and services, or differentiate the trust bar's background (even a slight `var(--green-wash)` tint) to create visual separation without removing content. This improves the scroll rhythm on mobile without touching desktop layout.
+### Priority 2: Fix the open-bar text overflow at 375px
+Below 480px the open bar's flex-wrap allows the season text and the call link to stack awkwardly into a multi-line bar. The fix: hide `.open-bar__season` below 480px (it is decorative, the critical status information is the open/closed text and the call link), add `flex-shrink: 0` to `.open-bar__call`, and confirm the bar stays to a single line at 375px. The open bar is the first content below the hero — it must communicate cleanly at every width.
 
-### 3. Add a mechanism to rotate the Events card content
-The Mother's Day Plant Sale event hardcoded on the Events service card will be stale after May 11. Add a small JSON-adjacent data comment block at the top of index.html (or a simple JS object in main.js) that holds event name, date, and a "current as of" marker. Even a comment like `<!-- EVENT: update event name and date when current event passes -->` directly above the event callout in the HTML gives the site owner a clear maintenance hook. Longer term, consider a 3-4 line JS object at the top of main.js that populates the event card dynamically so updates require touching one place only.
+### Priority 3: Add a CTA to the testimonials section
+The testimonials section ends with two review cards and no action. A visitor who has just read that the landscaping team "showed up on time" and the florist "absolutely nailed it" has no nudge to move forward. Add a centred row below the testimonials grid: a short line of copy ("Ready to join 340 happy customers?") and a "Plan Your Visit" button. This closes a conversion gap at exactly the moment of maximum social proof.
 
 ---
 
-## Summary
-
-v8 earns 8.4. All four v7 recommendations were implemented correctly. The petunias icon mismatch is resolved. The Formspree redirect is in place and functions correctly. The `.contact__form-optional` CSS class is defined and styled. The scrolling ribbon has been removed without leaving a content gap — the open-status bar below the hero absorbs its function cleanly.
-
-What remains is smaller than anything previously identified: one static badge that should be dynamic, one visual rhythm compression on mobile, and one content maintenance gap. None of these require design rethinking. The design is strong, the typography is correct, the palette is consistent, and the conversion loop — from landing on the page to submitting a consultation request — is now fully functional. At 8.4, this site competes credibly against any local garden center in the region.
-
-The gap between 8.4 and 8.5 is the contact open badge and the mobile trust-bar/services breathing room. Both are addressable in a single focused session.
+*Audit conducted by Nigel — v9 — 2026-04-18*
