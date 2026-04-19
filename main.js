@@ -248,30 +248,25 @@ function initConsultForm() {
   }
 }
 
+/* --- ET open/closed helper -------------------------------- */
+function getEtOpenState() {
+  const now     = new Date();
+  const timeStr = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit' });
+  const hour    = parseInt(timeStr.split(':')[0], 10);
+  const dayNum  = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' })).getDay(); // 0=Sun
+  if (dayNum === 0) { // Sunday
+    return hour >= 9 && hour < 17;
+  }
+  return hour >= 8 && hour < 18; // Mon-Sat
+}
+
 /* --- Open status bar -------------------------------------- */
 function initOpenBar() {
   const dot  = document.getElementById('openBarDot');
   const text = document.getElementById('openBarText');
   if (!dot || !text) return;
 
-  // ET hours: Mon-Sat 8-18, Sun 9-17
-  const now = new Date();
-  // Use ET offset approximately: UTC-4 (EDT) or UTC-5 (EST)
-  // Simple approach: rely on toLocaleString in ET
-  const etStr = now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', hour12: false, weekday: 'short' });
-  // Format: "Sat, 14:30" or similar — parse it
-  const parts = now.toLocaleString('en-US', { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit', weekday: 'narrow' }).split(', ');
-  const dayChar = now.toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'narrow' }); // M T W T F S S
-  const timeStr = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit' });
-  const hour    = parseInt(timeStr.split(':')[0], 10);
-  const dayNum  = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' })).getDay(); // 0=Sun
-
-  let open = false;
-  if (dayNum === 0) { // Sunday
-    open = hour >= 9 && hour < 17;
-  } else { // Mon-Sat
-    open = hour >= 8 && hour < 18;
-  }
+  const open = getEtOpenState();
 
   if (open) {
     dot.classList.remove('is-closed');
@@ -279,6 +274,26 @@ function initOpenBar() {
   } else {
     dot.classList.add('is-closed');
     text.textContent = 'Closed now \u2014 Mon\u2013Sat 8am\u20136pm \u2022 Sun 9am\u20135pm';
+  }
+}
+
+/* --- Contact section open badge --------------------------- */
+function initContactBadge() {
+  const badge   = document.querySelector('.contact__open-badge');
+  const dot     = badge ? badge.querySelector('.contact__open-dot') : null;
+  const textEl  = badge ? badge.querySelector('span:not(.contact__open-dot)') : null;
+  if (!badge || !dot || !textEl) return;
+
+  const open = getEtOpenState();
+
+  if (open) {
+    dot.classList.remove('is-closed');
+    badge.classList.remove('is-closed');
+    textEl.textContent = 'Open now \u2014 Mon\u2013Sat 8am\u20136pm, Sun 9am\u20135pm';
+  } else {
+    dot.classList.add('is-closed');
+    badge.classList.add('is-closed');
+    textEl.textContent = 'Closed now \u2014 Mon\u2013Sat 8am\u20136pm, Sun 9am\u20135pm';
   }
 }
 
@@ -336,6 +351,7 @@ function init() {
   initParallax();
   initConsultForm();
   initOpenBar();
+  initContactBadge();
   initCardTilt();
 
   updateProgress();
