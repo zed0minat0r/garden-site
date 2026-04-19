@@ -267,13 +267,18 @@ function initOpenBar() {
   if (!dot || !text) return;
 
   const open = getEtOpenState();
+  const narrow = window.innerWidth <= 480;
 
   if (open) {
     dot.classList.remove('is-closed');
-    text.textContent = 'Open now \u2014 Mon\u2013Sat 8am\u20136pm \u2022 Sun 9am\u20135pm';
+    text.textContent = narrow
+      ? 'Open now'
+      : 'Open now \u2014 Mon\u2013Sat 8am\u20136pm \u2022 Sun 9am\u20135pm';
   } else {
     dot.classList.add('is-closed');
-    text.textContent = 'Closed now \u2014 Mon\u2013Sat 8am\u20136pm \u2022 Sun 9am\u20135pm';
+    text.textContent = narrow
+      ? 'Closed now'
+      : 'Closed now \u2014 Mon\u2013Sat 8am\u20136pm \u2022 Sun 9am\u20135pm';
   }
 }
 
