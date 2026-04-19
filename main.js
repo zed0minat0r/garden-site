@@ -235,6 +235,83 @@ function initConsultForm() {
     }
     // Allow native form POST to Formspree
   });
+
+  // Show success banner if returning from Formspree redirect
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('submitted') === '1') {
+    const banner = document.getElementById('contactSuccess');
+    if (banner) {
+      banner.hidden = false;
+      banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    if (form) form.hidden = true;
+  }
+}
+
+/* --- Open status bar -------------------------------------- */
+function initOpenBar() {
+  const dot  = document.getElementById('openBarDot');
+  const text = document.getElementById('openBarText');
+  if (!dot || !text) return;
+
+  // ET hours: Mon-Sat 8-18, Sun 9-17
+  const now = new Date();
+  // Use ET offset approximately: UTC-4 (EDT) or UTC-5 (EST)
+  // Simple approach: rely on toLocaleString in ET
+  const etStr = now.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: '2-digit', hour12: false, weekday: 'short' });
+  // Format: "Sat, 14:30" or similar — parse it
+  const parts = now.toLocaleString('en-US', { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit', weekday: 'narrow' }).split(', ');
+  const dayChar = now.toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'narrow' }); // M T W T F S S
+  const timeStr = now.toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit' });
+  const hour    = parseInt(timeStr.split(':')[0], 10);
+  const dayNum  = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' })).getDay(); // 0=Sun
+
+  let open = false;
+  if (dayNum === 0) { // Sunday
+    open = hour >= 9 && hour < 17;
+  } else { // Mon-Sat
+    open = hour >= 8 && hour < 18;
+  }
+
+  if (open) {
+    dot.classList.remove('is-closed');
+    text.textContent = 'Open now \u2014 Mon\u2013Sat 8am\u20136pm \u2022 Sun 9am\u20135pm';
+  } else {
+    dot.classList.add('is-closed');
+    text.textContent = 'Closed now \u2014 Mon\u2013Sat 8am\u20136pm \u2022 Sun 9am\u20135pm';
+  }
+}
+
+/* --- 3D tilt on plant-now cards --------------------------- */
+function initCardTilt() {
+  if (prefersReducedMotion) return;
+  const cards = document.querySelectorAll('.plant-now__card');
+  if (!cards.length) return;
+
+  const MAX_TILT = 8; // degrees
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const cx   = rect.left + rect.width  / 2;
+      const cy   = rect.top  + rect.height / 2;
+      const dx   = (e.clientX - cx) / (rect.width  / 2);
+      const dy   = (e.clientY - cy) / (rect.height / 2);
+      const rotX = (-dy * MAX_TILT).toFixed(2);
+      const rotY = ( dx * MAX_TILT).toFixed(2);
+      card.style.setProperty('--tilt-x', rotX + 'deg');
+      card.style.setProperty('--tilt-y', rotY + 'deg');
+      card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+      card.style.boxShadow = 'var(--shadow-lg)';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--tilt-x', '0deg');
+      card.style.setProperty('--tilt-y', '0deg');
+      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      card.style.boxShadow = '';
+    });
+  });
 }
 
 /* --- Scroll listener (throttled via rAF) ------------------ */
@@ -258,6 +335,8 @@ function init() {
   initServicesScroll();
   initParallax();
   initConsultForm();
+  initOpenBar();
+  initCardTilt();
 
   updateProgress();
   updateNav();

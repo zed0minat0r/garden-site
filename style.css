@@ -542,41 +542,49 @@ address { font-style: normal; }
   font-weight: 600;
 }
 
-/* === RIBBON =============================================== */
-.ribbon {
+/* === OPEN STATUS BAR ======================================= */
+.open-bar {
   background: var(--green-dark);
-  color: rgba(255,255,255,.75);
+  color: rgba(255,255,255,.8);
   font-size: 13px;
   font-weight: 500;
-  letter-spacing: .07em;
-  overflow: hidden;
-  padding: 11px 0;
-  border-top: 1px solid rgba(255,255,255,.04);
-}
-
-.ribbon__track {
+  letter-spacing: .04em;
+  padding: 10px 20px;
   display: flex;
-  gap: 72px;
-  white-space: nowrap;
-  animation: marquee 32s linear infinite;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.06);
 }
 
-.ribbon__track span { flex-shrink: 0; }
-
-.ribbon__dot {
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  background: var(--amber);
+.open-bar__dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  margin: 0 4px;
-  vertical-align: middle;
+  background: #6fcf72;
+  box-shadow: 0 0 6px rgba(111,207,114,.7);
+  flex-shrink: 0;
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.open-bar__dot.is-closed {
+  background: #e07070;
+  box-shadow: 0 0 6px rgba(224,112,112,.6);
 }
+
+.open-bar__divider { opacity: .45; }
+
+.open-bar__season { opacity: .7; }
+
+.open-bar__call {
+  margin-left: 12px;
+  color: var(--amber);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.open-bar__call:hover { opacity: .8; }
 
 /* === TRUST BAR ============================================ */
 .trust-bar {
@@ -2048,6 +2056,21 @@ address { font-style: normal; }
   min-height: 20px;
   font-weight: 500;
 }
+.contact__success {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--green-wash);
+  border: 1px solid var(--green-pale);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  color: var(--green-dark);
+}
+.contact__success[hidden] { display: none; }
+.contact__success svg { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+.contact__success strong { display: block; font-weight: 600; margin-bottom: 2px; }
+.contact__success p { font-size: 14px; color: var(--text-muted); margin: 0; }
 
 /* === WHAT TO PLANT NOW ==================================== */
 .plant-now {
@@ -2091,11 +2114,13 @@ address { font-style: normal; }
   flex-direction: column;
   gap: 12px;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition), transform .25s var(--ease-spring);
+  transition: box-shadow 200ms ease, transform 120ms ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform: perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(0);
 }
 .plant-now__card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-4px);
 }
 .plant-now__card-icon {
   width: 52px;
@@ -2190,7 +2215,7 @@ address { font-style: normal; }
   }
   .hero__bg-img { transform: none !important; }
   .hero__scroll { animation: none; }
-  .ribbon__track { animation: none; }
+  .plant-now__card { transform: none !important; }
   .btn--primary { animation: none !important; }
   .service-card .btn--primary { animation: none !important; }
   .cta-strip .btn--primary { animation: none !important; }
@@ -2308,4 +2333,16 @@ address { font-style: normal; }
 
   .trust-item { flex: 1 1 100px; }
   .trust-item__num { font-size: 24px; }
+}
+
+@media (max-width: 480px) {
+  .open-bar {
+    font-size: 12px;
+    padding: 9px 16px;
+    gap: 6px;
+    text-align: center;
+  }
+  .open-bar__season { display: none; }
+  .open-bar__divider { display: none; }
+  .open-bar__call { margin-left: 6px; }
 }

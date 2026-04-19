@@ -88,18 +88,13 @@
       </a>
     </section>
 
-    <!-- Seasonal ribbon -->
-    <div class="ribbon" aria-label="Current season announcement">
-      <div class="ribbon__track" aria-hidden="true">
-        <span>Spring is here &mdash; Shop annuals &amp; perennials<span class="ribbon__dot"></span></span>
-        <span>Open Mon&ndash;Sat 8am&ndash;6pm &bull; Sun 9am&ndash;5pm<span class="ribbon__dot"></span></span>
-        <span>Free in-store landscaping consultations<span class="ribbon__dot"></span></span>
-        <span>1-year warranty on all landscape installs<span class="ribbon__dot"></span></span>
-        <span>Spring is here &mdash; Shop annuals &amp; perennials<span class="ribbon__dot"></span></span>
-        <span>Open Mon&ndash;Sat 8am&ndash;6pm &bull; Sun 9am&ndash;5pm<span class="ribbon__dot"></span></span>
-        <span>Free in-store landscaping consultations<span class="ribbon__dot"></span></span>
-        <span>1-year warranty on all landscape installs<span class="ribbon__dot"></span></span>
-      </div>
+    <!-- Open status bar -->
+    <div class="open-bar" id="openBar" aria-label="Store hours">
+      <span class="open-bar__dot" id="openBarDot" aria-hidden="true"></span>
+      <span class="open-bar__text" id="openBarText">Open today &mdash; Mon&ndash;Sat 8am&ndash;6pm &bull; Sun 9am&ndash;5pm</span>
+      <span class="open-bar__divider" aria-hidden="true">&nbsp;&bull;&nbsp;</span>
+      <span class="open-bar__season">Spring is here &mdash; Shop annuals &amp; perennials</span>
+      <a href="tel:6109489755" class="open-bar__call">Call 610-948-9755</a>
     </div>
 
     <!-- Trust bar -->
@@ -355,7 +350,7 @@
           </div>
           <div class="plant-now__card">
             <div class="plant-now__card-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 12c0 0-3-4.5-3-7a3 3 0 016 0c0 2.5-3 7-3 7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12c0 0-4.5-3-7-3a3 3 0 000 6c2.5 0 7-3 7-3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12c0 0 3 4.5 3 7a3 3 0 01-6 0c0-2.5 3-7 3-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12c0 0 4.5 3 7 3a3 3 0 000-6c-2.5 0-7 3-7 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="7" rx="3" ry="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="17.33" cy="9.5" rx="3" ry="5" transform="rotate(72 17.33 9.5)" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="15.29" cy="15.85" rx="3" ry="5" transform="rotate(144 15.29 15.85)" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="8.71" cy="15.85" rx="3" ry="5" transform="rotate(216 8.71 15.85)" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="6.67" cy="9.5" rx="3" ry="5" transform="rotate(288 6.67 9.5)" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="currentColor" opacity=".5"/></svg>
             </div>
             <h3 class="plant-now__card-title">Petunias &amp; Impatiens</h3>
             <p class="plant-now__card-text">Spring annuals are at peak selection. Fill window boxes, containers, and beds now. Impatiens love shade; petunias take full sun all summer long.</p>
@@ -505,6 +500,13 @@
         </div>
 
         <div class="contact__form-wrap reveal">
+          <div class="contact__success" id="contactSuccess" hidden>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <strong>We got your request!</strong>
+              <p>Eric and the team will be in touch soon.</p>
+            </div>
+          </div>
           <h3 class="contact__form-title">Request a free consultation</h3>
           <p class="contact__form-sub">Leave your info and we will reach out to schedule.</p>
           <form class="contact__form" id="consultForm" action="https://formspree.io/f/xkgjrkge" method="POST">
