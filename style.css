@@ -1356,12 +1356,38 @@ address { font-style: normal; }
   letter-spacing: .04em;
 }
 
+/* Testimonials CTA */
+.testimonials__cta {
+  margin-top: 56px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.testimonials__cta-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: var(--green-dark);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.testimonials__cta .btn--primary {
+  box-shadow: var(--glow-warm);
+  animation: cta-breathe-warm 3.5s ease-in-out infinite;
+}
+
 @media (max-width: 600px) {
   .testimonials {
     padding: 80px 0;
   }
   .testimonials__grid {
     grid-template-columns: 1fr;
+  }
+  .testimonials__cta {
+    margin-top: 40px;
   }
 }
 
@@ -2404,8 +2430,20 @@ address { font-style: normal; }
     padding: 9px 16px;
     gap: 6px;
     text-align: center;
+    flex-wrap: nowrap;
+    justify-content: center;
   }
   .open-bar__season { display: none; }
   .open-bar__divider { display: none; }
-  .open-bar__call { margin-left: 6px; }
+  .open-bar__call {
+    margin-left: 6px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .open-bar__text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
 }
