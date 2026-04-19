@@ -1277,7 +1277,7 @@ address { font-style: normal; }
 .testimonials {
   padding: 108px 0;
   background: var(--earth-wash);
-  border-top: 1px solid var(--stone);
+  border-top: none;
   border-bottom: 1px solid var(--stone);
 }
 
@@ -1531,20 +1531,7 @@ address { font-style: normal; }
   z-index: 3;
 }
 
-/* Testimonial section — warmer botanical feel; border handled above */
-.testimonials {
-  border-top: none;
-}
-
-/* Seasonal section — stronger top border as separator */
-.seasonal {
-  border-top: 3px solid var(--green-pale);
-}
-
 /* Footer top bar — gradient accent line */
-.site-footer {
-  position: relative;
-}
 .site-footer::before {
   content: '';
   display: block;
@@ -1561,6 +1548,7 @@ address { font-style: normal; }
 
 /* === FOOTER ============================================== */
 .site-footer {
+  position: relative;
   background: var(--green-dark);
   color: rgba(255,255,255,.6);
   padding: 64px 0 44px;
