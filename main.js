@@ -59,7 +59,7 @@ document.addEventListener('keydown', e => {
 function initReveal() {
   if (prefersReducedMotion) return;
 
-  const revealEls = document.querySelectorAll('.reveal, .reveal-up, .reveal-group, .reveal-scale');
+  const revealEls = document.querySelectorAll('.reveal, .reveal-group, .reveal-scale');
   const observer  = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {

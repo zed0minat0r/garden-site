@@ -173,11 +173,6 @@ address { font-style: normal; }
 }
 .btn:active { transform: scale(.97); }
 
-@keyframes cta-breathe {
-  0%, 100% { box-shadow: 0 2px 8px rgba(46,107,48,.3), 0 0 0 rgba(46,107,48,0); }
-  50% { box-shadow: 0 4px 16px rgba(46,107,48,.35), 0 0 22px rgba(46,107,48,.2); }
-}
-
 @keyframes cta-breathe-warm {
   0%, 100% { box-shadow: var(--glow-warm); }
   50% { box-shadow: 0 0 0 1px rgba(212,147,63,.25), 0 0 44px rgba(212,147,63,.55), 0 0 80px rgba(212,147,63,.2); }
@@ -605,13 +600,14 @@ address { font-style: normal; }
   text-align: center;
   gap: 8px;
   flex: 1 1 140px;
-  padding: 16px 12px;
-  border-radius: var(--radius-md);
-  transition: background .25s ease, transform .25s var(--ease-out);
+  padding: 20px 16px;
+  border-radius: var(--radius-lg);
+  transition: background var(--transition), box-shadow var(--transition), transform .25s var(--ease-spring);
 }
 .trust-item:hover {
-  background: rgba(46,107,48,.06);
-  transform: translateY(-2px);
+  background: var(--green-wash);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-3px);
 }
 
 .trust-item__icon {
@@ -1238,14 +1234,14 @@ address { font-style: normal; }
 }
 
 .testimonial-card {
-  background: #fff;
-  border: 1px solid var(--stone);
+  background: #ece5d5;
+  border: 1px solid #b8aa96;
   border-radius: var(--radius-xl);
   padding: 40px 36px;
   display: flex;
   flex-direction: column;
   gap: 18px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 12px rgba(59,42,26,.08), 0 1px 0 rgba(255,255,255,.55) inset;
   transition: box-shadow .35s ease, transform .3s var(--ease-out), border-color .3s ease;
   position: relative;
 }
@@ -1261,7 +1257,8 @@ address { font-style: normal; }
   pointer-events: none;
 }
 .testimonial-card:hover {
-  box-shadow: var(--shadow-md);
+  background: #e8dece;
+  box-shadow: 0 8px 32px rgba(59,42,26,.14), 0 1px 0 rgba(255,255,255,.55) inset;
   transform: translateY(-4px);
   border-color: var(--green-pale);
 }
@@ -1326,16 +1323,6 @@ address { font-style: normal; }
   box-shadow: var(--shadow-lg);
 }
 
-.legacy__owner-img {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center top;
-  border: 2px solid rgba(184,230,186,.45);
-  flex-shrink: 0;
-}
-
 .legacy__owner-info {
   display: flex;
   flex-direction: column;
@@ -1385,10 +1372,6 @@ address { font-style: normal; }
     bottom: 16px;
     left: 16px;
     padding: 10px 14px 10px 10px;
-  }
-  .legacy__owner-img {
-    width: 44px;
-    height: 44px;
   }
   .legacy__owner-name { font-size: 13px; }
   .legacy__owner-role { font-size: 12px; }
@@ -1444,19 +1427,6 @@ address { font-style: normal; }
   max-width: 400px;
 }
 
-/* === SECTION DIVIDERS — organic leaf wave ================= */
-.section-wave {
-  display: block;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-  margin-bottom: -2px;
-}
-.section-wave svg {
-  display: block;
-  width: 100%;
-}
-
 /* Bottom accent line on services to ease transition into legacy */
 .services::after {
   content: '';
@@ -1470,20 +1440,6 @@ address { font-style: normal; }
   opacity: .6;
   pointer-events: none;
   z-index: 3;
-}
-
-/* Section separator marks */
-.section-sep {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 0;
-  margin: 0;
-  height: 0;
-  overflow: visible;
-  position: relative;
-  z-index: 2;
 }
 
 /* Testimonial section — warmer botanical feel; border handled above */
@@ -2001,44 +1957,6 @@ address { font-style: normal; }
   perspective: 600px;
 }
 
-/* Trust bar items — add hover lift */
-.trust-item {
-  padding: 20px 16px;
-  border-radius: var(--radius-lg);
-  transition: background var(--transition), box-shadow var(--transition), transform .25s var(--ease-spring);
-}
-.trust-item:hover {
-  background: var(--green-wash);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-3px);
-}
-
-/* === BOTANICAL SECTION BREAK ============================== */
-.botanical-break {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 0;
-  line-height: 1;
-  color: var(--green-pale);
-  user-select: none;
-  pointer-events: none;
-  overflow: hidden;
-  height: 1px;
-  position: relative;
-}
-.botanical-break::before,
-.botanical-break::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--stone));
-}
-.botanical-break::after {
-  background: linear-gradient(to left, transparent, var(--stone));
-}
-
 /* === CONTACT FORM ========================================== */
 .contact__form-wrap {
   padding: 36px 32px;
@@ -2249,18 +2167,6 @@ address { font-style: normal; }
   .contact__form-wrap {
     padding: 28px 20px;
   }
-}
-
-/* === TESTIMONIAL CARD — warm card with clear separation from earth-wash bg */
-.testimonial-card {
-  background: #ece5d5;
-  border-color: #b8aa96;
-  box-shadow: 0 2px 12px rgba(59,42,26,.08), 0 1px 0 rgba(255,255,255,.55) inset;
-}
-.testimonial-card:hover {
-  background: #e8dece;
-  box-shadow: 0 8px 32px rgba(59,42,26,.14), 0 1px 0 rgba(255,255,255,.55) inset;
-  border-color: var(--green-pale);
 }
 
 /* === LEGACY IMG HOVER PARALLAX (CSS) ====================== */
