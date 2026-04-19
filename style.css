@@ -1315,8 +1315,15 @@ address { font-style: normal; }
 
 .testimonials__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
+}
+
+/* Centre the lone card when there's an odd card on the last row */
+.testimonials__grid .testimonial-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 460px;
+  justify-self: center;
 }
 
 .testimonial-card {
