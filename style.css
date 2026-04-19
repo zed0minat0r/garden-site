@@ -24,6 +24,8 @@
   --cream:        #faf8f3;
   --off-white:    #f3f0e9;
   --stone:        #ddd5c5;
+  --review-bg:    #ece5d5;
+  --review-border:#b8aa96;
   --text:         #1a1a17;
   --text-muted:   #5a5449;
 
@@ -1229,7 +1231,7 @@ address { font-style: normal; }
 }
 
 .contact__map {
-  height: 440px;
+  height: 340px;
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-xl);
@@ -1293,8 +1295,8 @@ address { font-style: normal; }
 }
 
 .testimonial-card {
-  background: #ece5d5;
-  border: 1px solid #b8aa96;
+  background: var(--review-bg);
+  border: 1px solid var(--review-border);
   border-radius: var(--radius-xl);
   padding: 40px 36px;
   display: flex;
@@ -1316,7 +1318,7 @@ address { font-style: normal; }
   pointer-events: none;
 }
 .testimonial-card:hover {
-  background: #e8dece;
+  background: #e0d8c8;
   box-shadow: 0 8px 32px rgba(59,42,26,.14), 0 1px 0 rgba(255,255,255,.55) inset;
   transform: translateY(-4px);
   border-color: var(--green-pale);
@@ -1784,6 +1786,12 @@ address { font-style: normal; }
   }
   .seasonal-card--wide {
     grid-column: span 1;
+  }
+  /* Align season pill flush left so it reads cleanly with the title below */
+  .seasonal-card__season {
+    display: block;
+    width: fit-content;
+    align-self: flex-start;
   }
 }
 
@@ -2335,8 +2343,26 @@ address { font-style: normal; }
 }
 
 @media (max-width: 768px) {
-  .greenhouse-bridge { padding: 22px 0 26px; }
-  .greenhouse-bridge__text { font-size: 15px; max-width: 260px; }
+  .greenhouse-bridge {
+    padding: 22px 0 26px;
+    background: linear-gradient(180deg, var(--green-wash) 0%, var(--off-white) 100%);
+    border-top: 2px solid var(--green-pale);
+    border-bottom: 2px solid var(--green-pale);
+    position: relative;
+  }
+  /* Amber accent bar on mobile — gives structural weight the leaf provided on desktop */
+  .greenhouse-bridge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 2px;
+    background: var(--amber);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  }
+  .greenhouse-bridge__text { font-size: 15px; max-width: 280px; }
   .greenhouse-bridge__leaf { display: none; }
 
   .nav__menu {
@@ -2391,7 +2417,7 @@ address { font-style: normal; }
   }
 
   .contact { padding: 80px 0; }
-  .contact__form-wrap { order: -2; }
+  .contact__form-wrap { order: 1; }
   .contact__info { order: -1; }
   .contact__detail svg {
     width: 28px;
