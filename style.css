@@ -723,9 +723,9 @@ address { font-style: normal; }
   /* IMPORTANT: No overflow:hidden — sticky child needs an unclipped scroll parent */
 }
 
-/* Runway: 300vh total gives 4 panels ~75vh each of scroll budget */
+/* Runway: 350vh total gives 4 panels ~87vh each of scroll budget */
 .svc-scroll {
-  height: 300vh;
+  height: 350vh;
   position: relative;
 }
 
@@ -796,7 +796,7 @@ address { font-style: normal; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 24px 80px;
+  padding: 0 24px 140px;
   max-width: 640px;
   width: 100%;
 }
@@ -2474,7 +2474,7 @@ address { font-style: normal; }
 
   /* --- Services section — 375px mobile focus ---------------- */
   .svc-panel__content {
-    padding: 0 20px 64px;
+    padding: 0 20px 120px;
   }
   .svc-panel__heading {
     font-size: clamp(26px, 8vw, 44px);
