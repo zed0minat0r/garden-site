@@ -2487,6 +2487,19 @@ address { font-style: normal; }
   max-width: 480px;
   line-height: 1.6;
 }
+.plant-now__phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 4px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color .18s ease;
+}
+.plant-now__phone:hover {
+  color: var(--text-primary);
+}
 
 /* Contact grid: 2-col (info+form | map) at tablet, 1-col at mobile */
 @media (max-width: 960px) and (min-width: 601px) {
