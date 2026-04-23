@@ -723,9 +723,9 @@ address { font-style: normal; }
   /* IMPORTANT: No overflow:hidden — sticky child needs an unclipped scroll parent */
 }
 
-/* Runway: 425vh — extra scroll at the end so panel 4 lingers */
+/* Runway: 375vh — Events panel still gets proportionally more dwell (~115vh) with reduced mobile captivity */
 .svc-scroll {
-  height: 425vh;
+  height: 375vh;
   position: relative;
 }
 
@@ -1378,13 +1378,36 @@ address { font-style: normal; }
   .testimonials__header {
     text-align: center;
   }
-  /* Slower on mobile so quotes are readable */
-  .testimonials__marquee-track {
-    animation-duration: 70s;
+  /* Convert marquee to swipe-snap on mobile — stop animation, enable scroll-snap */
+  .testimonials__marquee-wrap {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    mask-image: none;
+    -webkit-mask-image: none;
+    cursor: auto;
   }
+  .testimonials__marquee-track {
+    animation: none;
+    width: auto;
+    flex-wrap: nowrap;
+  }
+  /* Each quote snaps discretely */
   .tq {
-    width: clamp(260px, 82vw, 340px);
-    padding: 0 24px;
+    width: 85vw;
+    min-width: 85vw;
+    scroll-snap-align: center;
+    padding: 0 20px;
+    flex-shrink: 0;
+  }
+  /* Hide separators — they break even spacing in snap layout */
+  .tq__sep {
+    display: none;
+  }
+  /* Aria-hidden duplicate set not needed on mobile — hide it */
+  .testimonials__marquee-track .tq[aria-hidden="true"] {
+    display: none;
   }
   .tq__text {
     font-size: clamp(1rem, 4.5vw, 1.15rem);
@@ -2172,7 +2195,7 @@ address { font-style: normal; }
 .ps-tile__tag {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: .13em;
   text-transform: uppercase;
@@ -2242,7 +2265,7 @@ address { font-style: normal; }
 }
 .ps-tile__aside {
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .2em;
   text-transform: uppercase;
@@ -2697,6 +2720,37 @@ address { font-style: normal; }
   }
   .plant-now__cta .btn--primary {
     align-self: center;
+  }
+  /* Plant spread tiles — center body content on mobile */
+  .ps-tile--hero .ps-tile__body {
+    align-items: center;
+    text-align: center;
+  }
+  .ps-tile--hero .ps-tile__name {
+    text-align: center;
+  }
+  .ps-tile--hero .ps-tile__text {
+    text-align: center;
+  }
+  .ps-tile__body--inset {
+    align-items: center;
+    text-align: center;
+  }
+  .ps-tile__body--overlay {
+    align-items: center;
+    text-align: center;
+  }
+  .ps-tile__body--strip {
+    align-items: center;
+    text-align: center;
+  }
+  .ps-tile__strip-meta {
+    align-items: center;
+    justify-content: center;
+  }
+  .ps-tile__strip-content {
+    align-items: center;
+    text-align: center;
   }
 
   /* --- CTA strip -------------------------------------------- */
