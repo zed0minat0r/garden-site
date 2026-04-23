@@ -1764,13 +1764,13 @@ address { font-style: normal; }
   border-bottom: 1px solid var(--stone);
 }
 
-/* Flipped row: text column first in DOM order is already left,
-   image moves right by reversing visual order */
-.seasonal-row--flip {
-  direction: rtl;
+/* Flipped row: image moves to column 2, body stays at column 1 visually
+   Uses grid-column to avoid direction:rtl text-selection / screen-reader issues */
+.seasonal-row--flip .seasonal-row__img-wrap {
+  order: 2;
 }
-.seasonal-row--flip > * {
-  direction: ltr;
+.seasonal-row--flip .seasonal-row__body {
+  order: 1;
 }
 
 .seasonal-row__img-wrap {
@@ -1839,8 +1839,11 @@ address { font-style: normal; }
     grid-template-columns: 1fr;
     min-height: unset;
   }
-  .seasonal-row--flip {
-    direction: ltr;
+  .seasonal-row--flip .seasonal-row__img-wrap {
+    order: unset;
+  }
+  .seasonal-row--flip .seasonal-row__body {
+    order: unset;
   }
   .seasonal-row__img-wrap {
     height: 260px;
@@ -1870,7 +1873,7 @@ address { font-style: normal; }
   }
 }
 
-/* === FEATURED TESTIMONIAL ================================= */
+/* === TESTIMONIALS RATING BADGE ============================ */
 .testimonials__rating-badge {
   display: inline-flex;
   align-items: center;

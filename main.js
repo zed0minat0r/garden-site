@@ -130,18 +130,6 @@ function addRevealClasses() {
     trustBar.classList.add('reveal-group');
   }
 
-  // Seasonal grid — staggered
-  const seasonalGrid = document.querySelector('.seasonal__grid');
-  if (seasonalGrid && !seasonalGrid.classList.contains('reveal-group')) {
-    seasonalGrid.classList.add('reveal-group');
-  }
-
-  // Testimonials grid — staggered
-  const testGrid = document.querySelector('.testimonials__grid');
-  if (testGrid && !testGrid.classList.contains('reveal-group')) {
-    testGrid.classList.add('reveal-group');
-  }
-
   // Legacy badge — scale entrance
   const badge = document.querySelector('.legacy__badge');
   if (badge && !badge.classList.contains('reveal-scale')) {
