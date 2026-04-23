@@ -2587,3 +2587,309 @@ address { font-style: normal; }
     min-width: 0;
   }
 }
+
+/* ============================================================
+   MOBILE CENTER-ALIGNMENT — all sections @ 375px
+   Only affects max-width: 768px. Desktop layout unchanged.
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* --- Global section headings + eyebrows ------------------- */
+  .section-eyebrow {
+    text-align: center;
+    display: block;
+  }
+  .section-title {
+    text-align: center;
+  }
+
+  /* --- Trust bar -------------------------------------------- */
+  .trust-bar__inner {
+    justify-content: center;
+  }
+  .trust-item {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* --- Greenhouse bridge ------------------------------------ */
+  .greenhouse-bridge__inner {
+    justify-content: center;
+    text-align: center;
+  }
+  .greenhouse-bridge__text {
+    text-align: center;
+  }
+
+  /* --- Services section ------------------------------------- */
+  .services__header {
+    text-align: center;
+  }
+  /* Service cards — center body text within each card */
+  .service-card__body {
+    align-items: center;
+    text-align: center;
+  }
+  .service-card__tag {
+    align-self: center;
+  }
+  .service-card__list {
+    align-items: center;
+    width: 100%;
+  }
+  .service-card__list li {
+    justify-content: center;
+  }
+  .service-card .btn--primary {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Event callout in card */
+  .service-card__event-callout {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* --- Legacy / About --------------------------------------- */
+  .legacy__body {
+    align-items: center;
+    text-align: center;
+    padding: 52px 24px;
+  }
+  .legacy__body .section-eyebrow {
+    text-align: center;
+  }
+  .legacy__body .section-title {
+    text-align: center;
+  }
+  .legacy__quote {
+    text-align: center;
+    max-width: 100%;
+    width: 100%;
+  }
+  .legacy__text {
+    text-align: center;
+    max-width: 100%;
+  }
+  .legacy__pillars {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .legacy__pillar {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* --- Seasonal cards --------------------------------------- */
+  .seasonal__header {
+    text-align: center;
+  }
+  .seasonal-card__body {
+    align-items: center;
+    text-align: center;
+  }
+  .seasonal-card__season {
+    align-self: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .seasonal-card__title {
+    text-align: center;
+  }
+  .seasonal-card__text {
+    text-align: center;
+  }
+  .seasonal-card .btn--primary {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --- Plant Now -------------------------------------------- */
+  .plant-now__header {
+    text-align: center;
+  }
+  .plant-now__intro {
+    text-align: center;
+  }
+  .plant-now__card {
+    align-items: center;
+    text-align: center;
+  }
+  .plant-now__card-icon {
+    align-self: center;
+  }
+  .plant-now__card-title {
+    text-align: center;
+  }
+  .plant-now__card-text {
+    text-align: center;
+  }
+  .plant-now__card-tag {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .plant-now__cta {
+    align-items: center;
+    text-align: center;
+  }
+  .plant-now__cta-text {
+    text-align: center;
+  }
+  .plant-now__cta .btn--primary {
+    align-self: center;
+  }
+
+  /* --- CTA strip -------------------------------------------- */
+  .cta-strip__text {
+    text-align: center;
+    width: 100%;
+  }
+  .cta-strip__headline {
+    text-align: center;
+  }
+  .cta-strip__sub {
+    text-align: center;
+  }
+  .cta-strip__inner {
+    align-items: center;
+  }
+  .cta-strip .btn--primary {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --- Testimonials ----------------------------------------- */
+  .testimonials__header {
+    text-align: center;
+  }
+  .testimonial-featured {
+    text-align: center;
+  }
+  .testimonial-featured__footer {
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  .testimonial-card {
+    text-align: center;
+  }
+  .testimonial-card__stars {
+    justify-content: center;
+  }
+  .testimonial-card__author {
+    align-items: center;
+    text-align: center;
+  }
+  .testimonials__cta {
+    align-items: center;
+    text-align: center;
+  }
+  .testimonials__cta .btn--primary {
+    align-self: center;
+  }
+  .testimonials__rating-badge {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* --- Contact section -------------------------------------- */
+  .contact__info {
+    text-align: center;
+  }
+  .contact__info .section-eyebrow,
+  .contact__info .section-title {
+    text-align: center;
+  }
+  .contact__welcome {
+    text-align: center;
+    max-width: 100%;
+  }
+  .contact__open-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact__details {
+    align-items: center;
+  }
+  .contact__detail {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+  .contact__detail svg {
+    flex-shrink: 0;
+    margin-top: 0;
+  }
+  /* Form — labels and title already flow full-width; keep submit centered */
+  .contact__form-title {
+    text-align: center;
+  }
+  .contact__form-sub {
+    text-align: center;
+  }
+  .contact__form-submit {
+    align-self: center;
+    width: 100%;
+  }
+  .contact__success {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .btn--directions {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --- Footer ----------------------------------------------- */
+  .site-footer__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .site-footer__logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .site-footer__tagline {
+    text-align: center;
+  }
+  .site-footer__nav {
+    justify-content: center;
+    text-align: center;
+  }
+  .site-footer__info {
+    text-align: center;
+  }
+  .site-footer__info-label {
+    text-align: center;
+  }
+  .site-footer__hours li {
+    justify-content: center;
+  }
+  .site-footer__address {
+    text-align: center;
+  }
+  .site-footer__phone {
+    display: block;
+    text-align: center;
+  }
+  .site-footer__bottom {
+    align-items: center;
+    text-align: center;
+  }
+  .site-footer__social {
+    justify-content: center;
+  }
+  .site-footer__copy {
+    text-align: center;
+  }
+}
