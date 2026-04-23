@@ -339,40 +339,47 @@
           <p class="section-eyebrow">Right now in the greenhouse</p>
           <h2 class="section-title">What&rsquo;s in season</h2>
         </div>
-        <div class="seasonal__grid reveal-group">
-          <article class="seasonal-card seasonal-card--wide">
-            <div class="seasonal-card__img-wrap">
+
+        <div class="seasonal-rows reveal-group">
+          <!-- Row 1: image left, text right -->
+          <article class="seasonal-row">
+            <div class="seasonal-row__img-wrap">
               <img src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg" alt="Annuals and perennials filling the Colonial Gardens greenhouse" loading="lazy" />
             </div>
-            <div class="seasonal-card__body">
-              <span class="seasonal-card__season">Spring 2026</span>
-              <h3 class="seasonal-card__title">Annuals &amp; Perennials</h3>
-              <p class="seasonal-card__text">Hundreds of varieties just arrived. Petunias, impatiens, coneflower, black-eyed Susan &mdash; all ready to go home with you.</p>
-              <a href="#garden-center" class="btn btn--primary">Visit the Nursery</a>
+            <div class="seasonal-row__body">
+              <span class="seasonal-row__label">Spring 2026</span>
+              <h3 class="seasonal-row__title">Annuals &amp; Perennials</h3>
+              <p class="seasonal-row__text">Hundreds of varieties just arrived. Petunias, impatiens, coneflower, black-eyed Susan &mdash; all ready to go home with you. Peak selection is right now, before the Memorial Day rush.</p>
             </div>
           </article>
-          <article class="seasonal-card">
-            <div class="seasonal-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=85&auto=format" alt="Herb garden with fresh herbs" loading="lazy" />
+
+          <!-- Row 2: text left, image right (flipped) -->
+          <article class="seasonal-row seasonal-row--flip">
+            <div class="seasonal-row__img-wrap">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=85&auto=format" alt="Fresh vegetable and herb starts ready for the kitchen garden" loading="lazy" />
             </div>
-            <div class="seasonal-card__body">
-              <span class="seasonal-card__season">Now Available</span>
-              <h3 class="seasonal-card__title">Veggie &amp; Herb Starts</h3>
-              <p class="seasonal-card__text">Tomatoes, peppers, basil, thyme &mdash; get your kitchen garden growing now.</p>
-              <a href="#garden-center" class="btn btn--primary">Visit the Nursery</a>
+            <div class="seasonal-row__body">
+              <span class="seasonal-row__label">Now Available</span>
+              <h3 class="seasonal-row__title">Vegetables &amp; Herbs</h3>
+              <p class="seasonal-row__text">Tomatoes, peppers, basil, thyme &mdash; get your kitchen garden going while the soil is still cool. Our growers start these on-site so they are already acclimated to Chester County conditions.</p>
             </div>
           </article>
-          <article class="seasonal-card">
-            <div class="seasonal-card__img-wrap">
+
+          <!-- Row 3: image left, text right -->
+          <article class="seasonal-row">
+            <div class="seasonal-row__img-wrap">
               <img src="https://images.unsplash.com/photo-1445543949571-ffc3e0e2f55e?w=800&q=85&auto=format" alt="Trees and shrubs ready for spring planting" loading="lazy" />
             </div>
-            <div class="seasonal-card__body">
-              <span class="seasonal-card__season">Spring Planting</span>
-              <h3 class="seasonal-card__title">Trees &amp; Shrubs</h3>
-              <p class="seasonal-card__text">Spring is the best time to plant. Our nursery is stocked with shade trees, ornamentals, and flowering shrubs.</p>
-              <a href="#garden-center" class="btn btn--primary">Visit the Nursery</a>
+            <div class="seasonal-row__body">
+              <span class="seasonal-row__label">Spring Planting</span>
+              <h3 class="seasonal-row__title">Trees &amp; Shrubs</h3>
+              <p class="seasonal-row__text">Spring is the ideal planting window. Roots have until summer heat to establish. We stock maples, dogwoods, ornamentals, and flowering shrubs &mdash; all containerized and ready to go home today.</p>
             </div>
           </article>
+        </div>
+
+        <div class="seasonal__cta reveal">
+          <a href="#garden-center" class="btn btn--primary">Visit the Nursery</a>
         </div>
       </div>
     </section>

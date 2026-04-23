@@ -270,8 +270,8 @@ function initSvcScroll() {
       rafId = null;
 
       const rect      = runway.getBoundingClientRect();
-      const runwayH   = runway.offsetHeight;          // 400vh
-      const panelH    = runwayH / PANEL_COUNT;         // 100vh each
+      const runwayH   = runway.offsetHeight;          // 300vh
+      const panelH    = runwayH / PANEL_COUNT;         // 75vh each
 
       // How far into the runway we've scrolled (0 = just entered, runwayH-vh = last panel)
       const scrolled  = -rect.top;
