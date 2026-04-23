@@ -1794,6 +1794,27 @@ address { font-style: normal; }
   transform: translateY(-2px);
 }
 
+/* === BOTANICAL DIVIDER ==================================== */
+.botanical-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 48px 24px;
+  background: var(--cream);
+}
+.botanical-divider__line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green-pale), transparent);
+}
+.botanical-divider__leaf {
+  color: var(--green-light);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
 /* === SEASONAL HIGHLIGHTS ================================== */
 .seasonal {
   padding: 108px 0 80px;
