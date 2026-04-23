@@ -185,120 +185,88 @@
       </div>
     </div>
 
-    <!-- Services sticky horizontal journey -->
+    <!-- Services — full-screen vertical storytelling -->
     <section class="services" id="garden-center" aria-label="Our services">
-      <!-- Intro header above the sticky zone -->
-      <div class="services__intro container reveal">
-        <p class="section-eyebrow">Our Services</p>
-        <h2 class="section-title">A journey through<br />everything we grow</h2>
-        <p class="services__intro-sub">Scroll to explore four ways Colonial Gardens serves the Phoenixville community.</p>
-      </div>
 
-      <!-- Sticky scroll runway — height drives horizontal movement -->
-      <div class="journey" id="journeyOuter" aria-label="Services journey — scroll to explore">
-        <!-- Sticky viewport frame -->
-        <div class="journey__sticky" id="journeySticky">
+      <!-- Service 1: Garden Center -->
+      <article class="svc-story svc-story--1">
+        <div class="svc-story__bg">
+          <img
+            src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg"
+            alt="Colorful annuals and perennials filling the greenhouse"
+            class="svc-story__photo"
+            loading="eager"
+          />
+          <div class="svc-story__overlay"></div>
+        </div>
+        <div class="svc-story__content">
+          <span class="svc-story__eyebrow">Garden Center</span>
+          <h2 class="svc-story__heading">Acres of<br />greenhouse &amp;<br />growing space</h2>
+          <p class="svc-story__body">Stocked fresh every week with annuals, perennials, shrubs, and trees — everything your garden needs, right here.</p>
+          <a href="https://colonialgardenspa.com" class="svc-story__cta btn--glow-warm" target="_blank" rel="noopener noreferrer">Shop the Greenhouse</a>
+        </div>
+        <div class="svc-story__number" aria-hidden="true">01</div>
+      </article>
 
-          <!-- Progress bar across top of sticky zone -->
-          <div class="journey__progress-bar" aria-hidden="true">
-            <div class="journey__progress-fill" id="journeyProgressFill"></div>
-          </div>
+      <!-- Service 2: Landscaping -->
+      <article class="svc-story svc-story--2" id="landscaping">
+        <div class="svc-story__bg">
+          <img
+            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1400&q=80"
+            alt="Professionally landscaped garden with stone pathway"
+            class="svc-story__photo"
+            loading="lazy"
+          />
+          <div class="svc-story__overlay"></div>
+        </div>
+        <div class="svc-story__content">
+          <span class="svc-story__eyebrow">Landscaping</span>
+          <h2 class="svc-story__heading">40+ years of<br />craft &amp;<br />craftsmanship</h2>
+          <p class="svc-story__body">Design, installation, and maintenance from a team with four decades of hands-on experience transforming properties.</p>
+          <a href="https://colonialgardenspa.com" class="svc-story__cta btn--glow-green" target="_blank" rel="noopener noreferrer">Get a Consultation</a>
+        </div>
+        <div class="svc-story__number" aria-hidden="true">02</div>
+      </article>
 
-          <!-- Dot indicators -->
-          <div class="journey__dots" id="journeyDots" aria-hidden="true">
-            <span class="journey__dot is-active" data-idx="0"></span>
-            <span class="journey__dot" data-idx="1"></span>
-            <span class="journey__dot" data-idx="2"></span>
-            <span class="journey__dot" data-idx="3"></span>
-          </div>
+      <!-- Service 3: Florist -->
+      <article class="svc-story svc-story--3" id="florist">
+        <div class="svc-story__bg">
+          <img
+            src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=1400&q=80"
+            alt="Beautiful floral arrangement with vibrant blooms"
+            class="svc-story__photo"
+            loading="lazy"
+          />
+          <div class="svc-story__overlay"></div>
+        </div>
+        <div class="svc-story__content">
+          <span class="svc-story__eyebrow">Florist</span>
+          <h2 class="svc-story__heading">Custom<br />arrangements<br />for every occasion</h2>
+          <p class="svc-story__body">Local delivery available. Weddings, sympathy, celebrations — or just because the moment calls for flowers.</p>
+          <a href="https://colonialgardenspa.com" class="svc-story__cta btn--glow-warm" target="_blank" rel="noopener noreferrer">Order Flowers</a>
+        </div>
+        <div class="svc-story__number" aria-hidden="true">03</div>
+      </article>
 
-          <!-- Horizontal track of 4 panels -->
-          <div class="journey__track" id="journeyTrack">
-
-            <!-- Panel 1: Garden Center -->
-            <article class="journey__panel journey__panel--1" id="garden-center-panel">
-              <div class="journey__panel-img-side">
-                <img
-                  src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg"
-                  alt="Colorful annuals and perennials in the greenhouse"
-                  class="journey__panel-img"
-                  loading="eager"
-                />
-              </div>
-              <div class="journey__panel-text-side">
-                <span class="journey__panel-tag">Garden Center</span>
-                <h3 class="journey__panel-title">Acres of greenhouse<br />and growing space</h3>
-                <p class="journey__panel-body">Acres of greenhouse and outdoor growing space, stocked fresh every week. Annuals, perennials, shrubs, trees, and everything in between.</p>
-                <a href="https://colonialgardenspa.com" class="btn btn--primary journey__panel-cta" target="_blank" rel="noopener noreferrer">Shop the Greenhouse</a>
-              </div>
-            </article>
-
-            <!-- Panel 2: Landscaping -->
-            <article class="journey__panel journey__panel--2" id="landscaping">
-              <div class="journey__panel-text-side">
-                <span class="journey__panel-tag">Landscaping</span>
-                <h3 class="journey__panel-title">Design &amp; installation<br />from true craftsmen</h3>
-                <p class="journey__panel-body">Design, installation, and maintenance from a team with 40+ years of hands-on experience. From backyard makeovers to full property transformations.</p>
-                <a href="https://colonialgardenspa.com" class="btn btn--primary journey__panel-cta" target="_blank" rel="noopener noreferrer">Get a Consultation</a>
-              </div>
-              <div class="journey__panel-img-side">
-                <img
-                  src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1400&q=80"
-                  alt="Professionally landscaped garden with stone pathway and lush plantings"
-                  class="journey__panel-img"
-                  loading="lazy"
-                />
-              </div>
-            </article>
-
-            <!-- Panel 3: Florist -->
-            <article class="journey__panel journey__panel--3" id="florist">
-              <div class="journey__panel-img-side">
-                <img
-                  src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=1400&q=80"
-                  alt="Beautiful floral arrangement with vibrant blooms"
-                  class="journey__panel-img"
-                  loading="lazy"
-                />
-              </div>
-              <div class="journey__panel-text-side">
-                <span class="journey__panel-tag">Florist</span>
-                <h3 class="journey__panel-title">Custom arrangements<br />for every occasion</h3>
-                <p class="journey__panel-body">Custom arrangements for every occasion. Weddings, events, sympathy, or just because. Local delivery available.</p>
-                <a href="https://colonialgardenspa.com" class="btn btn--primary journey__panel-cta" target="_blank" rel="noopener noreferrer">Order Flowers</a>
-              </div>
-            </article>
-
-            <!-- Panel 4: Events -->
-            <article class="journey__panel journey__panel--4" id="events">
-              <div class="journey__panel-text-side">
-                <span class="journey__panel-tag">Events</span>
-                <h3 class="journey__panel-title">Seasonal celebrations<br />all year long</h3>
-                <p class="journey__panel-body">Seasonal celebrations, workshops, and community gatherings. Mother's Day, fall festivals, holiday markets, and more.</p>
-                <a href="https://colonialgardenspa.com" class="btn btn--primary journey__panel-cta" target="_blank" rel="noopener noreferrer">See Upcoming Events</a>
-              </div>
-              <div class="journey__panel-img-side">
-                <img
-                  src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1400&q=80"
-                  alt="Festive outdoor garden event with lights and community gathering"
-                  class="journey__panel-img"
-                  loading="lazy"
-                />
-              </div>
-            </article>
-
-          </div><!-- /.journey__track -->
-
-          <!-- Scroll hint — fades out once scrolling begins -->
-          <div class="journey__hint" id="journeyHint" aria-hidden="true">
-            <span>Scroll to explore</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-        </div><!-- /.journey__sticky -->
-      </div><!-- /.journey -->
+      <!-- Service 4: Events -->
+      <article class="svc-story svc-story--4" id="events">
+        <div class="svc-story__bg">
+          <img
+            src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1400&q=80"
+            alt="Festive outdoor garden event with lights and community"
+            class="svc-story__photo"
+            loading="lazy"
+          />
+          <div class="svc-story__overlay"></div>
+        </div>
+        <div class="svc-story__content">
+          <span class="svc-story__eyebrow">Events</span>
+          <h2 class="svc-story__heading">Seasonal<br />celebrations<br />year-round</h2>
+          <p class="svc-story__body">Workshops, festivals, holiday markets, and community gatherings — Colonial Gardens is where Phoenixville comes together.</p>
+          <a href="https://colonialgardenspa.com" class="svc-story__cta btn--glow-teal" target="_blank" rel="noopener noreferrer">See Upcoming Events</a>
+        </div>
+        <div class="svc-story__number" aria-hidden="true">04</div>
+      </article>
 
     </section>
 

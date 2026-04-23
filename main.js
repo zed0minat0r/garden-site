@@ -83,81 +83,6 @@ function initHero() {
   setTimeout(() => hero.classList.add('is-visible'), 80);
 }
 
-/* --- Sticky horizontal journey scroll --------------------- */
-function initJourneyScroll() {
-  if (prefersReducedMotion) return;
-
-  const outer        = document.getElementById('journeyOuter');
-  const track        = document.getElementById('journeyTrack');
-  const progressFill = document.getElementById('journeyProgressFill');
-  const hint         = document.getElementById('journeyHint');
-  const dotsEl       = document.getElementById('journeyDots');
-  if (!outer || !track) return;
-
-  // On mobile/tablet (≤768px) the journey stacks vertically — skip JS
-  if (window.innerWidth <= 768) return;
-
-  const PANEL_COUNT  = 4;
-  const dots         = dotsEl ? Array.from(dotsEl.querySelectorAll('.journey__dot')) : [];
-  let   rafPending   = false;
-  let   hintHidden   = false;
-
-  function update() {
-    rafPending = false;
-
-    const outerRect  = outer.getBoundingClientRect();
-    const outerTop   = outerRect.top;           // < 0 means we've scrolled into it
-    const outerH     = outer.offsetHeight;      // 400vh
-    const viewH      = window.innerHeight;
-
-    // How far we've scrolled within the outer container
-    // outerTop goes from 0 (just entered) to -(outerH - viewH) (fully exited)
-    const scrolled   = -outerTop;
-    const scrollable = outerH - viewH;          // range of motion
-
-    // Clamp 0..scrollable
-    const clamped    = Math.max(0, Math.min(scrolled, scrollable));
-
-    // progress 0..1
-    const progress   = scrollable > 0 ? clamped / scrollable : 0;
-
-    // translateX: move track leftward
-    // At progress=0 → 0vw, at progress=1 → -300vw
-    const tx = -(progress * (PANEL_COUNT - 1) * 100);
-    track.style.transform = `translateX(${tx}vw)`;
-
-    // Progress bar
-    if (progressFill) {
-      progressFill.style.width = (progress * 100) + '%';
-    }
-
-    // Active panel index
-    const panelIdx = Math.min(
-      PANEL_COUNT - 1,
-      Math.floor(progress * PANEL_COUNT + 0.1)
-    );
-
-    // Update dots
-    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === panelIdx));
-
-    // Hide scroll hint once scrolling has begun into journey
-    if (!hintHidden && progress > 0.02) {
-      hintHidden = true;
-      if (hint) hint.classList.add('is-hidden');
-    }
-  }
-
-  function onScroll() {
-    if (rafPending) return;
-    rafPending = true;
-    requestAnimationFrame(update);
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  // Run once immediately in case page loads mid-scroll
-  update();
-}
 
 /* --- Parallax on legacy image ----------------------------- */
 function initParallax() {
@@ -365,7 +290,6 @@ function init() {
   addRevealClasses();
   initReveal();
   initHero();
-  initJourneyScroll();
   initParallax();
   initConsultForm();
   initOpenBar();
