@@ -185,100 +185,121 @@
       </div>
     </div>
 
-    <!-- Services horizontal scroll -->
-    <section class="services" id="services" aria-label="Our services">
-      <div class="services__header container reveal">
-        <p class="section-eyebrow">Everything you need</p>
-        <h2 class="section-title">Four ways we grow<br />with you</h2>
+    <!-- Services sticky horizontal journey -->
+    <section class="services" id="garden-center" aria-label="Our services">
+      <!-- Intro header above the sticky zone -->
+      <div class="services__intro container reveal">
+        <p class="section-eyebrow">Our Services</p>
+        <h2 class="section-title">A journey through<br />everything we grow</h2>
+        <p class="services__intro-sub">Scroll to explore four ways Colonial Gardens serves the Phoenixville community.</p>
       </div>
-      <div class="services__scroll-wrap" role="region" aria-label="Services cards — scroll horizontally">
-        <div class="services__track" id="servicesTrack">
 
-          <article class="service-card" id="garden-center">
-            <div class="service-card__img-wrap">
-              <img src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg" alt="Colorful annuals and perennials in the greenhouse" class="service-card__img" loading="lazy" />
-            </div>
-            <div class="service-card__overlay" aria-hidden="true"></div>
-            <div class="service-card__body">
-              <span class="service-card__tag">Garden Center</span>
-              <h3 class="service-card__title">Acres of plants,<br />every season</h3>
-              <p class="service-card__text">Annuals, perennials, veggies, herbs, trees, shrubs, mulch, soil, stone, indoor plants, and a gift shop packed with finds.</p>
-              <ul class="service-card__list" role="list">
-                <li>Annuals &amp; Perennials</li>
-                <li>Vegetables, Fruits &amp; Herbs</li>
-                <li>Trees &amp; Shrubs</li>
-                <li>Mulch, Soil &amp; Stone</li>
-                <li>Indoor Plants</li>
-                <li>Gift Shop</li>
-              </ul>
-            </div>
-          </article>
+      <!-- Sticky scroll runway — height drives horizontal movement -->
+      <div class="journey" id="journeyOuter" aria-label="Services journey — scroll to explore">
+        <!-- Sticky viewport frame -->
+        <div class="journey__sticky" id="journeySticky">
 
-          <article class="service-card" id="landscaping">
-            <div class="service-card__img-wrap">
-              <img src="https://colonialgardenspa.com/wp-content/uploads/2025/03/landscaping-services-home-block.jpg" alt="Professional landscaping design and installation" class="service-card__img" loading="lazy" />
-            </div>
-            <div class="service-card__overlay" aria-hidden="true"></div>
-            <div class="service-card__body">
-              <span class="service-card__tag">Landscaping</span>
-              <h3 class="service-card__title">40+ years turning<br />yards into sanctuaries</h3>
-              <p class="service-card__text">From a free in-store consult to full design, install, and a one-year plant warranty — we handle everything.</p>
-              <ul class="service-card__list" role="list">
-                <li>Free in-store consultations</li>
-                <li>House call visits</li>
-                <li>Full design &amp; install</li>
-                <li>One-year plant warranty</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="service-card" id="florist">
-            <div class="service-card__img-wrap">
-              <img src="https://colonialgardenspa.com/wp-content/uploads/2025/03/Florist-home-block.jpg" alt="Fresh flower arrangements from our full-service florist" class="service-card__img" loading="lazy" />
-            </div>
-            <div class="service-card__overlay" aria-hidden="true"></div>
-            <div class="service-card__body">
-              <span class="service-card__tag">Florist</span>
-              <h3 class="service-card__title">Fresh flowers for every<br />moment</h3>
-              <p class="service-card__text">Full-service florist with arrangements for any occasion. Local delivery available &mdash; stop in or visit our full site to place your order.</p>
-              <a href="https://colonialgardenspa.com" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Visit Our Full Site</a>
-            </div>
-          </article>
-
-          <article class="service-card" id="events">
-            <div class="service-card__img-wrap">
-              <img src="https://colonialgardenspa.com/wp-content/uploads/2025/03/Seasonal-events-home-block.jpg" alt="Seasonal family-friendly events at Colonial Gardens" class="service-card__img" loading="lazy" />
-            </div>
-            <div class="service-card__overlay" aria-hidden="true"></div>
-            <div class="service-card__body">
-              <span class="service-card__tag">Events</span>
-              <h3 class="service-card__title">Family-friendly fun<br />all year long</h3>
-              <!-- UPDATE EVENT: Change the event name and dates below when the current event passes -->
-              <div class="service-card__event-callout">
-                <span class="service-card__event-label">Coming Up</span>
-                <span class="service-card__event-name">Mother&rsquo;s Day Plant Sale</span>
-                <span class="service-card__event-date">May 10&ndash;11</span>
-              </div>
-              <a href="https://colonialgardenspa.com" class="btn btn--primary" target="_blank" rel="noopener noreferrer">See Upcoming Events</a>
-            </div>
-          </article>
-
-        </div>
-        <div class="services__nav" aria-label="Scroll services cards">
-          <button class="services__nav-btn" id="servicesLeft" aria-label="Previous service">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 14L6 9l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="services__dots" id="servicesDots" aria-hidden="true">
-            <span class="services__dot is-active"></span>
-            <span class="services__dot"></span>
-            <span class="services__dot"></span>
-            <span class="services__dot"></span>
+          <!-- Progress bar across top of sticky zone -->
+          <div class="journey__progress-bar" aria-hidden="true">
+            <div class="journey__progress-fill" id="journeyProgressFill"></div>
           </div>
-          <button class="services__nav-btn" id="servicesRight" aria-label="Next service">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-      </div>
+
+          <!-- Dot indicators -->
+          <div class="journey__dots" id="journeyDots" aria-hidden="true">
+            <span class="journey__dot is-active" data-idx="0"></span>
+            <span class="journey__dot" data-idx="1"></span>
+            <span class="journey__dot" data-idx="2"></span>
+            <span class="journey__dot" data-idx="3"></span>
+          </div>
+
+          <!-- Horizontal track of 4 panels -->
+          <div class="journey__track" id="journeyTrack">
+
+            <!-- Panel 1: Garden Center -->
+            <article class="journey__panel journey__panel--1" id="garden-center-panel">
+              <div class="journey__panel-img-side">
+                <img
+                  src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg"
+                  alt="Colorful annuals and perennials in the greenhouse"
+                  class="journey__panel-img"
+                  loading="eager"
+                />
+              </div>
+              <div class="journey__panel-text-side">
+                <span class="journey__panel-tag">Garden Center</span>
+                <h3 class="journey__panel-title">Acres of greenhouse<br />and growing space</h3>
+                <p class="journey__panel-body">Acres of greenhouse and outdoor growing space, stocked fresh every week. Annuals, perennials, shrubs, trees, and everything in between.</p>
+                <a href="https://colonialgardenspa.com" class="btn btn--primary journey__panel-cta" target="_blank" rel="noopener noreferrer">Shop the Greenhouse</a>
+              </div>
+            </article>
+
+            <!-- Panel 2: Landscaping -->
+            <article class="journey__panel journey__panel--2" id="landscaping">
+              <div class="journey__panel-text-side">
+                <span class="journey__panel-tag">Landscaping</span>
+                <h3 class="journey__panel-title">Design &amp; installation<br />from true craftsmen</h3>
+                <p class="journey__panel-body">Design, installation, and maintenance from a team with 40+ years of hands-on experience. From backyard makeovers to full property transformations.</p>
+                <a href="https://colonialgardenspa.com" class="btn btn--primary journey__panel-cta" target="_blank" rel="noopener noreferrer">Get a Consultation</a>
+              </div>
+              <div class="journey__panel-img-side">
+                <img
+                  src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1400&q=80"
+                  alt="Professionally landscaped garden with stone pathway and lush plantings"
+                  class="journey__panel-img"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+
+            <!-- Panel 3: Florist -->
+            <article class="journey__panel journey__panel--3" id="florist">
+              <div class="journey__panel-img-side">
+                <img
+                  src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=1400&q=80"
+                  alt="Beautiful floral arrangement with vibrant blooms"
+                  class="journey__panel-img"
+                  loading="lazy"
+                />
+              </div>
+              <div class="journey__panel-text-side">
+                <span class="journey__panel-tag">Florist</span>
+                <h3 class="journey__panel-title">Custom arrangements<br />for every occasion</h3>
+                <p class="journey__panel-body">Custom arrangements for every occasion. Weddings, events, sympathy, or just because. Local delivery available.</p>
+                <a href="https://colonialgardenspa.com" class="btn btn--primary journey__panel-cta" target="_blank" rel="noopener noreferrer">Order Flowers</a>
+              </div>
+            </article>
+
+            <!-- Panel 4: Events -->
+            <article class="journey__panel journey__panel--4" id="events">
+              <div class="journey__panel-text-side">
+                <span class="journey__panel-tag">Events</span>
+                <h3 class="journey__panel-title">Seasonal celebrations<br />all year long</h3>
+                <p class="journey__panel-body">Seasonal celebrations, workshops, and community gatherings. Mother's Day, fall festivals, holiday markets, and more.</p>
+                <a href="https://colonialgardenspa.com" class="btn btn--primary journey__panel-cta" target="_blank" rel="noopener noreferrer">See Upcoming Events</a>
+              </div>
+              <div class="journey__panel-img-side">
+                <img
+                  src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1400&q=80"
+                  alt="Festive outdoor garden event with lights and community gathering"
+                  class="journey__panel-img"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+
+          </div><!-- /.journey__track -->
+
+          <!-- Scroll hint — fades out once scrolling begins -->
+          <div class="journey__hint" id="journeyHint" aria-hidden="true">
+            <span>Scroll to explore</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 4v12M4 10l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+        </div><!-- /.journey__sticky -->
+      </div><!-- /.journey -->
+
     </section>
 
     <!-- About / Legacy split -->
