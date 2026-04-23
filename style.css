@@ -1257,10 +1257,11 @@ address { font-style: normal; }
 
 /* === TESTIMONIALS ========================================= */
 .testimonials {
-  padding: 108px 0;
+  padding: 108px 0 80px;
   background: var(--earth-wash);
   border-top: none;
   border-bottom: 1px solid var(--stone);
+  overflow: hidden;
 }
 
 .testimonials__header {
@@ -1272,86 +1273,95 @@ address { font-style: normal; }
   margin-top: 10px;
 }
 
-.testimonials__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+/* --- Marquee track --- */
+@keyframes testimonials-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* Centre the lone card when there's an odd card on the last row */
-.testimonials__grid .testimonial-card:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-  max-width: 460px;
-  justify-self: center;
+.testimonials__marquee-wrap {
+  overflow: hidden;
+  width: 100%;
+  /* Fade edges out on desktop */
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  cursor: grab;
+}
+.testimonials__marquee-wrap:active {
+  cursor: grabbing;
 }
 
-.testimonial-card {
-  background: var(--review-bg);
-  border: 1px solid var(--review-border);
-  border-radius: var(--radius-xl);
-  padding: 40px 36px;
+.testimonials__marquee-track {
   display: flex;
-  flex-direction: column;
-  gap: 18px;
-  box-shadow: 0 2px 12px rgba(59,42,26,.08), 0 1px 0 rgba(255,255,255,.55) inset;
-  transition: box-shadow .35s ease, transform .3s var(--ease-out), border-color .3s ease;
-  position: relative;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 0;
+  width: max-content;
+  animation: testimonials-marquee 55s linear infinite;
+  will-change: transform;
 }
-.testimonial-card::before {
-  content: '\201C';
-  position: absolute;
-  top: 20px;
-  right: 32px;
+
+.testimonials__marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* --- Individual pull quote --- */
+.tq {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: clamp(280px, 34vw, 420px);
+  padding: 0 40px;
+  flex-shrink: 0;
+  border: none;
+  margin: 0;
+}
+
+.tq__text {
   font-family: var(--font-serif);
-  font-size: 80px;
-  line-height: 1;
-  color: var(--green-pale);
-  pointer-events: none;
-}
-.testimonial-card:hover {
-  background: #e0d8c8;
-  box-shadow: 0 8px 32px rgba(59,42,26,.14), 0 1px 0 rgba(255,255,255,.55) inset;
-  transform: translateY(-4px);
-  border-color: var(--green-pale);
-}
-
-.testimonial-card__stars {
-  display: flex;
-  gap: 3px;
-  color: #f59e0b;
-}
-
-.testimonial-card__text {
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--text-muted);
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
   font-style: italic;
-  flex: 1;
+  line-height: 1.7;
+  color: var(--green-dark);
+  margin: 0 0 18px;
 }
 
-.testimonial-card__author {
+.tq__footer {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  padding-top: 16px;
-  border-top: 1px solid var(--stone);
+  gap: 2px;
 }
 
-.testimonial-card__name {
-  font-size: 14px;
-  font-weight: 600;
+.tq__name {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
   color: var(--green-dark);
+  letter-spacing: .05em;
+  text-transform: uppercase;
 }
 
-.testimonial-card__tag {
+.tq__town {
+  font-family: var(--font-sans);
   font-size: 12px;
   color: var(--text-muted);
   letter-spacing: .04em;
 }
 
+/* Separator between quotes */
+.tq__sep {
+  flex-shrink: 0;
+  align-self: center;
+  color: var(--green-pale);
+  font-size: 22px;
+  padding: 0 4px;
+  opacity: .7;
+  line-height: 1;
+}
+
 /* Testimonials CTA */
 .testimonials__cta {
-  margin-top: 56px;
+  margin-top: 64px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1374,13 +1384,24 @@ address { font-style: normal; }
 
 @media (max-width: 600px) {
   .testimonials {
-    padding: 80px 0;
+    padding: 80px 0 64px;
   }
-  .testimonials__grid {
-    grid-template-columns: 1fr;
+  .testimonials__header {
+    text-align: center;
+  }
+  /* Slower on mobile so quotes are readable */
+  .testimonials__marquee-track {
+    animation-duration: 70s;
+  }
+  .tq {
+    width: clamp(260px, 82vw, 340px);
+    padding: 0 24px;
+  }
+  .tq__text {
+    font-size: clamp(1rem, 4.5vw, 1.15rem);
   }
   .testimonials__cta {
-    margin-top: 40px;
+    margin-top: 48px;
   }
 }
 
