@@ -2466,7 +2466,22 @@ address { font-style: normal; }
 @media (max-width: 1000px) {
   /* plant-spread responsive handled within its own block above */
 }
-/* Contact grid: collapse to single column only at tablet/mobile, not at laptop widths */
+
+/* Contact grid: 2-col (info+form | map) at tablet, 1-col at mobile */
+@media (max-width: 960px) and (min-width: 601px) {
+  .contact__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .contact__map-wrap {
+    grid-column: 1 / -1;
+  }
+  .contact__map,
+  .contact__map-wrap {
+    height: 280px;
+    min-height: 280px;
+  }
+}
 @media (max-width: 768px) {
   .contact__grid {
     grid-template-columns: 1fr;
