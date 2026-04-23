@@ -615,67 +615,34 @@ address { font-style: normal; }
 .trust-bar {
   background: var(--green-wash);
   border-bottom: 1px solid rgba(46,107,48,.12);
-  padding: 36px 0;
+  padding: 40px 0;
 }
 
 .trust-bar__inner {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 24px;
-}
-
-.trust-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
   text-align: center;
-  gap: 8px;
-  flex: 1 1 140px;
-  padding: 20px 16px;
-  border-radius: var(--radius-lg);
-  transition: background var(--transition), box-shadow var(--transition), transform .25s var(--ease-spring);
-}
-.trust-item:hover {
-  background: rgba(46,107,48,.1);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-3px);
+  padding: 0 24px;
 }
 
-.trust-item__icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.7);
-  border: 1.5px solid var(--green-pale);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--green);
-  flex-shrink: 0;
-  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-.trust-item:hover .trust-item__icon {
-  background: rgba(46,107,48,.12);
-  border-color: var(--green-light);
-  box-shadow: 0 0 0 4px rgba(46,107,48,.08);
-}
-
-.trust-item__num {
+.trust-bar__prose {
   font-family: var(--font-serif);
-  font-size: 28px;
-  font-weight: 700;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-style: italic;
   color: var(--green-dark);
-  line-height: 1;
+  line-height: 1.8;
+  font-weight: 400;
 }
 
-.trust-item__label {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: .04em;
-  text-transform: uppercase;
+.trust-bar__stat {
+  display: inline;
+}
+
+.trust-bar__stat + .trust-bar__stat::before {
+  content: ' \2022 ';
+  color: var(--amber);
+  font-style: normal;
+  margin: 0 4px;
 }
 
 /* === GREENHOUSE BRIDGE ==================================== */
@@ -2514,8 +2481,7 @@ address { font-style: normal; }
   .hero__stats { gap: 0; }
   .hero__stat-num { font-size: 30px; }
 
-  .trust-bar__inner { gap: 20px; }
-  .trust-item { flex: 1 1 120px; }
+  .trust-bar__prose { font-size: 1.1rem; }
 
   .services { padding: 56px 0 48px; }
   .services__header { padding: 0 20px; }
@@ -2560,8 +2526,6 @@ address { font-style: normal; }
 
   .legacy__badge-num { font-size: 38px; }
 
-  .trust-item { flex: 1 1 100px; }
-  .trust-item__num { font-size: 24px; }
 }
 
 @media (max-width: 480px) {
@@ -2607,11 +2571,6 @@ address { font-style: normal; }
   .trust-bar__inner {
     justify-content: center;
   }
-  .trust-item {
-    align-items: center;
-    text-align: center;
-  }
-
   /* --- Greenhouse bridge ------------------------------------ */
   .greenhouse-bridge__inner {
     justify-content: center;
