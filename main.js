@@ -232,38 +232,6 @@ function initContactBadge() {
   }
 }
 
-/* --- 3D tilt on plant-now cards --------------------------- */
-function initCardTilt() {
-  if (prefersReducedMotion) return;
-  const cards = document.querySelectorAll('.plant-now__card');
-  if (!cards.length) return;
-
-  const MAX_TILT = 8; // degrees
-
-  cards.forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const cx   = rect.left + rect.width  / 2;
-      const cy   = rect.top  + rect.height / 2;
-      const dx   = (e.clientX - cx) / (rect.width  / 2);
-      const dy   = (e.clientY - cy) / (rect.height / 2);
-      const rotX = (-dy * MAX_TILT).toFixed(2);
-      const rotY = ( dx * MAX_TILT).toFixed(2);
-      card.style.setProperty('--tilt-x', rotX + 'deg');
-      card.style.setProperty('--tilt-y', rotY + 'deg');
-      card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
-      card.style.boxShadow = 'var(--shadow-lg)';
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.setProperty('--tilt-x', '0deg');
-      card.style.setProperty('--tilt-y', '0deg');
-      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
-      card.style.boxShadow = '';
-    });
-  });
-}
-
 /* --- Services sticky scroll — panel fade ------------------- */
 function initSvcScroll() {
   const runway = document.querySelector('.svc-scroll');
@@ -365,7 +333,6 @@ function init() {
   initConsultForm();
   initOpenBar();
   initContactBadge();
-  initCardTilt();
   startOpenStateRefresh();
 
   updateProgress();
