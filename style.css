@@ -750,12 +750,7 @@ address { font-style: normal; }
   transition: opacity 0.4s ease;
   pointer-events: none;
 }
-/* First panel visible by default */
-.svc-panel[data-index="0"] {
-  opacity: 1;
-  pointer-events: auto;
-}
-/* Active panel — set by JS */
+/* Active panel — set by JS (first panel gets .is-active on init) */
 .svc-panel.is-active {
   opacity: 1;
   pointer-events: auto;
