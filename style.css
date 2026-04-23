@@ -884,13 +884,6 @@ address { font-style: normal; }
 }
 .btn--glow-green:hover { background: var(--green-light); box-shadow: 0 0 56px rgba(46,107,48,.8); }
 
-/* Teal glow */
-.btn--glow-teal {
-  background: #2a7d82;
-  box-shadow: 0 0 0 1px rgba(42,125,130,.2), 0 0 32px rgba(42,125,130,.45);
-  animation: glowPulseTeal 3s ease infinite;
-}
-.btn--glow-teal:hover { background: #1f6166; box-shadow: 0 0 56px rgba(42,125,130,.75); }
 
 @keyframes glowPulse {
   0%, 100% { box-shadow: var(--glow-warm); }
@@ -899,10 +892,6 @@ address { font-style: normal; }
 @keyframes glowPulseGreen {
   0%, 100% { box-shadow: var(--glow-green); }
   50%       { box-shadow: 0 0 0 1px rgba(46,107,48,.3), 0 0 56px rgba(46,107,48,.65), 0 0 88px rgba(46,107,48,.25); }
-}
-@keyframes glowPulseTeal {
-  0%, 100% { box-shadow: 0 0 0 1px rgba(42,125,130,.2), 0 0 32px rgba(42,125,130,.45); }
-  50%       { box-shadow: 0 0 0 1px rgba(42,125,130,.3), 0 0 56px rgba(42,125,130,.68); }
 }
 
 /* Progress dots — bottom center of sticky container */
@@ -1405,6 +1394,23 @@ address { font-style: normal; }
   }
 }
 
+/* Mobile swipe affordance */
+.testimonials__swipe-hint {
+  display: none;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 12px auto 0;
+  letter-spacing: .04em;
+}
+
+@media (max-width: 600px) {
+  .testimonials__swipe-hint {
+    display: block;
+  }
+}
+
 /* === OWNER PORTRAIT CARD ================================== */
 .legacy__owner-card {
   position: absolute;
@@ -1895,79 +1901,6 @@ address { font-style: normal; }
   color: var(--text-muted);
 }
 
-.testimonial-featured {
-  background: var(--green-dark);
-  border-radius: var(--radius-xl);
-  padding: 52px 64px;
-  margin: 0 0 48px;
-  position: relative;
-  overflow: hidden;
-}
-
-.testimonial-featured::before {
-  content: '';
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(212,147,63,.14) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.testimonial-featured__mark {
-  display: block;
-  font-family: var(--font-serif);
-  font-size: 120px;
-  line-height: .7;
-  color: rgba(184,230,186,.25);
-  margin-bottom: 12px;
-  font-style: normal;
-}
-
-.testimonial-featured__text {
-  font-family: var(--font-serif);
-  font-size: clamp(20px, 2.8vw, 28px);
-  font-style: italic;
-  color: rgba(255,255,255,.92);
-  line-height: 1.55;
-  max-width: 760px;
-  margin-bottom: 28px;
-}
-
-.testimonial-featured__footer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.testimonial-featured__name {
-  font-size: 16px;
-  font-weight: 600;
-  color: #b8e6ba;
-  letter-spacing: .02em;
-}
-
-.testimonial-featured__divider {
-  color: rgba(255,255,255,.3);
-  font-size: 14px;
-}
-
-.testimonial-featured__source {
-  font-size: 13px;
-  color: rgba(255,255,255,.45);
-  letter-spacing: .04em;
-}
-
-@media (max-width: 768px) {
-  .testimonial-featured {
-    padding: 36px 28px;
-  }
-  .testimonial-featured__mark {
-    font-size: 80px;
-  }
-}
 
 
 /* === CONTACT OPEN BADGE ================================== */
@@ -2051,24 +1984,6 @@ address { font-style: normal; }
   }
   .contact__welcome .welcome--short {
     display: inline;
-  }
-
-  /* Fix: featured testimonial — reduce oversized decorative quote mark on mobile */
-  .testimonial-featured__mark {
-    font-size: 60px;
-    margin-bottom: 4px;
-  }
-
-  /* Fix: testimonial-card padding too wide relative to 375px viewport */
-  .testimonial-card {
-    padding: 28px 24px;
-  }
-
-  /* Fix: oversized decorative quote mark on mobile testimonial cards */
-  .testimonial-card::before {
-    font-size: 56px;
-    top: 14px;
-    right: 20px;
   }
 
   /* Fix: hero__reviews nowrap text can escape at 375px — allow break */
@@ -2368,7 +2283,7 @@ address { font-style: normal; }
   .hero__scroll { animation: none; }
   .plant-list__row { transform: none !important; }
   .btn--primary { animation: none !important; }
-  .btn--glow-warm, .btn--glow-green, .btn--glow-teal { animation: none !important; }
+  .btn--glow-warm, .btn--glow-green { animation: none !important; }
   .cta-strip .btn--primary { animation: none !important; }
   .hero__actions .btn--primary { animation: none !important; }
   .svc-panel { transition: none !important; }
@@ -2649,24 +2564,6 @@ address { font-style: normal; }
 
   /* --- Testimonials ----------------------------------------- */
   .testimonials__header {
-    text-align: center;
-  }
-  .testimonial-featured {
-    text-align: center;
-  }
-  .testimonial-featured__footer {
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
-  }
-  .testimonial-card {
-    text-align: center;
-  }
-  .testimonial-card__stars {
-    justify-content: center;
-  }
-  .testimonial-card__author {
-    align-items: center;
     text-align: center;
   }
   .testimonials__cta {
