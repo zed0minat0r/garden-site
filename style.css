@@ -868,6 +868,21 @@ address { font-style: normal; }
   transform: translateY(-2px) scale(1.03);
 }
 
+/* Phone link below CTA in service panels */
+.svc-panel__phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+.svc-panel__phone:hover {
+  color: #fff;
+}
+
 /* Glow button variants — warm amber */
 .btn--glow-warm {
   background: var(--amber);
@@ -1432,6 +1447,28 @@ address { font-style: normal; }
   .testimonials__swipe-hint {
     display: block;
   }
+}
+
+/* Google reviews link */
+.testimonials__google-link-wrap {
+  text-align: center;
+  margin-top: 20px;
+}
+.testimonials__google-link {
+  margin: 0;
+}
+.testimonials__google-link a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color .18s ease;
+}
+.testimonials__google-link a:hover {
+  color: var(--green);
 }
 
 /* === OWNER PORTRAIT CARD ================================== */
