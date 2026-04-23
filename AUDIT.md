@@ -1,135 +1,132 @@
-# Colonial Gardens — Nigel Audit v17
-**Score: 8.7 / 10**
-**Previous score: 8.4 (v16)**
-**Delta: +0.3**
+# Colonial Gardens — Nigel Audit v18
+**Score: 8.9 / 10**
+**Previous score: 8.7 (v17)**
+**Delta: +0.2**
 **Live link:** https://zed0minat0r.github.io/garden-site/
 
 ---
 
 ## Overall Assessment
 
-The three major rebuilds since v16 have all landed. The seasonal card grid is gone, replaced with alternating split-screen editorial rows that are a material improvement in confidence and distinctiveness. The testimonial card grid is gone, replaced with a horizontal auto-scrolling marquee that gives the quotes breathing room and personality. Services scroll travel has been cut from 400vh to 300vh, which removes the most significant UX friction on mobile. The Events panel overlay has been lightened. The dead JS from prior iterations has been cleared.
+All three top priorities from v17 have been addressed, and the fixes are genuine rather than cosmetic. The Events CTA colour inconsistency is resolved. The mobile swipe affordance is present. The dead CSS from prior card implementations has been stripped. The seasonal row flip technique has been corrected from `direction:rtl` to proper CSS `order`, which is the right call for screen reader hygiene and text selection. The trust bar prose now leads with the strongest local identity claim. The service panel content position has been moved up.
 
-The result is a site with no section that visibly embarrasses the others. Cohesion is meaningfully improved. A Phoenixville homeowner scrolling this page for the first time would not stop and think "this looks like a template" at any single section. That said, a handful of execution issues across the new sections and some lingering dead CSS prevent a higher score.
+These are not trivial changes — they close real gaps. The site is materially tighter than v17.
+
+What prevents a higher score: the marquee swipe hint promises an interaction that the underlying implementation does not deliver. A touch user on an iPhone sees "Swipe to read more" but the testimonials section is a continuous CSS animation, not a scroll-snap container — genuine swiping does not produce discrete quote-by-quote advancement. The dishonesty of that label is the most actionable remaining issue. Beyond that, the single-destination CTA problem across all four service panels persists, and the 425vh service runway — increased from the previous build — brings back a degree of scroll captivity on mobile.
+
+A Phoenixville homeowner coming to this page for the first time would have a confident, coherent experience. They would not feel like they had landed on a template. The site earns its place at the high end of local business websites.
 
 ---
 
 ## Section Scores
 
 ### Hero — 8.5/10
-Unchanged from v16. Strong. The Ken-Burns image, amber CTA glow with breathe animation, stat bar (58 / 40+ / 340+), and the Google reviews pill badge all function correctly. The ghost call button is a sensible secondary action on mobile. The hero sub-copy is still slightly self-congratulatory ("because good plants and good advice never go out of style") and the em-dash at line breaks on mid-range screens is still awkward, but neither is a significant drag.
+No regression from v17. Ken-Burns image entrance, amber CTA with breathe animation, stat bar, Google reviews pill badge — all functional. The mobile-first CTA swap at 480px ("Hours & Directions" on small screens, "Shop the Greenhouse" on desktop) remains correctly prioritised for the respective audiences. The hero sub-copy ("because good plants and good advice never go out of style") retains its slightly self-satisfied tone, but it is not actively harmful.
 
-The eyebrow flanking lines, the floating scroll indicator, and the vignette overlay depth are all working well. No regression from v16.
+One detail of note: the hero primary CTA is styled in amber (`var(--amber)`) with a warm glow animation. The services panels then use both amber and green glow CTAs. The Contact form submit is also amber. This is correct — amber is reserved for the highest-priority conversion actions. The pattern holds.
 
 ### Open Bar — 8.5/10
-Dynamic open/closed state, correct ET timezone logic, pulsing green dot on open, red static dot on closed. The amber call link and the spring seasonal message are appropriate. Mobile collapses cleanly at 480px. Progress dots fix (now `bottom: 44px`) resolves the iOS chrome collision. Fully functional and well-executed.
+Unchanged from v17. Still the sharpest single element on the page from a practical visitor standpoint. Dynamic ET open/closed state, correct pulsing green dot, mobile collapse to clean one-liner. No regression.
 
-### Trust Bar — 8.0/10
-The four prose sentences in Playfair italic on the green-wash background remain cleaner than any card grid. The amber bullet separator is a correct flourish. Copy reads: "Family owned since 1967. Free in-store consultations. Expert staff. Honest advice. Proudly rooted in Phoenixville." This is tighter than v16 — the weak "Open 7 days a week" has been excised. The four claims now earn their place.
+### Trust Bar — 8.2/10
+Improved from 8.0 in v17. "Proudly rooted in Phoenixville" now leads the prose sequence, which is the correct editorial decision — local identity is the trust signal that differentiates Colonial Gardens from a big-box competitor, and it should not be buried third or fourth. The amber bullet separators between claims remain a sound visual choice.
 
-Minor: the sentence sequence still places the weakest claim second ("Free in-store consultations" is vague and sounds like something every local business offers). "Proudly rooted in Phoenixville" leading, with consultations trailing, would be more compelling.
+The remaining sequence issue: "Expert staff. Honest advice." trailing "Free in-store consultations" still slightly undersells the expertise claim. The consultations line is a means to an end; the expertise is the end itself. Reversing those two would strengthen the close. Minor — not a point deduction.
 
 ### Greenhouse Bridge — 7.5/10
-Improved. "Growing houses" jargon is gone — now reads "acres of covered space, stocked fresh every week." The animated leaf SVG drawing in on scroll is still subtle at quick-scroll speeds but the section as a whole earns its place as a typographic breath between trust bar and services. The leaf vein reveal at 0.9s delay is invisible to most users but does not cost anything either.
+No change from v17. Correctly sized, the animated leaf SVG is a nice detail, and "acres of covered space, stocked fresh every week" is better copy than the previous version. "Stocked fresh every week" still reads like inventory-management language rather than a garden experience. A small editorial adjustment — "New arrivals every week, all season long" — would bring it closer to the customer's frame of reference rather than the store's operational cadence.
 
-Minor improvement from v16 — deduction remains only for the copy being slightly mechanical ("stocked fresh every week" reads like inventory management language, not a garden experience).
+### Services — Sticky Scroll Panels — 7.8/10
+This section is where the most meaningful debate exists in this build.
 
-### Services — Sticky Scroll Panels — 8.0/10
-The 300vh reduction is the single biggest quality-of-life change in this build. Each panel now commands 75vh of scroll budget rather than 100vh — a visitor on mobile will not feel held hostage to the scroll tunnel. The JS panel-switching logic remains clean, rAF-throttled, no redundant DOM writes.
+The Events panel overlay has been corrected (now `--teal` at genuinely low opacity: 8%/24%/50%/68%) so the panel no longer feels suffocating. The Events CTA is now `btn--glow-green` — the palette inconsistency from v17 is resolved. Progress dots sit at `bottom: 44px`, correctly clearing iOS chrome.
 
-The Events panel teal overlay (`rgba(6,18,20,.08/0.24/0.50/0.68)`) is a substantial improvement over the previous 82% opacity. The photo is now visible and the panel feels open rather than oppressive.
+The service panel content has been pushed up (`padding-bottom: 140px` on `.svc-panel__content`). This is visible as a material improvement — text and CTAs are no longer crowded against the bottom viewport edge, which felt accidental rather than designed.
 
-Remaining issues:
-1. All four panel CTAs still link to the same root URL (`colonialgardenspa.com`). The CTA text — "Shop the Greenhouse," "Get a Consultation," "Order Flowers," "See Upcoming Events" — implies differentiated destinations. This is a real friction point for a homeowner specifically hunting for the florist or landscaping service. At minimum, deep-linking to relevant sections of the parent site would reduce cognitive dissonance.
-2. The progress dots at `bottom: 44px` clear iOS chrome correctly. No further issue here.
-3. The teal glow button on the Events panel (`btn--glow-teal`, `background: #2a7d82`) does not match the botanical palette — it is the only button on the page that uses a colour outside the green/amber scheme. It reads as inconsistent.
+However, the runway has increased from the previous build to 425vh. The changelog explains this as giving the Events panel approximately 165vh of linger versus 87vh for the others. The rationale is understandable, but the effect on a mobile visitor is a return of scroll captivity. A homeowner on an iPhone with a 667px viewport scrolling through the services section will spend meaningful time before clearing it. The Events panel's extra dwell time is only valuable if the visitor is interested in events — for the majority who are there for plants or landscaping, 425vh is a tunnel. The prior build's 300vh felt closer to correct.
+
+All four CTAs still route to the same root URL (`colonialgardenspa.com`). "Get a Consultation," "Order Flowers," "See Upcoming Events," and "Shop the Greenhouse" each imply a differentiated destination. A homeowner who clicks "Order Flowers" and lands on the generic homepage will feel a small but real betrayal of expectation. This remains the most consequential UX error on the page.
+
+Score: 7.8 (down from 8.0 in v17, due to runway regression).
 
 ### About / Legacy — 8.5/10
-No visible change from v16. The two-column layout, Est. 1967 badge, Eric Schmidt monogram card, Playfair blockquote, and the faint "1967" watermark in the background all remain. The "sustainability-focused" pillar mentioned in v16 has been removed — the four pillars now read correctly: "Family-owned & operated / Open year-round / Rooted in Phoenixville / Expert staff, honest advice."
+No change from v17. The Est. 1967 badge, Eric Schmidt monogram card, Playfair blockquote, parallax image, and the faint "1967" watermark are all intact and well-executed. The four pillars — "Family-owned & operated / Open year-round / Rooted in Phoenixville / Expert staff, honest advice" — remain the correct claims. Parallax is properly RAF-throttled. No regression.
 
-The parallax on the legacy image is smooth and properly RAF-throttled. No regression.
+### Seasonal — 8.3/10
+Improved from 8.0 in v17. The `direction:rtl` flip technique has been replaced with CSS `order` on the image and body cells — the correct implementation for screen reader compatibility and text selection. This was Priority 3 (implied) in the v17 technical notes, and the fix is clean.
 
-### Seasonal — 8.0/10
-Rebuilt since v16. The three-card grid is gone. In its place: three alternating split-screen editorial rows (image left / text right, then text left / image right, then image left / text right). Each row is 400px tall minimum with hover zoom on the image. A single section-level CTA replaces the three identical per-card buttons.
+The alternating layout itself remains the right format. Three rows — annuals/perennials, vegetables/herbs, trees/shrubs — progress logically through a spring visit to Colonial Gardens. The amber pill labels ("Spring 2026," "Now Available," "Spring Planting") are slightly inconsistent but not disorienting.
 
-This is a genuine improvement. The format is distinct, spatially confident, and does not read as AI-generated template. The amber pill labels ("Spring 2026," "Now Available," "Spring Planting") remain inconsistent in format — two are seasonal descriptors and one is a status label — but this is a minor editorial inconsistency rather than a structural problem.
+Row 2 image (Unsplash `photo-1416879595882-3373a0480b5b`) shows a generic stone-pathway garden rather than anything resembling vegetable or herb content. This is a content mismatch — the label says "Vegetables & Herbs" and the image shows decorative stone work. It does not break the layout, but a visitor scanning for context will notice the disconnect. Without real Colonial Gardens photography this cannot be fully resolved, but a more appropriate stock image (herb close-up, kitchen garden) would be a low-cost improvement.
 
-The `direction: rtl` flip technique on `.seasonal-row--flip` is a workable implementation but text selection and RTL-sensitive screen readers will have a poor experience. A CSS `order` or `grid-column` approach would be more robust.
-
-The row 2 image (Unsplash herb garden) still does not look like Colonial Gardens property. This is a content issue the site cannot solve without real photography, but it is worth noting.
+Hover-zoom on image wrap (`.seasonal-row:hover .seasonal-row__img-wrap img { transform: scale(1.04) }`) is correct and proportionate.
 
 ### What to Plant Now — 8.5/10
-No change from v16. Still the best section on the page. The numbered editorial list (01–04 with hairline rules, serif numerals in green-pale at 52px) is typographically confident, content-led, and appropriate to the audience. The plant descriptions are locally specific. The tag pill / serif heading alignment quirk on 375px persists but is acceptable.
+No change from v17. Still the best editorial section on the page. The numbered list (01–04, hairline rules, 52px serif numerals in green-pale) is typographically confident and locally specific. The plant descriptions reference April conditions, Chester County soil, and specific varieties. This is exactly the kind of content that makes a local garden center's website worth bookmarking. No regression.
 
 ### CTA Strip — 7.5/10
-Unchanged. The dark green band with the amber glowing phone CTA is structurally correct and correctly placed before testimonials. The copy ("58 years of helping Phoenixville grow") is local and credible. No regression, no improvement.
+Unchanged from v17. The dark green band with amber glowing phone CTA functions correctly. "58 years of helping Phoenixville grow" is local and credible. The botanical radial-gradient blob decorations are present but not intrusive. The section is structurally sound but not distinctive. It reads as the expected "call us" band that most local business sites include. A short supporting testimonial fragment or a specific seasonal hook would add content weight.
 
-### Testimonials — 8.0/10
-Rebuilt since v16. The four identical card rectangles are gone. In their place: a horizontal auto-scrolling marquee with six pull quotes in two duplicate sets, edge-faded via CSS mask-image, pausing on hover. Proper `aria-hidden="true"` on the duplicate set.
+### Testimonials — 8.2/10
+Partially improved from 8.0 in v17.
 
-This format is significantly better than the card grid. The quotes have room to breathe — each blockquote is `clamp(280px, 34vw, 420px)` wide with good padding. The 55s animation speed on desktop is comfortable; the 70s on mobile is correctly slower. The pause-on-hover behaviour is a good accessibility affordance.
+The mobile swipe hint (`testimonials__swipe-hint`) has been added and displays correctly at max-width: 600px. The copy reads "Swipe to read more →" which is appropriate. This addresses Priority 1 from v17.
 
-The content is unchanged: six specific, location-named reviews. Kevin L. (Phoenixville), Patrice W. (Kimberton), Tom R. (Collegeville) — these remain strong because of specificity.
+However, the underlying implementation does not actually support discrete swiping. The marquee is a CSS `@keyframes` animation (`testimonials-marquee 55s linear infinite`) on a `width: max-content` track. A touch user can attempt to grab and drag it — the `cursor: grab` and `cursor: grabbing` styles suggest this intent — but the marquee does not have `scroll-snap` support, and native touch dragging of a CSS-animated element produces unpredictable results on iOS Safari. The swipe hint makes a promise the implementation does not keep.
 
-One issue: the marquee has no visible start/end boundary and no indicator that the content is scrollable or interactive on mobile. A first-time visitor on iPhone may not know to swipe or wait. The edge fade helps on desktop but disappears when viewed at 100% mobile width due to `overflow: hidden` on the wrapper. The `cursor: grab` affordance is desktop-only and will not communicate to touch users.
+The solution recommended in the v17 Scout Report remains unimplemented: a `scroll-snap-type: x mandatory` container on mobile that converts the continuous marquee into a discrete swipe-through-quotes experience on touch. The text hint is half the fix; the scroll-snap implementation is the other half.
 
-The `testimonials__rating-badge` below the header is a nice addition — the "4.8 / 340 Google reviews" pill with yellow stars is a quick-read trust signal.
-
-Dead CSS note: `.testimonial-featured`, `.testimonial-card`, `.testimonials__grid` rules remain in the stylesheet but have no HTML. Approximately 60 lines of dead CSS.
+The rating badge (4.8 / 340 Google reviews) pill above the section is well-placed and credible. Quote content remains strong and locally specific. Edge fading via `mask-image` continues to perform correctly on desktop.
 
 ### Contact — 8.5/10
-Three-column layout (info, form, map) is correct and the Formspree integration remains clean. The dynamic open/closed badge in the contact section pulls from the same ET timezone logic as the open bar. The Get Directions full-width button is present. No regression from v16.
+No change from v17. The three-column layout (info / form / map) is correct. The Formspree integration is clean. The dynamic ET open/closed badge correctly mirrors the open bar state. The full-width "Get Directions" button is sensible and present. No regression.
 
-The 768px collapse to single column still has the 900px–1000px iPad landscape cramping issue noted in v16. Not addressed, not worsened.
+The 768px collapse breakpoint creates mild cramping between 769px and 900px on iPad landscape. Not addressed, not worsened.
 
 ### Footer — 8.0/10
-Three-column: brand/tagline, nav links, hours/address. The amber gradient accent bar at top is a sound transition from contact. Social links present (Facebook, Instagram). Copyright reads 2026 correctly. No issues.
+No change from v17. Three-column: brand/tagline, nav links, hours/address. Amber gradient top accent bar, social links (Facebook, Instagram), copyright 2026. All functioning. No issues.
 
 ### Mobile UX at 375px — 8.0/10
-Improved from v16 (7.5). Key improvements:
-- Services progress dots now at 44px from bottom — iOS safe area clears correctly.
-- Seasonal rows collapse to single column at 900px with 260px image height — clean on mobile.
-- Testimonials marquee slows to 70s and quote width scales to `clamp(260px, 82vw, 340px)` — readable.
-- Open bar nowrap + ellipsis still truncates status text at 375px, but "Open now" is visible which is the critical information.
-- Hero actions swap to single-column stack on mobile with "Hours & Directions" as the primary CTA — correctly prioritised for a mobile visitor.
-- Center-alignment block in CSS handles all section headings and eyebrows consistently.
+Holding from v17. The center-alignment block in the mobile CSS remains thorough and consistent — every section head, eyebrow, and CTA has an explicit alignment rule at 768px. The seasonal row collapse to single column at 900px is clean. The open bar nowrap/ellipsis handles 375px correctly.
 
-The `direction: rtl` seasonal flip technique may cause minor text selection issues on Android. The marquee mobile-pause affordance gap noted above applies here.
+Service panel mobile responsiveness has improved with the content padding adjustment (`padding: 0 20px 120px` at 768px). The progress dots correctly clear iOS safe area.
+
+The 425vh runway on the services section is the most significant mobile UX penalty remaining. On a 375px wide iPhone SE viewport, 425vh of scroll is approximately 2,654px of scroll distance for a single section. This is by design but remains the largest single friction point for a mobile visitor.
 
 ---
 
 ## AI-Generated Assessment
 
-**Does it look AI-generated?** Less so than any prior version.
+**Does it look AI-generated?** No more than v17, and arguably slightly less.
 
-**No longer feels AI-generated:**
-- Trust bar prose sentence
-- Plant list numbered editorial format
-- Sticky services full-screen panels
-- Legacy section with monogram card, blockquote, and watermark
-- Seasonal split-screen rows
-- Testimonials auto-scroll marquee
-- Business-specific copy throughout (Eric Schmidt, 745 Schuylkill Road, Chester County soil conditions)
+**What continues to signal human editorial authorship:**
+- Trust bar in flowing prose (not icon cards)
+- Plant list in numbered editorial typographic format
+- Sticky service panels with full-bleed photography
+- Legacy section with monogram, blockquote, and background watermark
+- Seasonal split-screen rows with CSS order flip (not rtl hack)
+- Testimonials auto-scroll marquee with edge fade
+- Locally specific copy throughout (Eric Schmidt, Chester County soil, Phoenixville frost dates)
 
-**Still feels slightly generic:**
-- CTA strip (dark green band + glowing phone button is a recognisable pattern)
-- Greenhouse bridge section (functional but thin)
-- Hero sub-copy structure
+**What still reads slightly generic:**
+- CTA strip (dark band + glowing phone button is an established convention)
+- Greenhouse bridge (capable but thin)
+- Hero sub-copy structure and rhythm
 
-The site now reads as designed rather than generated. A Phoenixville homeowner would not instinctively reach for another tab.
+No section actively embarrasses the others. The page reads as designed, not assembled.
 
 ---
 
 ## Top 3 Priorities
 
-### 1. Add a mobile swipe affordance to the testimonials marquee
-The auto-scroll marquee is excellent on desktop. On mobile, it reads as a static block of text. A small label — "Scroll to read more" or a simple pair of arrows — positioned below the mask-fade area would signal interactivity to touch users. The content is strong enough to earn engagement if users know it is there.
+### 1. Implement genuine swipe-snap behavior in the testimonials section on mobile
+The swipe hint ("Swipe to read more →") is present but makes a promise the CSS animation cannot keep. A touch user swiping the testimonials section on iPhone will not get discrete quote-by-quote advancement — they will get unpredictable drag behavior on a CSS-animated track. The fix is to convert the mobile testimonials layout to a `scroll-snap-type: x mandatory` container where each quote occupies 100% viewport width and snaps discretely on swipe. The continuous marquee can remain on desktop. This is a material honesty issue as much as a UX issue — the affordance exists but the behavior does not match.
 
-### 2. Fix the Events panel CTA colour to match the site palette
-The teal button (`#2a7d82`) on the Events service panel is the only element on the page that breaks the green/amber palette. It reads as an import from another project. Replacing it with the green glow variant (`btn--glow-green`) would restore palette consistency without reducing button legibility against the teal-tinted photo overlay.
+### 2. Route each service panel CTA to its correct destination
+"Shop the Greenhouse," "Get a Consultation," "Order Flowers," and "See Upcoming Events" all link to `colonialgardenspa.com`. A homeowner who clicks "Order Flowers" and lands on a generic homepage is not poorly served — but they are slightly let down. Each CTA should link to the most appropriate page on the Colonial Gardens main site (florist section, contact/landscaping, events calendar). This is not a design task — it is an editorial update that requires identifying the correct destination URLs. The impact on conversion is real and immediate.
 
-### 3. Remove dead CSS from prior testimonials and seasonal card implementations
-Approximately 80–100 lines of dead CSS remain: `.testimonial-featured`, `.testimonial-card`, `.testimonials__grid`, `.testimonial-featured__mark`, `.testimonial-featured__footer`, and related selectors. These bloat the stylesheet, create maintenance confusion, and risk specificity conflicts in future builds. Stripping them out is a clean-up task with zero UX risk.
+### 3. Revisit the 425vh service scroll runway
+The current build gives the Events panel approximately 165vh of dwell time. The rationale is sound — events deserve presence. The cost is scroll distance. On mobile, a visitor clears 425vh before reaching the Legacy section. A visitor interested specifically in the florist or garden center will spend disproportionate time in the events panel they did not seek. A 350–375vh total runway (keeping the Events panel's proportional advantage over the first three but reducing absolute scroll distance) would retain the editorial intention while reducing mobile captivity. The specific ratio — 260vh for the first three panels, 90–115vh for Events — would be the adjustment point.
 
 ---
 
