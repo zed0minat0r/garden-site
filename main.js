@@ -258,30 +258,30 @@ function initSvcScroll() {
       rafId = null;
 
       const rect      = runway.getBoundingClientRect();
-      const runwayH   = runway.offsetHeight;          // 300vh
-      const panelH    = runwayH / PANEL_COUNT;         // 75vh each
+      const runwayH   = runway.offsetHeight;
+      const vh        = window.innerHeight;
+      // First 3 panels share the first 260vh of scroll; panel 4 gets the rest (~165vh)
+      const earlyH    = vh * 2.6;
 
-      // How far into the runway we've scrolled (0 = just entered, runwayH-vh = last panel)
       const scrolled  = -rect.top;
 
       if (scrolled < 0) {
-        // Haven't reached the section yet — show first panel
         setPanel(0);
         return;
       }
-      if (scrolled >= runwayH - window.innerHeight) {
-        // Passed the end — show last panel
+      if (scrolled >= runwayH - vh) {
         setPanel(PANEL_COUNT - 1);
         return;
       }
 
-      // Which panel are we in? Each panel gets 100vh of scroll budget.
-      const idx = Math.min(
-        PANEL_COUNT - 1,
-        Math.floor(scrolled / panelH)
-      );
-
-      setPanel(idx);
+      // First 3 panels: ~87vh each within the first 260vh
+      if (scrolled < earlyH) {
+        const idx = Math.min(2, Math.floor(scrolled / (earlyH / 3)));
+        setPanel(idx);
+      } else {
+        // Panel 4 gets all remaining scroll
+        setPanel(3);
+      }
     });
   }
 

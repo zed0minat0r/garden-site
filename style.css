@@ -723,9 +723,9 @@ address { font-style: normal; }
   /* IMPORTANT: No overflow:hidden — sticky child needs an unclipped scroll parent */
 }
 
-/* Runway: 350vh total gives 4 panels ~87vh each of scroll budget */
+/* Runway: 425vh — extra scroll at the end so panel 4 lingers */
 .svc-scroll {
-  height: 350vh;
+  height: 425vh;
   position: relative;
 }
 
