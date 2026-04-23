@@ -160,47 +160,14 @@
 
     <!-- Trust bar -->
     <section class="trust-bar" id="trust" aria-label="Why Colonial Gardens">
-      <div class="trust-bar__inner container reveal-group">
-        <div class="trust-item">
-          <div class="trust-item__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <span class="trust-item__num">Family</span>
-          <span class="trust-item__label">Owned &amp; operated</span>
-        </div>
-        <div class="trust-item">
-          <div class="trust-item__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="trust-item__num">Free</span>
-          <span class="trust-item__label">In-store consults</span>
-        </div>
-        <div class="trust-item">
-          <div class="trust-item__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="trust-item__num">Open</span>
-          <span class="trust-item__label">7 days a week</span>
-        </div>
-        <div class="trust-item">
-          <div class="trust-item__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M9 22V12h6v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="trust-item__num">Local</span>
-          <span class="trust-item__label">Phoenixville, PA</span>
-        </div>
+      <div class="trust-bar__sentence container reveal">
+        <p class="trust-bar__prose">
+          <span class="trust-bar__stat">58 years</span> in Phoenixville.
+          <span class="trust-bar__stat">340+ Google reviews.</span>
+          Free in-store consultations.
+          <span class="trust-bar__stat">Open 7 days.</span>
+          Family-owned &mdash; no shortcuts.
+        </p>
       </div>
     </section>
 
@@ -219,99 +186,71 @@
       </div>
     </div>
 
-    <!-- Services horizontal scroll -->
+    <!-- Services — editorial list -->
     <section class="services" id="services" aria-label="Our services">
       <div class="services__header container reveal">
         <p class="section-eyebrow">Everything you need</p>
-        <h2 class="section-title">Four ways we grow<br />with you</h2>
+        <h2 class="section-title">Four ways we<br />grow with you</h2>
       </div>
-      <div class="services__scroll-wrap" role="region" aria-label="Services cards — scroll horizontally">
-        <div class="services__track" id="servicesTrack">
+      <div class="services__list container" role="list">
 
-          <article class="service-card" id="garden-center">
-            <div class="service-card__img-wrap">
-              <img src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg" alt="Colorful annuals and perennials in the greenhouse" class="service-card__img" loading="lazy" />
-            </div>
-            <div class="service-card__overlay" aria-hidden="true"></div>
-            <div class="service-card__body">
-              <span class="service-card__tag">Garden Center</span>
-              <h3 class="service-card__title">Acres of plants,<br />every season</h3>
-              <p class="service-card__text">Annuals, perennials, veggies, herbs, trees, shrubs, mulch, soil, stone, indoor plants, and a gift shop packed with finds.</p>
-              <ul class="service-card__list" role="list">
-                <li>Annuals &amp; Perennials</li>
-                <li>Vegetables, Fruits &amp; Herbs</li>
-                <li>Trees &amp; Shrubs</li>
-                <li>Mulch, Soil &amp; Stone</li>
-                <li>Indoor Plants</li>
-                <li>Gift Shop</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="service-card" id="landscaping">
-            <div class="service-card__img-wrap">
-              <img src="https://colonialgardenspa.com/wp-content/uploads/2025/03/landscaping-services-home-block.jpg" alt="Professional landscaping design and installation" class="service-card__img" loading="lazy" />
-            </div>
-            <div class="service-card__overlay" aria-hidden="true"></div>
-            <div class="service-card__body">
-              <span class="service-card__tag">Landscaping</span>
-              <h3 class="service-card__title">40+ years turning<br />yards into sanctuaries</h3>
-              <p class="service-card__text">From a free in-store consult to full design, install, and a one-year plant warranty — we handle everything.</p>
-              <ul class="service-card__list" role="list">
-                <li>Free in-store consultations</li>
-                <li>House call visits</li>
-                <li>Full design &amp; install</li>
-                <li>One-year plant warranty</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="service-card" id="florist">
-            <div class="service-card__img-wrap">
-              <img src="https://colonialgardenspa.com/wp-content/uploads/2025/03/Florist-home-block.jpg" alt="Fresh flower arrangements from our full-service florist" class="service-card__img" loading="lazy" />
-            </div>
-            <div class="service-card__overlay" aria-hidden="true"></div>
-            <div class="service-card__body">
-              <span class="service-card__tag">Florist</span>
-              <h3 class="service-card__title">Fresh flowers for every<br />moment</h3>
-              <p class="service-card__text">Full-service florist with arrangements for any occasion. Local delivery available &mdash; stop in or visit our full site to place your order.</p>
-              <a href="https://colonialgardenspa.com" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Visit Our Full Site</a>
-            </div>
-          </article>
-
-          <article class="service-card" id="events">
-            <div class="service-card__img-wrap">
-              <img src="https://colonialgardenspa.com/wp-content/uploads/2025/03/Seasonal-events-home-block.jpg" alt="Seasonal family-friendly events at Colonial Gardens" class="service-card__img" loading="lazy" />
-            </div>
-            <div class="service-card__overlay" aria-hidden="true"></div>
-            <div class="service-card__body">
-              <span class="service-card__tag">Events</span>
-              <h3 class="service-card__title">Family-friendly fun<br />all year long</h3>
-              <!-- UPDATE EVENT: Change the event name and dates below when the current event passes -->
-              <div class="service-card__event-callout">
-                <span class="service-card__event-label">Coming Up</span>
-                <span class="service-card__event-name">Mother&rsquo;s Day Plant Sale</span>
-                <span class="service-card__event-date">May 10&ndash;11</span>
-              </div>
-              <a href="https://colonialgardenspa.com" class="btn btn--primary" target="_blank" rel="noopener noreferrer">See Upcoming Events</a>
-            </div>
-          </article>
-
-        </div>
-        <div class="services__nav" aria-label="Scroll services cards">
-          <button class="services__nav-btn" id="servicesLeft" aria-label="Previous service">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M11 14L6 9l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="services__dots" id="servicesDots" aria-hidden="true">
-            <span class="services__dot is-active"></span>
-            <span class="services__dot"></span>
-            <span class="services__dot"></span>
-            <span class="services__dot"></span>
+        <article class="svc-row reveal" id="garden-center" role="listitem">
+          <div class="svc-row__num" aria-hidden="true">01</div>
+          <div class="svc-row__body">
+            <h3 class="svc-row__name">Garden Center</h3>
+            <p class="svc-row__desc">Annuals, perennials, veggies, herbs, trees, shrubs, mulch, soil, stone, indoor plants, and a gift shop packed with finds.</p>
+            <ul class="svc-row__items" role="list">
+              <li>Annuals &amp; Perennials</li><li>Vegetables &amp; Herbs</li><li>Trees &amp; Shrubs</li><li>Mulch, Soil &amp; Stone</li><li>Indoor Plants</li><li>Gift Shop</li>
+            </ul>
           </div>
-          <button class="services__nav-btn" id="servicesRight" aria-label="Next service">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
+          <div class="svc-row__img-col">
+            <img src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg" alt="Colorful annuals and perennials in the greenhouse" loading="lazy" />
+          </div>
+        </article>
+
+        <article class="svc-row svc-row--flip reveal" id="landscaping" role="listitem">
+          <div class="svc-row__num" aria-hidden="true">02</div>
+          <div class="svc-row__body">
+            <h3 class="svc-row__name">Landscaping</h3>
+            <p class="svc-row__desc">40+ years turning yards into sanctuaries. Free in-store consult to full design, install, and a one-year plant warranty.</p>
+            <ul class="svc-row__items" role="list">
+              <li>Free consultations</li><li>House call visits</li><li>Full design &amp; install</li><li>One-year plant warranty</li>
+            </ul>
+          </div>
+          <div class="svc-row__img-col">
+            <img src="https://colonialgardenspa.com/wp-content/uploads/2025/03/landscaping-services-home-block.jpg" alt="Professional landscaping design and installation" loading="lazy" />
+          </div>
+        </article>
+
+        <article class="svc-row reveal" id="florist" role="listitem">
+          <div class="svc-row__num" aria-hidden="true">03</div>
+          <div class="svc-row__body">
+            <h3 class="svc-row__name">Florist</h3>
+            <p class="svc-row__desc">Full-service florist with arrangements for every occasion. Local delivery available &mdash; stop in or order online.</p>
+            <a href="https://colonialgardenspa.com" class="svc-row__link" target="_blank" rel="noopener noreferrer">Visit Our Full Site &rarr;</a>
+          </div>
+          <div class="svc-row__img-col">
+            <img src="https://colonialgardenspa.com/wp-content/uploads/2025/03/Florist-home-block.jpg" alt="Fresh flower arrangements from our full-service florist" loading="lazy" />
+          </div>
+        </article>
+
+        <article class="svc-row svc-row--flip reveal" id="events" role="listitem">
+          <div class="svc-row__num" aria-hidden="true">04</div>
+          <div class="svc-row__body">
+            <h3 class="svc-row__name">Events</h3>
+            <p class="svc-row__desc">Family-friendly fun all year long. Come for the plants, stay for the community.</p>
+            <!-- UPDATE EVENT: Change the event name and dates below when the current event passes -->
+            <div class="svc-row__event">
+              <span class="svc-row__event-label">Coming Up</span>
+              <span class="svc-row__event-name">Mother&rsquo;s Day Plant Sale &mdash; May 10&ndash;11</span>
+            </div>
+            <a href="https://colonialgardenspa.com" class="svc-row__link" target="_blank" rel="noopener noreferrer">See Upcoming Events &rarr;</a>
+          </div>
+          <div class="svc-row__img-col">
+            <img src="https://colonialgardenspa.com/wp-content/uploads/2025/03/Seasonal-events-home-block.jpg" alt="Seasonal family-friendly events at Colonial Gardens" loading="lazy" />
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -362,96 +301,69 @@
       </div>
     </section>
 
-    <!-- Seasonal Highlights -->
+    <!-- Seasonal Highlights — editorial split banner -->
     <section class="seasonal" aria-label="Seasonal highlights">
-      <div class="container">
-        <div class="seasonal__header reveal">
-          <p class="section-eyebrow">Right now in the greenhouse</p>
-          <h2 class="section-title">What&rsquo;s in season</h2>
+      <div class="seasonal__banner">
+        <div class="seasonal__banner-img" aria-hidden="true">
+          <img src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg" alt="Annuals and perennials filling the Colonial Gardens greenhouse" loading="lazy" />
         </div>
-        <div class="seasonal__grid reveal-group">
-          <article class="seasonal-card seasonal-card--wide">
-            <div class="seasonal-card__img-wrap">
-              <img src="https://colonialgardenspa.com/wp-content/uploads/2024/06/annuals-perennials-sq.jpg" alt="Annuals and perennials filling the Colonial Gardens greenhouse" loading="lazy" />
-            </div>
-            <div class="seasonal-card__body">
-              <span class="seasonal-card__season">Spring 2026</span>
-              <h3 class="seasonal-card__title">Annuals &amp; Perennials</h3>
-              <p class="seasonal-card__text">Hundreds of varieties just arrived. Petunias, impatiens, coneflower, black-eyed Susan &mdash; all ready to go home with you.</p>
-              <a href="#garden-center" class="btn btn--primary">Visit the Nursery</a>
-            </div>
-          </article>
-          <article class="seasonal-card">
-            <div class="seasonal-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=85&auto=format" alt="Herb garden with fresh herbs" loading="lazy" />
-            </div>
-            <div class="seasonal-card__body">
-              <span class="seasonal-card__season">Now Available</span>
-              <h3 class="seasonal-card__title">Veggie &amp; Herb Starts</h3>
-              <p class="seasonal-card__text">Tomatoes, peppers, basil, thyme &mdash; get your kitchen garden growing now.</p>
-              <a href="#garden-center" class="btn btn--primary">Visit the Nursery</a>
-            </div>
-          </article>
-          <article class="seasonal-card">
-            <div class="seasonal-card__img-wrap">
-              <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4aaae?w=800&q=85&auto=format" alt="Trees and shrubs ready for spring planting" loading="lazy" />
-            </div>
-            <div class="seasonal-card__body">
-              <span class="seasonal-card__season">Spring Planting</span>
-              <h3 class="seasonal-card__title">Trees &amp; Shrubs</h3>
-              <p class="seasonal-card__text">Spring is the best time to plant. Our nursery is stocked with shade trees, ornamentals, and flowering shrubs.</p>
-              <a href="#garden-center" class="btn btn--primary">Visit the Nursery</a>
-            </div>
-          </article>
+        <div class="seasonal__banner-body reveal">
+          <p class="section-eyebrow">Right now in the greenhouse</p>
+          <h2 class="section-title">What&rsquo;s<br /><em>in season</em></h2>
+          <ul class="seasonal__item-list" role="list">
+            <li class="seasonal__item">
+              <span class="seasonal__item-tag">Spring 2026</span>
+              <strong>Annuals &amp; Perennials</strong>
+              <span>Petunias, impatiens, coneflower, black-eyed Susan &mdash; hundreds of varieties just arrived.</span>
+            </li>
+            <li class="seasonal__item">
+              <span class="seasonal__item-tag">Now Available</span>
+              <strong>Veggie &amp; Herb Starts</strong>
+              <span>Tomatoes, peppers, basil, thyme &mdash; get your kitchen garden going.</span>
+            </li>
+            <li class="seasonal__item">
+              <span class="seasonal__item-tag">Spring Planting</span>
+              <strong>Trees &amp; Shrubs</strong>
+              <span>Best window to plant. Maples, dogwoods, and flowering shrubs in stock now.</span>
+            </li>
+          </ul>
+          <a href="#garden-center" class="btn btn--primary">Visit the Nursery</a>
         </div>
       </div>
     </section>
 
-    <!-- What to Plant Now -->
+    <!-- What to Plant Now — asymmetric layout -->
     <section class="plant-now" aria-label="What to plant this season in Phoenixville PA">
       <div class="container">
-        <div class="plant-now__header reveal">
-          <p class="section-eyebrow">April in Phoenixville</p>
-          <h2 class="section-title">What to plant <em>right now</em></h2>
-          <p class="plant-now__intro">The last frost date for our zone has passed. Here is what our growers are putting in the ground this week.</p>
-        </div>
-        <div class="plant-now__grid reveal-group">
-          <div class="plant-now__card">
-            <div class="plant-now__card-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M12 11v11M8 14c0 0 1-2 4-2s4 2 4 2M5 8c1.5-1 3-1 4 1M19 8c-1.5-1-3-1-4 1M7 6c0-1.5 1-3 3-3M17 6c0-1.5-1-3-3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <h3 class="plant-now__card-title">Dahlias &amp; Summer Bulbs</h3>
-            <p class="plant-now__card-text">April is the window for tubers. Plant dahlia tubers now for spectacular late-summer blooms. Gladiolus and canna lilies also go in this month.</p>
-            <span class="plant-now__card-tag">Summer Color</span>
+        <div class="plant-now__layout">
+          <div class="plant-now__hero reveal">
+            <p class="section-eyebrow">April in Phoenixville</p>
+            <h2 class="plant-now__big-title">What to plant <em>right now</em></h2>
+            <p class="plant-now__intro">The last frost date for our zone has passed. Here is what our growers are putting in the ground this week.</p>
+            <a href="#contact" class="btn btn--primary">Plan Your Visit</a>
           </div>
-          <div class="plant-now__card">
-            <div class="plant-now__card-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="7" rx="3" ry="5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="17.33" cy="9.5" rx="3" ry="5" transform="rotate(72 17.33 9.5)" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="15.29" cy="15.85" rx="3" ry="5" transform="rotate(144 15.29 15.85)" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="8.71" cy="15.85" rx="3" ry="5" transform="rotate(216 8.71 15.85)" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="6.67" cy="9.5" rx="3" ry="5" transform="rotate(288 6.67 9.5)" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="currentColor" opacity=".5"/></svg>
+          <div class="plant-now__entries reveal-group">
+            <div class="plant-now__entry">
+              <div class="plant-now__entry-tag">Summer Color</div>
+              <h3 class="plant-now__entry-title">Dahlias &amp; Summer Bulbs</h3>
+              <p>April is the window for tubers. Plant dahlia tubers now for spectacular late-summer blooms. Gladiolus and canna lilies also go in this month.</p>
             </div>
-            <h3 class="plant-now__card-title">Petunias &amp; Impatiens</h3>
-            <p class="plant-now__card-text">Spring annuals are at peak selection. Fill window boxes, containers, and beds now. Impatiens love shade; petunias take full sun all summer long.</p>
-            <span class="plant-now__card-tag">Annuals</span>
-          </div>
-          <div class="plant-now__card">
-            <div class="plant-now__card-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2c0 0-2 4-2 7s2 5 2 5 2-2 2-5-2-7-2-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 14c0 0-4-1-6.5 1S2 19 2 19s4 1 6.5-1 3.5-4 3.5-4zM12 14c0 0 4-1 6.5 1S22 19 22 19s-4 1-6.5-1-3.5-4-3.5-4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 19v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div class="plant-now__entry plant-now__entry--accent">
+              <div class="plant-now__entry-tag">Annuals</div>
+              <h3 class="plant-now__entry-title">Petunias &amp; Impatiens</h3>
+              <p>Spring annuals are at peak selection. Fill window boxes, containers, and beds now. Impatiens love shade; petunias take full sun all summer.</p>
             </div>
-            <h3 class="plant-now__card-title">Native Pollinators</h3>
-            <p class="plant-now__card-text">Black-eyed Susans, coneflowers, and bee balm are ready to go in now. Native perennials establish fast in PA soil and come back stronger every year.</p>
-            <span class="plant-now__card-tag">Natives</span>
-          </div>
-          <div class="plant-now__card">
-            <div class="plant-now__card-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 22v-7M12 15c0 0-5-2-7-7 2-1 5 0 7 3M12 15c0 0 5-2 7-7-2-1-5 0-7 3M12 11C12 7 9 3 5 3c-1 4 2 8 7 8M12 11C12 7 15 3 19 3c1 4-2 8-7 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="plant-now__entry">
+              <div class="plant-now__entry-tag">Natives</div>
+              <h3 class="plant-now__entry-title">Native Pollinators</h3>
+              <p>Black-eyed Susans, coneflowers, and bee balm are ready now. Native perennials establish fast in PA soil and return stronger every year.</p>
             </div>
-            <h3 class="plant-now__card-title">Shade Trees &amp; Ornamentals</h3>
-            <p class="plant-now__card-text">Spring is the best planting window for trees. Roots establish before summer heat. Our nursery is stocked with maples, dogwoods, and flowering shrubs.</p>
-            <span class="plant-now__card-tag">Trees &amp; Shrubs</span>
+            <div class="plant-now__entry">
+              <div class="plant-now__entry-tag">Trees &amp; Shrubs</div>
+              <h3 class="plant-now__entry-title">Shade Trees &amp; Ornamentals</h3>
+              <p>Spring is the best planting window for trees. Roots establish before summer heat. Maples, dogwoods, and flowering shrubs in stock now.</p>
+            </div>
           </div>
-        </div>
-        <div class="plant-now__cta reveal">
-          <p class="plant-now__cta-text">Not sure what works in your yard? Stop in &mdash; our staff answers plant questions all day, every day.</p>
-          <a href="#contact" class="btn btn--primary">Plan Your Visit</a>
         </div>
       </div>
     </section>
@@ -467,107 +379,54 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials — editorial pull quote rotator -->
     <section class="testimonials" aria-label="Customer reviews">
       <div class="testimonials__inner container">
         <div class="testimonials__header reveal">
           <p class="section-eyebrow">What neighbors say</p>
-          <h2 class="section-title">Phoenixville&rsquo;s<br />favorite garden spot</h2>
-          <div class="testimonials__rating-badge" aria-label="4.8 out of 5 stars, 340 Google reviews">
-            <div class="testimonials__rating-stars" aria-hidden="true">
-              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            </div>
-            <span class="testimonials__rating-num">4.8</span>
+          <div class="testimonials__meta">
+            <span class="testimonials__rating-inline" aria-label="4.8 out of 5 stars">&#9733; 4.8</span>
             <span class="testimonials__rating-count">340 Google reviews</span>
           </div>
         </div>
 
-        <!-- Featured pullquote -->
-        <blockquote class="testimonial-featured reveal">
-          <span class="testimonial-featured__mark" aria-hidden="true">&ldquo;</span>
-          <p class="testimonial-featured__text">We&rsquo;ve been coming here every spring for over 20 years. The staff knows their plants and the selection beats anything around. It feels like a real garden, not a warehouse.</p>
-          <footer class="testimonial-featured__footer">
-            <span class="testimonial-featured__name">Jennifer R., Phoenixville</span>
-            <span class="testimonial-featured__divider" aria-hidden="true">&mdash;</span>
-            <span class="testimonial-featured__source">Google Reviews</span>
-          </footer>
-        </blockquote>
+        <div class="pullquote-stage reveal" id="pullquoteStage" aria-live="polite" aria-atomic="true">
+          <div class="pullquote is-active" data-idx="0">
+            <p class="pullquote__text">We&rsquo;ve been coming here every spring for over 20 years. The staff knows their plants and the selection beats anything around. It feels like a real garden, not a warehouse.</p>
+            <cite class="pullquote__cite">Jennifer R., Phoenixville &mdash; <span>Google Reviews</span></cite>
+          </div>
+          <div class="pullquote" data-idx="1">
+            <p class="pullquote__text">Had the landscaping team come out for a consult &mdash; they showed up on time, gave honest advice, and the install looked better than I imagined. One-year warranty gave us total peace of mind.</p>
+            <cite class="pullquote__cite">Tom R., Collegeville &mdash; <span>Spring 2025 install</span></cite>
+          </div>
+          <div class="pullquote" data-idx="2">
+            <p class="pullquote__text">The flower arrangement for our anniversary dinner was stunning. They matched our color palette perfectly and added a handwritten card. Felt genuinely personal, not like a grocery store bouquet.</p>
+            <cite class="pullquote__cite">Diane M., Royersford &mdash; <span>Florist</span></cite>
+          </div>
+          <div class="pullquote" data-idx="3">
+            <p class="pullquote__text">Came in looking for herbs and ended up leaving with basil, lemon thyme, two varieties of lavender, and a flat of impatiens. The staff walked me through what would actually survive my shaded back yard.</p>
+            <cite class="pullquote__cite">Patrice W., Kimberton &mdash; <span>Garden Center</span></cite>
+          </div>
+          <div class="pullquote" data-idx="4">
+            <p class="pullquote__text">Ordered arrangements for my mother&rsquo;s birthday and the florist absolutely nailed it. Fresh, beautiful, and ready same day. I won&rsquo;t go anywhere else for flowers in Phoenixville.</p>
+            <cite class="pullquote__cite">Sarah K., Spring City &mdash; <span>Florist</span></cite>
+          </div>
+        </div>
 
-        <div class="testimonials__grid reveal-group">
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__stars" aria-label="5 stars" aria-hidden="true">
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            </div>
-            <p class="testimonial-card__text">"Had the landscaping team come out for a consult &mdash; they showed up on time, gave honest advice, and the install looked better than I imagined. One-year warranty on everything gave us total peace of mind."</p>
-            <footer class="testimonial-card__author">
-              <span class="testimonial-card__name">Tom R., Collegeville</span>
-              <span class="testimonial-card__tag">Spring 2025 install &mdash; Google Reviews</span>
-            </footer>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__stars" aria-label="5 stars" aria-hidden="true">
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            </div>
-            <p class="testimonial-card__text">"Ordered arrangements for my mother's birthday and the florist absolutely nailed it. Fresh, beautiful, and ready same day. I won't go anywhere else for flowers in Phoenixville."</p>
-            <footer class="testimonial-card__author">
-              <span class="testimonial-card__name">Sarah K., Spring City</span>
-              <span class="testimonial-card__tag">via Google Reviews</span>
-            </footer>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__stars" aria-label="5 stars" aria-hidden="true">
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            </div>
-            <p class="testimonial-card__text">"The flower arrangement they put together for our anniversary dinner was stunning. They matched our color palette perfectly and even added a handwritten card. Felt genuinely personal, not like a grocery store bouquet."</p>
-            <footer class="testimonial-card__author">
-              <span class="testimonial-card__name">Diane M., Royersford</span>
-              <span class="testimonial-card__tag">Florist &mdash; Google Reviews</span>
-            </footer>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__stars" aria-label="4 stars" aria-hidden="true">
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            </div>
-            <p class="testimonial-card__text">"Took the whole family to the Mother&rsquo;s Day plant sale and the selection was incredible. Parking got tight by mid-morning, so I&rsquo;d suggest going early. Great variety, fair prices, and the staff was patient with all our questions. We&rsquo;ll be back every year."</p>
-            <footer class="testimonial-card__author">
-              <span class="testimonial-card__name">Kevin L., Phoenixville</span>
-              <span class="testimonial-card__tag">Mother&rsquo;s Day Sale &mdash; Google Reviews</span>
-            </footer>
-          </blockquote>
-          <blockquote class="testimonial-card">
-            <div class="testimonial-card__stars" aria-label="5 stars" aria-hidden="true">
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-            </div>
-            <p class="testimonial-card__text">"Came in looking for herbs and ended up leaving with basil, lemon thyme, two varieties of lavender, and a flat of impatiens. The staff walked me through what would actually survive my shaded back yard. Best garden shopping experience I&rsquo;ve had in years."</p>
-            <footer class="testimonial-card__author">
-              <span class="testimonial-card__name">Patrice W., Kimberton</span>
-              <span class="testimonial-card__tag">Garden Center &mdash; Google Reviews</span>
-            </footer>
-          </blockquote>
+        <div class="pullquote-nav" aria-label="Navigate reviews">
+          <button class="pullquote-nav__btn" id="pqPrev" aria-label="Previous review">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="pullquote-nav__dots" id="pqDots" aria-hidden="true">
+            <span class="pullquote-nav__dot is-active"></span>
+            <span class="pullquote-nav__dot"></span>
+            <span class="pullquote-nav__dot"></span>
+            <span class="pullquote-nav__dot"></span>
+            <span class="pullquote-nav__dot"></span>
+          </div>
+          <button class="pullquote-nav__btn" id="pqNext" aria-label="Next review">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
 
         <div class="testimonials__cta reveal">

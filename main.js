@@ -83,75 +83,61 @@ function initHero() {
   setTimeout(() => hero.classList.add('is-visible'), 80);
 }
 
-/* --- Services horizontal scroll (drag + buttons) ---------- */
-function initServicesScroll() {
-  const track   = document.getElementById('servicesTrack');
-  const btnLeft = document.getElementById('servicesLeft');
-  const btnRight= document.getElementById('servicesRight');
-  const dotsEl  = document.getElementById('servicesDots');
-  if (!track || !btnLeft || !btnRight) return;
+/* --- Pull quote rotator ----------------------------------- */
+function initPullQuoteRotator() {
+  const stage   = document.getElementById('pullquoteStage');
+  const btnPrev = document.getElementById('pqPrev');
+  const btnNext = document.getElementById('pqNext');
+  const dotsEl  = document.getElementById('pqDots');
+  if (!stage || !btnPrev || !btnNext) return;
 
-  const SCROLL_BY = 420;
-  const cards     = track.querySelectorAll('.service-card');
-  const dots      = dotsEl ? dotsEl.querySelectorAll('.services__dot') : [];
+  const quotes = Array.from(stage.querySelectorAll('.pullquote'));
+  const dots   = dotsEl ? Array.from(dotsEl.querySelectorAll('.pullquote-nav__dot')) : [];
+  let current  = 0;
+  let autoTimer;
 
-  btnLeft.addEventListener('click', () => {
-    track.scrollBy({ left: -SCROLL_BY, behavior: 'smooth' });
-  });
-  btnRight.addEventListener('click', () => {
-    track.scrollBy({ left: SCROLL_BY, behavior: 'smooth' });
-  });
+  function showQuote(idx) {
+    const prev = quotes[current];
+    const next = quotes[idx];
+    if (prev === next) return;
 
-  // Drag to scroll (mouse)
-  let isDragging = false;
-  let startX, scrollLeft;
+    prev.classList.add('is-exiting');
+    setTimeout(() => {
+      prev.classList.remove('is-active', 'is-exiting');
+      prev.style.display = '';
+    }, 380);
 
-  track.addEventListener('mousedown', e => {
-    isDragging = true;
-    track.classList.add('is-dragging');
-    startX     = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
-    e.preventDefault();
-  });
-
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-    track.classList.remove('is-dragging');
-  });
-
-  document.addEventListener('mousemove', e => {
-    if (!isDragging) return;
-    const x    = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.2;
-    track.scrollLeft = scrollLeft - walk;
-  });
-
-  // Update dots based on active card in view
-  function updateDots() {
-    if (!dots.length || !cards.length) return;
-    const trackRect = track.getBoundingClientRect();
-    let activeIdx = 0;
-    let bestOverlap = -1;
-    cards.forEach((card, i) => {
-      const rect = card.getBoundingClientRect();
-      const overlap = Math.min(rect.right, trackRect.right) - Math.max(rect.left, trackRect.left);
-      if (overlap > bestOverlap) { bestOverlap = overlap; activeIdx = i; }
+    next.style.display = 'flex';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        next.classList.add('is-active');
+      });
     });
-    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === activeIdx));
+
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+    current = idx;
   }
 
-  // Show/hide nav buttons based on scroll position
-  function updateButtons() {
-    btnLeft.style.opacity  = track.scrollLeft <= 0 ? '0.35' : '1';
-    btnLeft.disabled       = track.scrollLeft <= 0;
-    const maxScroll        = track.scrollWidth - track.clientWidth;
-    btnRight.style.opacity = track.scrollLeft >= maxScroll - 2 ? '0.35' : '1';
-    btnRight.disabled      = track.scrollLeft >= maxScroll - 2;
-    updateDots();
+  function next() { showQuote((current + 1) % quotes.length); }
+  function prev() { showQuote((current - 1 + quotes.length) % quotes.length); }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(next, 6000);
   }
 
-  track.addEventListener('scroll', updateButtons, { passive: true });
-  updateButtons();
+  btnNext.addEventListener('click', () => { next(); startAuto(); });
+  btnPrev.addEventListener('click', () => { prev(); startAuto(); });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  stage.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) { dx > 0 ? prev() : next(); startAuto(); }
+  }, { passive: true });
+
+  startAuto();
 }
 
 /* --- Parallax on legacy image ----------------------------- */
@@ -193,24 +179,6 @@ function addRevealClasses() {
     const el = document.querySelector(sel);
     if (el) el.classList.add('reveal');
   });
-
-  // Trust bar items already staggered in HTML
-  const trustBar = document.querySelector('.trust-bar__inner');
-  if (trustBar && !trustBar.classList.contains('reveal-group')) {
-    trustBar.classList.add('reveal-group');
-  }
-
-  // Seasonal grid — staggered
-  const seasonalGrid = document.querySelector('.seasonal__grid');
-  if (seasonalGrid && !seasonalGrid.classList.contains('reveal-group')) {
-    seasonalGrid.classList.add('reveal-group');
-  }
-
-  // Testimonials grid — staggered
-  const testGrid = document.querySelector('.testimonials__grid');
-  if (testGrid && !testGrid.classList.contains('reveal-group')) {
-    testGrid.classList.add('reveal-group');
-  }
 
   // Legacy badge — scale entrance
   const badge = document.querySelector('.legacy__badge');
@@ -302,36 +270,9 @@ function initContactBadge() {
   }
 }
 
-/* --- 3D tilt on plant-now cards --------------------------- */
-function initCardTilt() {
-  if (prefersReducedMotion) return;
-  const cards = document.querySelectorAll('.plant-now__card');
-  if (!cards.length) return;
-
-  const MAX_TILT = 8; // degrees
-
-  cards.forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const cx   = rect.left + rect.width  / 2;
-      const cy   = rect.top  + rect.height / 2;
-      const dx   = (e.clientX - cx) / (rect.width  / 2);
-      const dy   = (e.clientY - cy) / (rect.height / 2);
-      const rotX = (-dy * MAX_TILT).toFixed(2);
-      const rotY = ( dx * MAX_TILT).toFixed(2);
-      card.style.setProperty('--tilt-x', rotX + 'deg');
-      card.style.setProperty('--tilt-y', rotY + 'deg');
-      card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
-      card.style.boxShadow = 'var(--shadow-lg)';
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.setProperty('--tilt-x', '0deg');
-      card.style.setProperty('--tilt-y', '0deg');
-      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
-      card.style.boxShadow = '';
-    });
-  });
+/* --- Hover line effect on service rows -------------------- */
+function initSvcRowHover() {
+  // No JS needed — pure CSS hover handled in stylesheet
 }
 
 /* --- Scroll listener (throttled via rAF) ------------------ */
@@ -360,12 +301,12 @@ function init() {
   addRevealClasses();
   initReveal();
   initHero();
-  initServicesScroll();
+  initPullQuoteRotator();
+  initSvcRowHover();
   initParallax();
   initConsultForm();
   initOpenBar();
   initContactBadge();
-  initCardTilt();
   startOpenStateRefresh();
 
   updateProgress();
