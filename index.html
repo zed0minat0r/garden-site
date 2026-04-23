@@ -409,69 +409,58 @@
           <p class="plant-now__intro">The last frost date for our zone has passed. Here is what our growers are putting in the ground this week.</p>
         </div>
 
-        <!-- Magazine-spread plant grid: no two tiles the same -->
-        <div class="plant-spread reveal-group" aria-label="Planting guide for April">
+        <!-- Alternating split-screen plant rows -->
+        <div class="plant-rows reveal-group" aria-label="Planting guide for April">
 
-          <!-- Tile 1: Full-width hero — Dahlias, photo left + large text right -->
-          <article class="ps-tile ps-tile--hero">
-            <div class="ps-tile__img-wrap">
-              <img class="ps-tile__img" src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?w=900&q=80&auto=format&fit=crop" alt="Pink dahlia bloom close-up" loading="lazy" width="900" height="900" />
+          <!-- Row 1: image LEFT, text RIGHT — Dahlias -->
+          <article class="plant-row">
+            <div class="plant-row__img-wrap">
+              <img class="plant-row__img" src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?w=900&q=80&auto=format&fit=crop" alt="Pink dahlia bloom close-up" loading="lazy" width="900" height="900" />
             </div>
-            <div class="ps-tile__body">
-              <span class="ps-tile__tag">Summer Color</span>
-              <h3 class="ps-tile__name">Dahlias<br>&amp; Summer<br>Bulbs</h3>
-              <p class="ps-tile__text">April is the window for tubers. Plant dahlia tubers now for spectacular late-summer blooms. Gladiolus and canna lilies also go in this month.</p>
-              <span class="ps-tile__aside" aria-hidden="true">Plant&nbsp;now</span>
-            </div>
-          </article>
-
-          <!-- Row 2: Two tiles side by side, deliberately asymmetric -->
-          <div class="ps-row">
-
-            <!-- Tile 2: Narrow portrait — Petunias, dark background, centered -->
-            <article class="ps-tile ps-tile--portrait">
-              <div class="ps-tile__img-wrap">
-                <img class="ps-tile__img" src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=600&q=80&auto=format&fit=crop" alt="Colorful petunias blooming in a garden bed" loading="lazy" width="600" height="750" />
-              </div>
-              <div class="ps-tile__body ps-tile__body--inset">
-                <span class="ps-tile__tag ps-tile__tag--light">Annuals</span>
-                <h3 class="ps-tile__name ps-tile__name--sm">Petunias &amp; Impatiens</h3>
-                <p class="ps-tile__text">Peak selection, right now. Impatiens for shade; petunias for relentless full-sun color all summer long.</p>
-              </div>
-            </article>
-
-            <!-- Tile 3: Wide landscape — Native Pollinators, text overlay -->
-            <article class="ps-tile ps-tile--overlay">
-              <div class="ps-tile__img-wrap">
-                <img class="ps-tile__img" src="https://images.unsplash.com/photo-1444930694458-01babf71870c?w=800&q=80&auto=format&fit=crop" alt="Wild red poppies and wildflowers in a native pollinator garden" loading="lazy" width="800" height="540" />
-              </div>
-              <div class="ps-tile__body ps-tile__body--overlay">
-                <span class="ps-tile__tag ps-tile__tag--light">Natives</span>
-                <h3 class="ps-tile__name ps-tile__name--lg">Native<br>Pollinators</h3>
-                <p class="ps-tile__text ps-tile__text--light">Black-eyed Susans, coneflowers, and bee balm. Native perennials establish fast in PA soil and come back stronger every year.</p>
-              </div>
-            </article>
-
-          </div><!-- /.ps-row -->
-
-          <!-- Tile 4: Full-width footer — Trees, horizontal editorial strip -->
-          <article class="ps-tile ps-tile--strip">
-            <div class="ps-tile__img-wrap">
-              <img class="ps-tile__img" src="https://images.unsplash.com/photo-1522748906645-95d8adfd52c7?w=1200&q=80&auto=format&fit=crop" alt="Cherry blossom flowering ornamental tree in spring" loading="lazy" width="1200" height="480" />
-            </div>
-            <div class="ps-tile__body ps-tile__body--strip">
-              <div class="ps-tile__strip-meta">
-                <span class="ps-tile__strip-num" aria-hidden="true">04</span>
-                <span class="ps-tile__tag">Trees &amp; Shrubs</span>
-              </div>
-              <div class="ps-tile__strip-content">
-                <h3 class="ps-tile__name ps-tile__name--strip">Shade Trees &amp; Ornamentals</h3>
-                <p class="ps-tile__text">Spring is the best planting window for trees. Roots establish before summer heat. Maples, dogwoods, and flowering shrubs — in stock now.</p>
-              </div>
+            <div class="plant-row__body">
+              <span class="plant-row__tag">Summer Color</span>
+              <h3 class="plant-row__name">Dahlias &amp; Summer Bulbs</h3>
+              <p class="plant-row__text">April is the window for tubers. Plant dahlia tubers now for spectacular late-summer blooms. Gladiolus and canna lilies also go in this month.</p>
             </div>
           </article>
 
-        </div><!-- /.plant-spread -->
+          <!-- Row 2: image RIGHT, text LEFT — Petunias (flip) -->
+          <article class="plant-row plant-row--flip">
+            <div class="plant-row__img-wrap">
+              <img class="plant-row__img" src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=600&q=80&auto=format&fit=crop" alt="Colorful petunias blooming in a garden bed" loading="lazy" width="600" height="750" />
+            </div>
+            <div class="plant-row__body">
+              <span class="plant-row__tag">Annuals</span>
+              <h3 class="plant-row__name">Petunias &amp; Impatiens</h3>
+              <p class="plant-row__text">Peak selection, right now. Impatiens for shade; petunias for relentless full-sun color all summer long.</p>
+            </div>
+          </article>
+
+          <!-- Row 3: image LEFT, text RIGHT — Native Pollinators -->
+          <article class="plant-row">
+            <div class="plant-row__img-wrap">
+              <img class="plant-row__img" src="https://images.unsplash.com/photo-1444930694458-01babf71870c?w=800&q=80&auto=format&fit=crop" alt="Wild red poppies and wildflowers in a native pollinator garden" loading="lazy" width="800" height="540" />
+            </div>
+            <div class="plant-row__body">
+              <span class="plant-row__tag">Natives</span>
+              <h3 class="plant-row__name">Native Pollinators</h3>
+              <p class="plant-row__text">Black-eyed Susans, coneflowers, and bee balm. Native perennials establish fast in PA soil and come back stronger every year.</p>
+            </div>
+          </article>
+
+          <!-- Row 4: image RIGHT, text LEFT — Shade Trees (flip) -->
+          <article class="plant-row plant-row--flip">
+            <div class="plant-row__img-wrap">
+              <img class="plant-row__img" src="https://images.unsplash.com/photo-1522748906645-95d8adfd52c7?w=1200&q=80&auto=format&fit=crop" alt="Cherry blossom flowering ornamental tree in spring" loading="lazy" width="1200" height="480" />
+            </div>
+            <div class="plant-row__body">
+              <span class="plant-row__tag">Trees &amp; Shrubs</span>
+              <h3 class="plant-row__name">Shade Trees &amp; Ornamentals</h3>
+              <p class="plant-row__text">Spring is the best planting window for trees. Roots establish before summer heat. Maples, dogwoods, and flowering shrubs — in stock now.</p>
+            </div>
+          </article>
+
+        </div><!-- /.plant-rows -->
 
         <div class="plant-now__cta reveal">
           <p class="plant-now__cta-text">Peak selection is now &mdash; come in before Memorial Day.</p>
