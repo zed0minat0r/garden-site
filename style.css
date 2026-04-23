@@ -2226,66 +2226,80 @@ address { font-style: normal; }
   margin: 16px auto 0;
   line-height: 1.7;
 }
-.plant-now__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-bottom: 52px;
+/* Plant-now: editorial typographic list */
+.plant-list {
+  list-style: none;
+  margin: 0 0 52px;
+  padding: 0;
 }
-.plant-now__card {
-  background: #fff;
-  border: 1px solid var(--stone);
-  border-radius: var(--radius-xl);
-  padding: 28px 24px;
+.plant-list__item {
+  /* no box, no background — just the content */
+}
+.plant-list__item--last {
+  /* only contains the closing rule */
+}
+.plant-list__rule {
+  border: none;
+  border-top: 1px solid var(--stone);
+  margin: 0;
+}
+.plant-list__row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0 32px;
+  padding: 32px 0;
+  align-items: start;
+}
+.plant-list__num {
+  font-family: var(--font-serif);
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--green-pale);
+  line-height: 1;
+  letter-spacing: -.03em;
+  padding-top: 4px;
+  user-select: none;
+}
+.plant-list__body {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 200ms ease, transform 120ms ease;
-  transform-style: preserve-3d;
-  will-change: transform;
-  transform: perspective(800px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(0);
+  gap: 10px;
 }
-.plant-now__card:hover {
-  box-shadow: var(--shadow-md);
-}
-.plant-now__card-icon {
-  width: 52px;
-  height: 52px;
-  background: var(--green-wash);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--green-pale);
+.plant-list__top {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--green);
-  flex-shrink: 0;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
 }
-.plant-now__card-title {
+.plant-list__name {
   font-family: var(--font-serif);
-  font-size: 18px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--green-dark);
-  line-height: 1.3;
+  line-height: 1.2;
+  margin: 0;
 }
-.plant-now__card-text {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.65;
-  flex: 1;
-}
-.plant-now__card-tag {
+.plant-list__tag {
   display: inline-block;
-  font-size: 12px;
+  font-family: var(--font-sans);
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--green);
-  background: var(--green-wash);
-  border: 1px solid var(--green-pale);
+  color: var(--amber);
+  border: 1px solid var(--amber);
   border-radius: var(--radius-pill);
-  padding: 4px 12px;
-  align-self: flex-start;
+  padding: 3px 11px;
+  white-space: nowrap;
+  min-height: 24px;
+  line-height: 18px;
+}
+.plant-list__text {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0;
 }
 .plant-now__cta {
   text-align: center;
@@ -2302,8 +2316,11 @@ address { font-style: normal; }
 }
 
 @media (max-width: 1000px) {
-  .plant-now__grid {
-    grid-template-columns: repeat(2, 1fr);
+  .plant-list__num {
+    font-size: 42px;
+  }
+  .plant-list__name {
+    font-size: 22px;
   }
 }
 /* Contact grid: collapse to single column only at tablet/mobile, not at laptop widths */
@@ -2314,9 +2331,19 @@ address { font-style: normal; }
   }
 }
 @media (max-width: 600px) {
-  .plant-now__grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .plant-list__row {
+    grid-template-columns: 48px 1fr;
+    gap: 0 16px;
+    padding: 24px 0;
+  }
+  .plant-list__num {
+    font-size: 32px;
+  }
+  .plant-list__name {
+    font-size: 19px;
+  }
+  .plant-list__text {
+    font-size: 14px;
   }
   .plant-now { padding: 72px 0 60px; }
   .contact__form-wrap {
@@ -2345,7 +2372,7 @@ address { font-style: normal; }
   }
   .hero__bg-img { transform: none !important; }
   .hero__scroll { animation: none; }
-  .plant-now__card { transform: none !important; }
+  .plant-list__row { transform: none !important; }
   .btn--primary { animation: none !important; }
   .btn--glow-warm, .btn--glow-green, .btn--glow-teal { animation: none !important; }
   .cta-strip .btn--primary { animation: none !important; }
@@ -2610,23 +2637,8 @@ address { font-style: normal; }
   .plant-now__intro {
     text-align: center;
   }
-  .plant-now__card {
-    align-items: center;
-    text-align: center;
-  }
-  .plant-now__card-icon {
-    align-self: center;
-  }
-  .plant-now__card-title {
-    text-align: center;
-  }
-  .plant-now__card-text {
-    text-align: center;
-  }
-  .plant-now__card-tag {
-    align-self: center;
-    margin-left: auto;
-    margin-right: auto;
+  .plant-list__num {
+    font-size: 36px;
   }
   .plant-now__cta {
     align-items: center;
