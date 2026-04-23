@@ -230,3 +230,163 @@ Building on the original Top 5, these are the additions with the highest expecte
 ---
 
 *Additional sources consulted (April 2026): Dig Marketing gardening-center-trends-2026, Raptor Services / Plantorama case study, Garden Center Magazine AI chatbot feature, Brands in Blooms search behavior research, Halstead Media landscape content trends 2025, Subframe garden center website examples, Wildings Studio SEO guide, Sugar Creek Gardens site analysis, Shopify trust badge research*
+
+---
+
+## NEW FINDINGS — 2026-04-18 (Round 2) — Eliminating Card Grids: Testimonials, Seasonal Sections, and AI-Slop Patterns
+
+---
+
+## 14. What AI-Generated ("Slop") Web Design Actually Looks Like
+
+This is the most actionable finding for the Colonial Gardens rebuild. Research from 925studios.co, Monet Design, and multiple 2025-2026 design audits converged on a very specific fingerprint:
+
+**The AI-slop fingerprint — every item below is a red flag:**
+- Typography: Inter or Poppins as the global font, no variation between display and body
+- Color: Purple-to-blue gradient in heroes or CTAs, default shadcn grays, "safe" primary color palette
+- Layout: Everything center-aligned, uniform 16px border-radius on ALL elements, consistent 24px padding everywhere
+- Cards: Equal-height card boxes with identical border-radius, identical padding, identical shadow treatment throughout the page
+- Icons: Heroicons or Lucide defaults (tutorial-tier icon libraries)
+- Copy: Vague hero headlines like "Build the future" or "Your all-in-one solution" — averaged from the internet's most common patterns
+- Motion: Either zero animation, or the same fade-in applied to every single element
+- Imagery: Stock photos of "diverse group looking at a laptop in an impossibly well-lit office," or 3D blobs floating in space
+
+**The cumulative effect:** A website that could belong to any company in any industry. Indistinguishable from five competitors.
+
+**Conversion cost:** AI slop sites record conversion rates 91% lower than quality inventory. 38% of web visitors leave immediately when the site looks identical to the last five sites they visited.
+
+**What breaks the pattern:**
+- A typeface pairing no one expects (e.g., a slab serif display + plain body text)
+- At least one section with NO card borders at all — raw text on background
+- Non-uniform spacing: some sections breathe wide, some compress tight
+- Real photography in-situ (not posed, not stock)
+- Text-left or text-right layouts that break center-align dominance
+- One section with a completely different visual grammar than the rest of the page
+
+**For Colonial Gardens specifically:** The existing card sections (testimonials, seasonal) both carry the AI fingerprint — equal-height boxes, identical border-radius, uniform padding. Replacing them with anything that breaks this pattern will immediately make the site feel more human.
+
+---
+
+## 15. Testimonials: Five Alternatives to Card Grids (Ranked by Fit for a Garden Center)
+
+### Option A: The Full-Screen Rotating Pullquote (Best fit — RECOMMENDED)
+A single testimonial fills the section. Large-type quote (no quotation mark glyph, just the text at 2-3x body size), customer name and brief descriptor set small and below. Auto-advances every 6-8 seconds, or user-controlled with a simple dot indicator. No box, no border, no shadow. Background is either the site's soil/cream color or a full-bleed photo of the garden center with low overlay.
+
+Why it works: Gives each customer's voice weight. Forces the reader to actually read one thing instead of scanning a grid and reading nothing. Apple uses this pattern for product testimonials. Basecamp uses it for customer stories.
+
+CSS implementation: Pure CSS with radio-button trick or minimal JS. No border-radius. No card box. The quote IS the section.
+
+### Option B: The Sideways-Scrolling Marquee Strip (Second choice)
+A horizontal marquee of 6-8 short testimonials (under 15 words each), continuously scrolling at a slow pace. No boxes — just text separated by a small botanical ornament (a leaf glyph or dash). Customer name follows inline. Pauses on hover.
+
+Why it works: Registers visually as "a lot of people said good things" without requiring a card grid. Works as a trust band below the hero or above the footer.
+
+CSS: Pure CSS @keyframes animation with overflow: hidden. No JavaScript required. Safari-safe. Use `animation-play-state: paused` on hover.
+
+Pitfall: Marquees can read as "ticker tape" (cheap) if the text is too small or the speed is too fast. Keep font at 18px minimum, speed at 40-60 second loop.
+
+### Option C: The Staggered Two-Column Pull (Third choice)
+Two testimonials shown side-by-side, but one starts mid-page vertically and one is full height — so they visually interlock rather than sitting in parallel boxes. Quote text is large (20-22px). Attribution is small and right-aligned. No card wrapper, no shadow, no border. Separating line is a thin 1px rule or nothing at all.
+
+Why it works: Breaks the uniform-height problem. Even with two quotes visible at once, the asymmetry reads as intentional editorial design rather than a grid.
+
+### Option D: Inline Prose Integration (For sections that already have copy)
+Weave one short testimonial directly into a paragraph of body copy, formatted as a blockquote with a left border bar only (no card wrapper). Example: the "About Colonial Gardens" or "Why Visit" section contains a real customer quote pulled out as a pullquote mid-paragraph. This is how magazines handle reader quotes — they don't isolate them in a special zone.
+
+### Option E: Full-Bleed Photo + Quote Overlay
+A high-quality photo of the garden center (not stock) occupies the full section width. A large, centered quote appears over a subtle dark overlay. Customer name below. This only works if real photography of Colonial Gardens is available — stock photos make it feel dishonest.
+
+---
+
+## 16. Seasonal Content: Five Alternatives to Uniform Card Grids (Ranked by Fit)
+
+### Option A: The Split-Screen Alternating Layout (Best fit — RECOMMENDED)
+Four seasonal items (Spring, Summer, Fall, Winter — or four specific seasonal products) presented as alternating full-width rows. Each row: large image on one side (60% width), text on the other. The first item is image-left, second is image-right, third image-left, etc. Text includes a season name (large, light color), 2-3 lines of prose (not bullet list), and a CTA link. No card wrapper. No border. Just image + text in a two-column row.
+
+This is the standard pattern used by Terrain, Patagonia, and editorial e-commerce sites. It reads as intentional design, not template. On mobile, it stacks to image-above/text-below for each item.
+
+### Option B: The Editorial Numbered List with Image (Already done for Plant Now — adapt it)
+The existing Plant Now section replaced cards with a numbered typographic list. The same logic applies to seasonal content: numbered or season-named list (01 Spring / 02 Summer / 03 Fall / 04 Winter), each with a season-appropriate accent color, a large plant name or season headline, and 2-3 lines of prose. No images needed — let the typography carry it.
+
+This is the lowest-risk, fastest-to-build option because the pattern already exists on the page.
+
+### Option C: Asymmetric CSS Grid with Varied Sizes (High-effort, high-reward)
+The Immersive Garden website (Awwwards Site of the Month, January 2025) used this pattern extensively. Items display at dramatically different sizes — one item spans two columns, another is quarter-size, a third is full-width. The grid uses `grid-auto-flow: row dense` to fill gaps organically. Each item has a different entry point on the grid.
+
+Why it works: Breaks the "equal-height card" problem at the structural level. The hierarchy signals which items matter most.
+
+CSS: CSS Grid with named areas or `grid-column: span 2` on select items. No border-radius needed. This is pure structure, not decoration.
+
+Pitfall: Requires intentional art direction to decide WHICH items get which sizes. Random size variation reads as broken; intentional size variation reads as design.
+
+### Option D: Large Hero Feature + Supporting Row (Magazine Lead Story format)
+One seasonal feature item is displayed at hero scale (full-width image, large headline, one paragraph). Below it, two or three secondary seasonal items are displayed inline — smaller images, shorter text, no card wrapper, just a thin separator line between them. This is exactly how magazine editors lay out a cover story plus sidebar items.
+
+### Option E: The Prose Seasonal Calendar (Low-effort, distinctive)
+A typographic-only section listing what is happening in the garden each season or month. No images, no cards. Just a clean two-column layout: month name left, one evocative sentence right. Example: "April — Perennials emerge. Pansies and snapdragons fill the outdoor beds." This is what high-end nursery print catalogs look like. It signals expertise and confidence.
+
+---
+
+## 17. Mobile Scroll Experiences: What Actually Works on iOS Safari
+
+Critical finding: CSS scroll-driven animations (`animation-timeline: scroll()`) shipped in Safari 26 but have documented inconsistencies on some iPhones as of April 2026. Do NOT rely on them for core layout behavior.
+
+**What is completely safe on iOS Safari:**
+- `scroll-snap-type: x mandatory` on a horizontal scroll container — rock solid, no polyfill needed. This is the backbone of swipeable testimonial carousels and horizontal seasonal sliders.
+- `overflow-x: scroll` with `-webkit-overflow-scrolling: touch` — smooth iOS momentum scrolling. Pair with `scroll-snap-align: start` on children.
+- `position: sticky` — fully supported, no issues
+- CSS `@keyframes` animations triggered by class additions via IntersectionObserver — safe fallback for any scroll-triggered effect
+- `IntersectionObserver` API — supported in iOS Safari 12.1+, all modern versions
+
+**What requires caution:**
+- `animation-timeline: scroll()` — wrap in `@supports` rule so it degrades gracefully on non-supporting browsers
+- `animation-timeline: view()` — same caution
+- JavaScript-based parallax — can cause jank on lower-end iOS devices; use `will-change: transform` and keep transforms to translateY only
+
+**Recommended pattern for the Colonial Gardens testimonial section (iOS-safe):**
+A horizontal scroll-snap container for mobile (swipe through individual full-width testimonials, one per "page") that collapses to the pullquote rotation pattern on desktop. This gives mobile users an intuitive swipe gesture instead of a vertical stack of cards.
+
+```css
+.testimonial-track {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.testimonial-item {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+```
+
+---
+
+## 18. What Makes a Website Look "Not AI-Generated" — A Checklist for Colonial Gardens
+
+Based on all research, the following specific choices signal human editorial authorship:
+
+1. **At least one section with zero box borders.** A section where content sits directly on the background color — no card, no border, no shadow — reads as a design decision, not a template default.
+2. **Typography that changes between sections.** If every section uses the same font size and weight hierarchy, it reads as template output. Vary it: one section uses a large serif display, another uses all-caps small text.
+3. **Asymmetry somewhere.** One section where left and right sides are unequal in weight or height.
+4. **A spacing surprise.** One section that is noticeably more spacious (or tighter) than expected. Template sites have uniform spacing everywhere.
+5. **Real local specificity in copy.** Not "visit us today" but "Stop in on Kimberton Road this Saturday — the first tomato transplants of the season just arrived." Generic copy is the text equivalent of a card grid.
+6. **Color that earns its place.** One accent color used sparingly — not sprinkled on every heading and button. When every heading is green and every button is green and every divider is green, nothing is green.
+7. **A section that breaks the scrolling rhythm.** One part of the page that the user did NOT expect based on the pattern set above it. The testimonial section being a full-width rotating quote instead of more cards creates this break.
+
+---
+
+## Updated Priority Actions for the Remaining Sections
+
+**For the testimonial section:** Replace card grid with the Full-Screen Rotating Pullquote (Option A above). One quote at a time, large type, no card box. Auto-rotate every 7 seconds. On mobile, make it a horizontal scroll-snap swipe. This is the single highest-impact change remaining.
+
+**For the seasonal section:** Replace card grid with Alternating Split-Screen Rows (Option A above). Four seasonal rows, image alternates left/right, text on the other side. No card, no border. On mobile, stacks to full-width image above short text. Second option: adapt the existing Plant Now numbered-list pattern.
+
+**What NOT to do:**
+- Do not replace the card grid with a carousel/slider — sliders are an older pattern that also reads as template design
+- Do not add CSS scroll-driven animations as the primary behavior (iOS inconsistency)
+- Do not use equal-height flex rows with `align-items: stretch` — this recreates the card-grid problem in a different container
+- Do not use rounded corners (border-radius > 4px) on testimonial or seasonal layout elements
+
+---
+
+*Additional sources consulted (April 2026, Round 2): 925studios.co AI Slop Web Design Guide, Monet Design AI Landing Page Pitfalls, testimonial.to design examples, Smashing Magazine CSS Grid magazine layouts, Awwwards Immersive Garden January 2025 SOTM analysis, MDN CSS scroll-driven animation timeline browser support, WebKit Interop 2026 announcement, Finsweet marquee component documentation, Speckyboy testimonial UI examples, Subframe garden center design examples*
