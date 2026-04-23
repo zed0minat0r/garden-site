@@ -708,79 +708,109 @@ address { font-style: normal; }
   line-height: 1.5;
 }
 
-/* === SERVICES — full-screen storytelling section ========== */
+/* === SERVICES — sticky scroll, panel fade ================= */
+
+/* Nav anchor spans — zero-size, just for hash navigation */
+.svc-nav-anchor {
+  display: block;
+  height: 0;
+  pointer-events: none;
+}
+
 .services {
   background: var(--green-dark);
   position: relative;
+  /* IMPORTANT: No overflow:hidden — sticky child needs an unclipped scroll parent */
 }
 
-/* === SERVICES — full-screen vertical storytelling ========= */
-
-/* Each service is a 100vh moment — full bleed, text over photo */
-.svc-story {
+/* Tall runway: 400vh total gives 4 panels ~100vh each of scroll budget */
+.svc-scroll {
+  height: 400vh;
   position: relative;
-  height: 100svh;
-  min-height: 560px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-/* Background photo layer */
-.svc-story__bg {
+/* The sticky container — pins at top of viewport, fills 100vh */
+.svc-scroll__sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh; /* dynamic viewport height for mobile browsers */
+  overflow: hidden;
+}
+
+/* Each panel stacks on top of the others — position:absolute fills sticky */
+.svc-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+/* First panel visible by default */
+.svc-panel[data-index="0"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* Active panel — set by JS */
+.svc-panel.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Full-bleed background photo layer */
+.svc-panel__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
-.svc-story__photo {
+.svc-panel__photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
-  /* Subtle scale for depth — CSS only, no JS */
-  will-change: transform;
 }
 
-/* Dark overlay — gradient from bottom for text legibility */
-.svc-story__overlay {
+/* Dark gradient overlay — heavier at bottom for text legibility */
+.svc-panel__overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg,
-      rgba(10,20,10,.18) 0%,
-      rgba(10,20,10,.42) 40%,
-      rgba(10,20,10,.75) 75%,
-      rgba(10,20,10,.88) 100%
-    );
+}
+.svc-panel__overlay--green {
+  background: linear-gradient(180deg, rgba(14,32,14,.18) 0%, rgba(14,32,14,.42) 45%, rgba(14,32,14,.82) 78%, rgba(14,32,14,.94) 100%);
+}
+.svc-panel__overlay--dark {
+  background: linear-gradient(180deg, rgba(8,16,8,.18) 0%, rgba(8,16,8,.4) 45%, rgba(8,16,8,.82) 78%, rgba(8,16,8,.94) 100%);
+}
+.svc-panel__overlay--warm {
+  background: linear-gradient(180deg, rgba(30,16,8,.2) 0%, rgba(30,16,8,.46) 45%, rgba(30,16,8,.84) 78%, rgba(30,16,8,.95) 100%);
+}
+.svc-panel__overlay--teal {
+  background: linear-gradient(180deg, rgba(6,18,20,.18) 0%, rgba(6,18,20,.42) 45%, rgba(6,18,20,.82) 78%, rgba(6,18,20,.94) 100%);
 }
 
-/* Per-story overlay tint variation */
-.svc-story--1 .svc-story__overlay { background: linear-gradient(180deg, rgba(14,32,14,.2) 0%, rgba(14,32,14,.45) 40%, rgba(14,32,14,.8) 75%, rgba(14,32,14,.92) 100%); }
-.svc-story--2 .svc-story__overlay { background: linear-gradient(180deg, rgba(8,24,10,.18) 0%, rgba(8,24,10,.42) 40%, rgba(8,24,10,.78) 75%, rgba(8,24,10,.9) 100%); }
-.svc-story--3 .svc-story__overlay { background: linear-gradient(180deg, rgba(30,16,8,.2)  0%, rgba(30,16,8,.48)  40%, rgba(30,16,8,.82) 75%, rgba(30,16,8,.92)  100%); }
-.svc-story--4 .svc-story__overlay { background: linear-gradient(180deg, rgba(6,18,20,.2)  0%, rgba(6,18,20,.45)  40%, rgba(6,18,20,.8)  75%, rgba(6,18,20,.92)  100%); }
-
-/* Text content — centered, bottom-weighted */
-.svc-story__content {
+/* Text content — centered, lower-third editorial feel */
+.svc-panel__content {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 24px 64px;
+  padding: 0 24px 80px;
   max-width: 640px;
   width: 100%;
-  /* Push content toward lower third — editorial feel */
-  margin-top: auto;
-  align-self: flex-end;
 }
 
-/* Eyebrow label */
-.svc-story__eyebrow {
-  display: inline-block;
+/* Eyebrow label with flanking lines */
+.svc-panel__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: var(--font-sans);
   font-size: 11px;
   font-weight: 700;
@@ -788,42 +818,32 @@ address { font-style: normal; }
   text-transform: uppercase;
   color: var(--amber-light);
   margin-bottom: 18px;
-  /* Thin horizontal rule flanking the eyebrow */
-  display: flex;
-  align-items: center;
-  gap: 12px;
   white-space: nowrap;
 }
-.svc-story__eyebrow::before,
-.svc-story__eyebrow::after {
+.svc-panel__eyebrow::before,
+.svc-panel__eyebrow::after {
   content: '';
   flex: 1;
   height: 1px;
   background: rgba(232,168,74,.4);
-  min-width: 32px;
-  max-width: 56px;
+  min-width: 28px;
+  max-width: 52px;
 }
-.svc-story--2 .svc-story__eyebrow { color: var(--green-pale); }
-.svc-story--2 .svc-story__eyebrow::before,
-.svc-story--2 .svc-story__eyebrow::after { background: rgba(184,221,185,.4); }
-.svc-story--4 .svc-story__eyebrow { color: #a8d8da; }
-.svc-story--4 .svc-story__eyebrow::before,
-.svc-story--4 .svc-story__eyebrow::after { background: rgba(168,216,218,.4); }
 
-/* Big editorial heading — the moment */
-.svc-story__heading {
+/* Large editorial heading */
+.svc-panel__heading {
   font-family: var(--font-serif);
-  font-size: clamp(38px, 9vw, 80px);
+  font-size: clamp(32px, 7.5vw, 72px);
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.1;
   color: #fff;
   letter-spacing: -.01em;
-  text-shadow: 0 4px 32px rgba(0,0,0,.4);
+  text-shadow: 0 4px 32px rgba(0,0,0,.45);
   margin-bottom: 20px;
 }
 
 /* Body copy */
-.svc-story__body {
+.svc-panel__body {
   font-family: var(--font-sans);
   font-size: clamp(14px, 3.5vw, 17px);
   line-height: 1.65;
@@ -832,12 +852,13 @@ address { font-style: normal; }
   margin-bottom: 32px;
 }
 
-/* CTA — glow variants */
-.svc-story__cta {
+/* CTA button — inherits glow classes defined globally */
+.svc-panel__cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 52px;
+  min-width: 44px;
   padding: 14px 32px;
   border-radius: var(--radius-pill);
   font-family: var(--font-sans);
@@ -848,16 +869,18 @@ address { font-style: normal; }
   color: #fff;
   transition: transform .18s var(--ease-spring), box-shadow .25s ease;
 }
-.svc-story__cta:hover {
+.svc-panel__cta:hover {
   transform: translateY(-2px) scale(1.03);
 }
-/* Warm amber glow */
+
+/* Glow button variants — warm amber */
 .btn--glow-warm {
   background: var(--amber);
   box-shadow: var(--glow-warm);
   animation: glowPulse 3s ease infinite;
 }
 .btn--glow-warm:hover { background: #c07e2a; box-shadow: 0 0 56px rgba(212,147,63,.75); }
+
 /* Green glow */
 .btn--glow-green {
   background: var(--green);
@@ -865,6 +888,7 @@ address { font-style: normal; }
   animation: glowPulseGreen 3s ease infinite;
 }
 .btn--glow-green:hover { background: var(--green-light); box-shadow: 0 0 56px rgba(46,107,48,.8); }
+
 /* Teal glow */
 .btn--glow-teal {
   background: #2a7d82;
@@ -886,32 +910,28 @@ address { font-style: normal; }
   50%       { box-shadow: 0 0 0 1px rgba(42,125,130,.3), 0 0 56px rgba(42,125,130,.68); }
 }
 
-/* Large decorative number — editorial accent */
-.svc-story__number {
+/* Progress dots — bottom center of sticky container */
+.svc-progress {
   position: absolute;
-  top: 28px;
-  right: 28px;
-  font-family: var(--font-serif);
-  font-size: clamp(56px, 14vw, 120px);
-  font-weight: 700;
-  line-height: 1;
-  color: rgba(255,255,255,.06);
-  letter-spacing: -.04em;
-  z-index: 1;
-  pointer-events: none;
-  user-select: none;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
-
-/* Separator line between stories */
-.svc-story + .svc-story::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: rgba(255,255,255,.08);
-  z-index: 5;
+.svc-progress__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.35);
+  transition: background .3s ease, transform .3s ease;
+  display: block;
+}
+.svc-progress__dot.is-active {
+  background: var(--amber-light);
+  transform: scale(1.35);
 }
 
 /* === LEGACY / ABOUT ======================================= */
@@ -2335,7 +2355,7 @@ address { font-style: normal; }
   .btn--glow-warm, .btn--glow-green, .btn--glow-teal { animation: none !important; }
   .cta-strip .btn--primary { animation: none !important; }
   .hero__actions .btn--primary { animation: none !important; }
-  .svc-story__photo { transform: none !important; }
+  .svc-panel { transition: none !important; }
 }
 
 /* === RESPONSIVE =========================================== */
@@ -2423,8 +2443,8 @@ address { font-style: normal; }
 
   .trust-bar__prose { font-size: 1.1rem; }
 
-  /* Service stories on tablet — slightly reduce heading size */
-  .svc-story__heading { font-size: clamp(36px, 7vw, 64px); }
+  /* Service panels on tablet — slightly reduce heading size */
+  .svc-panel__heading { font-size: clamp(30px, 6vw, 60px); }
 
   .legacy__pillars { grid-template-columns: 1fr; }
 
@@ -2519,12 +2539,17 @@ address { font-style: normal; }
   }
 
   /* --- Services section — 375px mobile focus ---------------- */
-  .svc-story__content {
-    padding: 0 20px 52px;
+  .svc-panel__content {
+    padding: 0 20px 64px;
   }
-  .svc-story__number {
-    top: 16px;
-    right: 16px;
+  .svc-panel__heading {
+    font-size: clamp(26px, 8vw, 44px);
+  }
+  .svc-panel__body {
+    font-size: 14px;
+  }
+  .svc-progress {
+    bottom: 20px;
   }
 
   /* --- Legacy / About --------------------------------------- */

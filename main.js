@@ -264,6 +264,76 @@ function initCardTilt() {
   });
 }
 
+/* --- Services sticky scroll — panel fade ------------------- */
+function initSvcScroll() {
+  const runway = document.querySelector('.svc-scroll');
+  const panels = document.querySelectorAll('.svc-panel');
+  const dots   = document.querySelectorAll('.svc-progress__dot');
+
+  if (!runway || !panels.length) return;
+
+  const PANEL_COUNT = panels.length; // 4
+
+  let currentIndex = -1; // track active panel to avoid redundant DOM writes
+
+  function setPanel(idx) {
+    if (idx === currentIndex) return;
+    currentIndex = idx;
+
+    panels.forEach((panel, i) => {
+      const active = (i === idx);
+      panel.classList.toggle('is-active', active);
+      panel.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === idx);
+    });
+  }
+
+  // Ensure panel 0 is the default visible state
+  setPanel(0);
+
+  let rafId = null;
+
+  function onSvcScroll() {
+    if (rafId) return;
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+
+      const rect      = runway.getBoundingClientRect();
+      const runwayH   = runway.offsetHeight;          // 400vh
+      const panelH    = runwayH / PANEL_COUNT;         // 100vh each
+
+      // How far into the runway we've scrolled (0 = just entered, runwayH-vh = last panel)
+      const scrolled  = -rect.top;
+
+      if (scrolled < 0) {
+        // Haven't reached the section yet — show first panel
+        setPanel(0);
+        return;
+      }
+      if (scrolled >= runwayH - window.innerHeight) {
+        // Passed the end — show last panel
+        setPanel(PANEL_COUNT - 1);
+        return;
+      }
+
+      // Which panel are we in? Each panel gets 100vh of scroll budget.
+      const idx = Math.min(
+        PANEL_COUNT - 1,
+        Math.floor(scrolled / panelH)
+      );
+
+      setPanel(idx);
+    });
+  }
+
+  window.addEventListener('scroll', onSvcScroll, { passive: true });
+  // Run once on init to set correct state if page loads mid-scroll
+  onSvcScroll();
+}
+
 /* --- Scroll listener (throttled via rAF) ------------------ */
 let scrollRafPending = false;
 
@@ -291,6 +361,7 @@ function init() {
   initReveal();
   initHero();
   initParallax();
+  initSvcScroll();
   initConsultForm();
   initOpenBar();
   initContactBadge();
